@@ -56,16 +56,19 @@ function connectToRoom(roomCode, nick, avatar,soundOff){
 
     //receive player data
     room.actions.playerInfo.onMessage = (player, {peerId}) => {
-        const newPlayer = new Player(player.id, player.nick, player.animationComponent.avatar, player.animationComponent.frames)
-        newPlayer.movementComponent.pos = player.movementComponent.pos;
-        newPlayer.grabbing = player.grabbing;
-        newPlayer.grabbed = player.grabbed;
-        newPlayer.animationComponent.offset = player.animationComponent.offset;
-        newPlayer.sleep = player.sleep;
-        serverMessage(newPlayer.nick+" joined!", "green");
-        newPlayer.playSound("snd_power");
-        players.push(newPlayer);
-        updateOnline(players);
+        if(!getById(peerId)){
+            const newPlayer = new Player(player.id, player.nick, player.animationComponent.avatar, player.animationComponent.frames)
+            newPlayer.movementComponent.pos = player.movementComponent.pos;
+            newPlayer.grabbing = player.grabbing;
+            newPlayer.grabbed = player.grabbed;
+            newPlayer.animationComponent.offset = player.animationComponent.offset;
+            newPlayer.sleep = player.sleep;
+            serverMessage(newPlayer.nick+" joined!", "green");
+            newPlayer.playSound("snd_power");
+            players.push(newPlayer);
+            updateOnline(players);
+        }
+
     }
 
     //Remove player
