@@ -61,6 +61,7 @@ function connectToRoom(roomCode, nick, avatar,soundOff){
         newPlayer.grabbing = player.grabbing;
         newPlayer.grabbed = player.grabbed;
         newPlayer.animationComponent.offset = player.animationComponent.offset;
+        newPlayer.sleep = player.sleep;
         serverMessage(newPlayer.nick+" joined!", "green");
         newPlayer.playSound("snd_power");
         players.push(newPlayer);
@@ -156,8 +157,8 @@ function connectToRoom(roomCode, nick, avatar,soundOff){
                 if(released.movementComponent.pos[1] == initialPos){
                     released.movementComponent.movement = [0,0]
                     clearInterval(interval);
-                        released.movementComponent.canMove = true;
-                        released.movementComponent.lockTyping = true;
+                    released.movementComponent.canMove = true;
+                    released.movementComponent.lockTyping = false;
                 }
             },10)
         },150)

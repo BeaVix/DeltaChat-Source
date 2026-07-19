@@ -33,6 +33,7 @@ body{
 
 .chat-container{
 	margin: 5px;
+	max-width: 17%;
 	background-image: url("chat_bg.png");
 }
 

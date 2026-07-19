@@ -72,12 +72,33 @@ function draw(timestamp, players){
 
 function drawText(x, y, str, strokeColor = "#000000", color="#ffffff",size="10px",font="Determination mono") {
     if(str){
+        const maxWidth = 80;    //pixels per lines
         c.font = size + " " + font
         c.strokeStyle= strokeColor
         c.linewidth = 8
-        c.strokeText(str, x, y)
-        c.fillStyle = color;
-        c.fillText (str, x, y);
+        let words = str.split(" ");
+        let lines = [];
+        let currentLine = words[0];
+
+        for (let i = 1; i < words.length; i++) {
+            let word = words[i];
+            let width = c.measureText(currentLine + " " + word).width;
+            if (width < maxWidth) {
+                currentLine += " " + word;
+            } else {
+                lines.push(currentLine);
+                currentLine = word;
+            }
+        }
+        lines.push(currentLine);
+
+        for (let i = lines.length; i > 0; i--) {
+            const line = lines[i-1];
+            const height = y + 10*(i-lines.length);
+            c.strokeText(line, x, height);
+            c.fillStyle = color;
+            c.fillText (line, x, height);    
+        }
     }
 
 }
