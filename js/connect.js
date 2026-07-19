@@ -56,7 +56,6 @@ function connectToRoom(roomCode, nick, avatar,soundOff){
 
     //receive player data
     room.actions.playerInfo.onMessage = (player, {peerId}) => {
-        if(!getById(peerId)){
             const newPlayer = new Player(player.id, player.nick, player.animationComponent.avatar, player.animationComponent.frames)
             newPlayer.movementComponent.pos = player.movementComponent.pos;
             newPlayer.grabbing = player.grabbing;
@@ -67,7 +66,6 @@ function connectToRoom(roomCode, nick, avatar,soundOff){
             newPlayer.playSound("snd_power");
             players.push(newPlayer);
             updateOnline(players);
-        }
 
     }
 
@@ -97,6 +95,7 @@ function connectToRoom(roomCode, nick, avatar,soundOff){
         const player = getById(peerId);
         if(!player.muted){
             displayMessage(nick, msg);
+            player.playSound("snd_board_text_main_end")
             player.chatComponent.setMessage(msg);
         }
     }
