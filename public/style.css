@@ -1,0 +1,59 @@
+@font-face {
+	font-family: 'Determination mono';
+	src: url(DeterminationMonoWebRegular-Z5oq.ttf);
+}
+
+body{
+	display: flex;
+	font-family: 'Determination mono';
+	background-color: rgb(27, 27, 27);
+	color: white;
+	min-height: 90vh;
+	justify-content: center;
+	align-items: center;
+}
+
+#gameWindow{
+	width: 640px;
+	height: 480px;
+}
+
+.container{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	flex-wrap: wrap-reverse;
+	max-height: 100vh;
+}
+
+.setup{
+	display: flex;
+	flex-direction: column;
+}
+
+.chat-container{
+	margin: 5px;
+	background-image: url("chat_bg.png");
+}
+
+.chat-window{
+	
+	margin-bottom: 5px;
+	border: 1px dashed rgb(0, 225, 255);
+	overflow-y: scroll;
+	min-height: 100%;
+	max-height:200px;
+	background-color: rgba(0, 0, 0, 0.655);
+}
+
+.chat-window p{
+	background-color: black;
+}
+
+.side-bar{
+	margin-left:5px;
+}
+
+.button-container{
+	text-align: center;
+}

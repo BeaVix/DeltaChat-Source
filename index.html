@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> Chat!</title>
+		<link href="style.css" rel="stylesheet"/>
+	</head>
+	<body>
+		<div class="container">
+			<div class="setup" id="setup-window">
+				<h1>DELTACHAT</h1>
+				<label for="nickInput">Name</label>
+				<input type="text" naem="nickInput" id="nickInput">
+				<label for="roomInput" >Room code</label>
+				<div class="group">
+				<input type="text" id="roomInput" name="roomInput" value="DUMBWorld" required>
+				<button id="randomizeBtn">Randomize</button>
+				</div>
+				<div style="display: flex; justify-content: center; gap: 5px; padding: 5px;">
+					<select id ="avatar">
+						<option value="pippins" selected>Pippins</option>
+						<option value="kris">Kris</option>
+						<option value="susie">Susie</option>
+						<option value="ralsei">Ralsei</optin>
+						<option value="lancer">Lancer</option>
+						<option value="ruddin">Ruddin</option>
+						<option value="bibliox">Bibliox</option>
+						<option value="friend">__</option>
+					</select>
+					<img src="portrait_pippins.png" style="image-rendering: crisp-edges;" id="portrait">
+				</div>
+				<div style="display: flex; justify-content: center;">
+					<label>Mute music</label>
+					<input type="checkbox" id="soundOff" value="true"/>
+				</div>
+				<button id="confirm-nick-btn">Confirm</button>
+			</div> 
+			<div class="chat-container" id="chat-container" style="display:none;">
+				<div class="chat-window" id="chatBox">
+				</div>
+				<div class="chat-ui">
+					<input type="text" id="textInput">
+					<button id="sendButton">Send</button>
+				</div>
+			</div>
+			<div id="gameWindow" style="display:none; position: relative;" >
+				<canvas id="canvas" width="640" height="454px">
+					Canvas not supported :(
+				</canvas>
+				<p id="room-id">Room: DUMBWorld</p>
+			</div>
+			<div class="side-bar" id="side-bar" style="display: none;">
+				<div id="online-peers">Currently online (<span id="online-number">1</span>):</div>
+				<div id="online-list"></div>
+				<div>
+					<hr>
+					<p id="now-playing">Now playing: Castletown</p>
+					<div class="button-container">
+						<button id="previous-song">Previous</button>
+						<button id="next-song">Next</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="module" src="./js/loginScreen.js"></script>
+</html>
