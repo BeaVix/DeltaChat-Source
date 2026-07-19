@@ -110,9 +110,10 @@ function connectToRoom(roomCode, nick, avatar,soundOff){
     });
 
     //change map
-    room.actions.mapChanged.onMessage = ((map, {peerId}) => {
+    room.actions.mapChanged.onMessage = (({map, size}, {peerId}) => {
         setBg(map)
         const peer = getById(peerId)
+        player.movementComponent.mapSize = size;
         serverMessage(peer.nick+" changed the map!", "white");
     })
 

@@ -9,7 +9,6 @@ class InputListenerComponent{
     this.room = room;
     this.lastKeyPressed;
     window.addEventListener("keydown", e => {
-    if(this.movementComponent.canMove){
         if(this.movementComponent.canMove){
             switch(e.key.toLowerCase()){
                 case "arrowup":
@@ -65,9 +64,6 @@ class InputListenerComponent{
                         this.player.grabbing = undefined;
                     }
                     break;
-                case "enter":
-                    sendButton.click();
-                    break;
                 default:
                 break;
             }
@@ -90,8 +86,9 @@ class InputListenerComponent{
                 break;
             }
         }
-        
-    }
+        if(e.key.toLowerCase() == "enter"){
+            sendButton.click();
+        }
 
 });
     window.addEventListener("keyup", e =>{

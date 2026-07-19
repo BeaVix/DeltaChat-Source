@@ -10,13 +10,14 @@ class MovementComponent{
         this.lockTyping = false;
         this.hitboxPos = [10, 0]
         this.hitboxSize = [20,20]
+        this.mapSize = [320,240]
     }
     
     move(){
-        if((this.movement[0] == -1 && this.pos[0] > 0) || (this.movement[0] == 1 && this.pos[0] < 320 - this.animationComponent.size[0]) ){
+        if((this.movement[0] == -1 && this.pos[0] > 0) || (this.movement[0] == 1 && this.pos[0] < this.mapSize[0] - this.animationComponent.size[0]) ){
             this.pos[0] += this.movement[0]*this.speed[0];
         }
-        if((this.movement[1] == -1 && this.pos[1]> 0) || (this.movement[1] == 1 && this.pos[1] < 240 - this.animationComponent.size[1])){
+        if((this.movement[1] == -1 && this.pos[1]> 0) || (this.movement[1] == 1 && this.pos[1] < this.mapSize[1] - this.animationComponent.size[1])){
             this.pos[1] += this.movement[1]*this.speed[1];
         }
         

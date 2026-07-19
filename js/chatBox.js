@@ -41,7 +41,7 @@ class ChatBoxComponent{
 		let args = msg.slice(1).split(" ");
 		for(let i = 0; i < this.commandComponent.commands.length; i++){
 			const command= this.commandComponent.commands[i];
-			if(args[0] == command.name){
+			if(args[0].toLowerCase() == command.name.toLowerCase()){
 				if(args.length-1 == command.nArgs){
 					args.splice(0,1)
 					return command.execute(this.commandComponent, args.splice(0,1))

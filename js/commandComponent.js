@@ -33,8 +33,19 @@ class CommandComponent{
     }
     changeMap(obj, map){
         setBg(map);
+        let size;
+        switch (map) {
+            case "castletown":
+                size = [320,240]
+                break;
+        
+            case "castletown_1":
+                size = [640,480]
+                break;
+        }
+        obj.player.movementComponent.mapSize = size
         obj.msg("Changed map", "white")
-        obj.room.actions.mapChanged.send(map);
+        obj.room.actions.mapChanged.send({map: map, size: size});
     }
     sleep(obj){
         obj.player.animationComponent.offset = 128;
