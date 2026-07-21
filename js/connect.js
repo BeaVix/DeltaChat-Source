@@ -51,11 +51,11 @@ function connectToRoom(roomCode, nick, avatar,soundOff){
     //Send player data to new peer
     room.room.onPeerJoin = ({peerId}) => {
         room.actions.playerInfo.send(player, {target: peerId})
-        updateOnline(players);
     }
 
     //receive player data
     room.actions.playerInfo.onMessage = (player, {peerId}) => {
+        if(!getById(peerId)){
             const newPlayer = new Player(player.id, player.nick, player.animationComponent.avatar, player.animationComponent.frames)
             newPlayer.movementComponent.pos = player.movementComponent.pos;
             newPlayer.grabbing = player.grabbing;
@@ -66,7 +66,7 @@ function connectToRoom(roomCode, nick, avatar,soundOff){
             newPlayer.playSound("snd_power");
             players.push(newPlayer);
             updateOnline(players);
-
+        }
     }
 
     //Remove player
