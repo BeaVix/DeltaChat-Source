@@ -2,14 +2,11 @@ import { AnimationComponent } from "./animationComponent";
 import { Background } from "./bg";
 
 class Canvas{
-    constructor(map){
+    constructor(bg){
         this.canvas = document.querySelector("#canvas");
         this.c = canvas.getContext("2d")
         this.showMessage = false;
-        this.bg = new Background("castletown");
-        this.bg.sprite.onload = (e => {
-            this.setCanvas()
-        })
+        this.bg = bg;
     }
     
 

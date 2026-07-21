@@ -50,7 +50,6 @@ function connectToRoom(roomCode, nick, avatar,soundOff){
 
     //Send player data to new peer
     room.room.onPeerJoin = (peerId) => {
-        console.log(game)
         room.actions.playerInfo.send({info: player, bg: game.canvasComponent.bg.name, joined: game.chatBoxComponent.commandComponent.lastMapChange}, {target: peerId})
     }
 
@@ -63,7 +62,6 @@ function connectToRoom(roomCode, nick, avatar,soundOff){
             newPlayer.grabbed = info.grabbed;
             newPlayer.sleep = info.sleep;
             newPlayer.animationComponent.offset = info.animationComponent.offset;
-            console.log(joined, peerId)
             if(player.id != joined && joined == peerId){
                 game.canvasComponent.bg.setBg(bg);
             }
@@ -175,20 +173,20 @@ function connectToRoom(roomCode, nick, avatar,soundOff){
 
     room.actions.hit.onMessage = (msg, {peerId}) => {
         if(msg.target == selfId){
-		switch(msg.side[0]){
-			case 1:
-				player.movementComponent.movement[0] = 1;		
-			break;
-			case -1:
-				player.movementComponent.movement[0] = -1
-			break;
-		}
-		player.movementComponent.speed = 3;
-		setTimeout(() =>{
-			player.movementComponent.speed = 2;
-			player.movementComponent.movement[0] = 0;
-		}, 500 )
-	}
+            switch(msg.side[0]){
+                case 1:
+                    player.movementComponent.movement[0] = 1;		
+                break;
+                case -1:
+                    player.movementComponent.movement[0] = -1
+                break;
+            }
+            player.movementComponent.speed = 3;
+            setTimeout(() =>{
+                player.movementComponent.speed = 2;
+                player.movementComponent.movement[0] = 0;
+            }, 500 )
+        }
     }
 
     room.actions.mute.onMessage = (o,{peerId}) =>{

@@ -1,17 +1,16 @@
 import { Command } from "./command"
 class CommandComponent{
-    constructor(player, players, room, msg, canvas, updateLastMapChange){
+    constructor(player, players, room, msg, canvas){
         this.player = player;
         this.room = room;
         this.players = players;
         this.msg = msg;
         this.canvas = canvas;
-        this.updateLastMapChange = updateLastMapChange
         this.commands = [
 			new Command("mute", this.mute, 1), 
 			new Command("leave", this.leaveRoom, 0),
 			new Command("changeMap", this.changeMap, 1),
-			new Command("sleep", this.sleep, 0)
+			new Command("sleep", this.sleep, 0),
 		]
     }
 

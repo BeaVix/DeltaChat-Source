@@ -2,7 +2,12 @@ class AnimationComponent{
     constructor(frames, avatar){
         this.frames = frames
         this.avatar = avatar;
-        this.size = [16,16];
+        if(this.avatar != "rabbick"){
+            this.size = [16,16];
+        }else{
+            this.size = [15,16]
+        }
+        
         this.frame = [0,0];
         this.currentFrame = 0;
         this.framerate = 345    //milliseconds

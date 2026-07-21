@@ -12,7 +12,7 @@ class PlayerAnimation extends AnimationComponent{
         }else{
             this.currentFrame = 0
         }
-        if(this.avatar != "bibliox"){
+        if(this.avatar != "bibliox" && this.avatar != "rabbick"){
             this.frame[0] = (16*this.currentFrame) + this.offset
         }else{
             this.frame[0] = (16*this.currentFrame)
