@@ -1,11 +1,12 @@
 import { Command } from "./command"
-import { setBg } from "./canvas";
 class CommandComponent{
-    constructor(player, players, room, msg){
+    constructor(player, players, room, msg, canvas, updateLastMapChange){
         this.player = player;
         this.room = room;
         this.players = players;
         this.msg = msg;
+        this.canvas = canvas;
+        this.updateLastMapChange = updateLastMapChange
         this.commands = [
 			new Command("mute", this.mute, 1), 
 			new Command("leave", this.leaveRoom, 0),
@@ -32,20 +33,29 @@ class CommandComponent{
         location.reload();
     }
     changeMap(obj, map){
-        setBg(map);
+        obj.canvas.bg.setBg(map);
         let size;
+        let changed = false;
         switch (map) {
             case "castletown":
                 size = [320,240]
+                changed = true;
                 break;
         
             case "castletown_1":
                 size = [640,480]
+                changed = true;
                 break;
         }
-        obj.player.movementComponent.mapSize = size
-        obj.msg("Changed map", "white")
-        obj.room.actions.mapChanged.send({map: map, size: size});
+        if(changed){
+            obj.player.movementComponent.mapSize = size
+            obj.lastMapChange = obj.player.id
+            obj.msg("Changed map", "white")
+            obj.room.actions.mapChanged.send({map: map, size: size});
+        }else{
+            obj.msg("No such map!", "red")
+        }
+
     }
     sleep(obj){
         obj.player.animationComponent.offset = 128;

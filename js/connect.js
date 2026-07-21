@@ -2,8 +2,7 @@ import {joinRoom, selfId} from 'trystero'
 import { Room } from './Room';
 import { updateOnline } from './onlineSidebar';
 import { Player } from './Player';
-import { setBg } from './canvas';
-import { startGame } from './game';
+import { Game } from './game';
 import { displayMessage, serverMessage } from './chatBox';
 
 const roomId = document.querySelector("#room-id")
@@ -43,25 +42,31 @@ function connectToRoom(roomCode, nick, avatar,soundOff){
     }
 
     const player = new Player(selfId, nick, avatar, frames);
+    const game= new Game(player, players, room, soundOff.checked);
 
     players.push(player);
     room.actions.playerInfo.send(player);   //send player data to all peers
     updateOnline(players) 
 
     //Send player data to new peer
-    room.room.onPeerJoin = ({peerId}) => {
-        room.actions.playerInfo.send(player, {target: peerId})
+    room.room.onPeerJoin = (peerId) => {
+        console.log(game)
+        room.actions.playerInfo.send({info: player, bg: game.canvasComponent.bg.name, joined: game.chatBoxComponent.commandComponent.lastMapChange}, {target: peerId})
     }
 
     //receive player data
-    room.actions.playerInfo.onMessage = (player, {peerId}) => {
+    room.actions.playerInfo.onMessage = ({info, bg, joined}, {peerId}) => {
         if(!getById(peerId)){
-            const newPlayer = new Player(player.id, player.nick, player.animationComponent.avatar, player.animationComponent.frames)
-            newPlayer.movementComponent.pos = player.movementComponent.pos;
-            newPlayer.grabbing = player.grabbing;
-            newPlayer.grabbed = player.grabbed;
-            newPlayer.animationComponent.offset = player.animationComponent.offset;
-            newPlayer.sleep = player.sleep;
+            const newPlayer = new Player(info.id, info.nick, info.animationComponent.avatar, info.animationComponent.frames)
+            newPlayer.movementComponent.pos = info.movementComponent.pos;
+            newPlayer.grabbing = info.grabbing;
+            newPlayer.grabbed = info.grabbed;
+            newPlayer.sleep = info.sleep;
+            newPlayer.animationComponent.offset = info.animationComponent.offset;
+            console.log(joined, peerId)
+            if(player.id != joined && joined == peerId){
+                game.canvasComponent.bg.setBg(bg);
+            }
             serverMessage(newPlayer.nick+" joined!", "green");
             newPlayer.playSound("snd_power");
             players.push(newPlayer);
@@ -113,9 +118,10 @@ function connectToRoom(roomCode, nick, avatar,soundOff){
 
     //change map
     room.actions.mapChanged.onMessage = (({map, size}, {peerId}) => {
-        setBg(map)
+        game.canvasComponent.bg.setBg(map)
         const peer = getById(peerId)
         player.movementComponent.mapSize = size;
+        game.lastMapChange = peerId
         serverMessage(peer.nick+" changed the map!", "white");
     })
 
@@ -189,8 +195,6 @@ function connectToRoom(roomCode, nick, avatar,soundOff){
         const mute = getById(peerId);
         mute.muted = true;
     }
-
-    startGame(player, players, room, soundOff.checked);
     
 }
 

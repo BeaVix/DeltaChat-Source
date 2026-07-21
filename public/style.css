@@ -53,6 +53,8 @@ body{
 
 .side-bar{
 	margin-left:5px;
+	max-height: 400px;
+	overflow-y: scroll;
 }
 
 .button-container{

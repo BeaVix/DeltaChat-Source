@@ -6,10 +6,10 @@ const sendButton = document.querySelector("#sendButton")
 const textInput = document.querySelector("#textInput")
 
 class ChatBoxComponent{
-	constructor(player, players, room, msg){
+	constructor(player, players, room, msg, canvas,updateLastMapChange){
 		this.player = player
 		this.room = room
-		this.commandComponent = new CommandComponent(this.player, players, this.room, msg);
+		this.commandComponent = new CommandComponent(this.player, players, this.room, msg, canvas,updateLastMapChange);
 
 		//Set chat button listener
     	sendButton.addEventListener("click", e => {

@@ -1,4 +1,4 @@
-import { draw, setCanvas, bg } from "./canvas";
+import { Canvas } from "./canvas";
 import { ChatBoxComponent, displayMessage, serverMessage } from "./chatBox";
 import { InputListenerComponent } from "./inputListenerComponent";
 import { songPlayer } from "./songPlayer";
@@ -6,35 +6,44 @@ import { songPlayer } from "./songPlayer";
 const sendButton = document.querySelector("#sendButton")
 const textInput = document.querySelector("#textInput")
 
-let lastUpdate = 0
+ class Game{
+    constructor(player, players, room,soundOff){
+        this.player = player;
+        this.players = players;
+        this.room = room;
+        this.soundOff = soundOff;
+        this.lastUpdate = 0
+        this.lastMapChange = 0;
 
-function startGame(player, players, room,soundOff){
+        this.musicPlayer = new songPlayer(soundOff);
+        this.inputListenerComponent = new InputListenerComponent(player, players, room, this.musicPlayer.musicPlayer);
+        this.canvasComponent = new Canvas();
+        this.chatBoxComponent = new ChatBoxComponent(player, players, room, serverMessage, this.canvasComponent, this.updateLastMapChange);
 
-    const musicPlayer = new songPlayer(soundOff);
+        requestAnimationFrame((timestamp) => this.gameLoop(timestamp, this))
+        
+    }
 
-    const inputListenerComponent = new InputListenerComponent(player, players, room, musicPlayer.musicPlayer);
+    gameLoop(timestamp, obj){
+            obj.canvasComponent.draw(timestamp, obj.players);
 
-    const chatBoxComponent = new ChatBoxComponent(player, players, room, serverMessage);
+            if(obj.player.movementComponent.movement[0] || obj.player.movementComponent.movement[1]){
+                obj.player.movementComponent.move();
+                obj.room.actions.move.send(obj.player.movementComponent.pos)
+            }
 
-    
+            obj.lastUpdate = timestamp;
 
-    requestAnimationFrame(gameLoop)
-
-    function gameLoop(timestamp){
-
-        draw(timestamp, players);
-
-        if(player.movementComponent.movement[0] || player.movementComponent.movement[1]){
-            player.movementComponent.move();
-            room.actions.move.send(player.movementComponent.pos)
+            requestAnimationFrame((timestamp) => obj.gameLoop(timestamp, obj));
         }
 
-        lastUpdate = timestamp;
-
-        requestAnimationFrame(gameLoop);
+    updateLastMapChange(id){
+        this.lastMapChange = id;
     }
 }
 
 
 
-export {startGame}
+
+
+export {Game}
