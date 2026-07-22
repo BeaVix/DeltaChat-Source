@@ -11,6 +11,7 @@ class MovementComponent{
         this.hitboxPos = [10, 0]
         this.hitboxSize = [20,20]
         this.mapSize = [320,240]
+        this.animationPlaying = false;
     }
     
     move(){

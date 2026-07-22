@@ -4,6 +4,33 @@ class PlayerAnimation extends AnimationComponent{
     constructor(frames, avatar){
         super(frames,avatar)
         this.offset = 0;
+        this.atlas = {
+            idle: 0,
+            left: 32,
+            right: 64,
+            up: 96,
+            down: 0,
+            sleep:128
+        }
+        this.animation = "idle";
+        switch(avatar){
+            case "kawkaw":
+                this.atlas.down = 96
+                this.atlas.up = 128;
+                break;
+        }
+    }
+
+    setAnimation(animationName){
+        const animations = Object.keys(this.atlas)
+        for (let i = 0; i < animations.length; i++) {
+            const animation = animations[i];
+            if(animation == animationName){
+                this.offset = this.atlas[animation];
+                this.animation = animationName
+                break
+            }
+        }
     }
 
     nextFrame(){

@@ -1,4 +1,5 @@
 const sendButton = document.querySelector("#sendButton")
+const textInput = document.querySelector("#textInput")
 class InputListenerComponent{
     constructor(player, players, room, musicPlayer){
     this.player = player
@@ -9,27 +10,27 @@ class InputListenerComponent{
     this.room = room;
     this.lastKeyPressed;
     window.addEventListener("keydown", e => {
-        if(this.movementComponent.canMove){
+        if(this.movementComponent.canMove && !this.movementComponent.animationPlaying){
             switch(e.key.toLowerCase()){
                 case "arrowup":
                 case "w":
                     this.movementComponent.movement[1] = -1
-                    this.animationComponent.offset = 96;
+                    this.animationComponent.setAnimation("up");
                     break;
                 case "arrowdown":
                 case "s":
                     this.movementComponent.movement[1] = 1
-                    this.animationComponent.offset = 0
+                    this.animationComponent.setAnimation("down")
                     break;
                 case "arrowright":
                 case "d":
                     this.movementComponent.movement[0] = 1
-                    this.animationComponent.offset = 64
+                    this.animationComponent.setAnimation("right")
                     break;
                 case "arrowleft":
                 case "a":
                     this.movementComponent.movement[0] = -1
-                    this.animationComponent.offset = 32
+                    this.animationComponent.setAnimation("left")
                     break;
                 case "m":
                     if(!this.musicPlayer.paused){
@@ -78,7 +79,7 @@ class InputListenerComponent{
                 case "a":
                     this.player.sleep = false
                     if(this.lastKeyPressed != e.key){
-                        this.room.actions.animationChanged.send(this.animationComponent.offset);
+                        this.room.actions.animationChanged.send(this.animationComponent.animation);
                     }else{
                         this.lastKeyPressed = e.key;
                     }
@@ -88,11 +89,15 @@ class InputListenerComponent{
         }
         if(e.key.toLowerCase() == "enter"){
             sendButton.click();
+        }else if(e.key == "Escape"){
+            if(textInput == document.activeElement){
+                textInput.blur();
+            }
         }
 
 });
     window.addEventListener("keyup", e =>{
-        if(this.movementComponent.canMove){
+        if(this.movementComponent.canMove && !this.movementComponent.animationPlaying){
             switch(e.key.toLowerCase()){
                 case "arrowup":
                 case "w":
@@ -107,10 +112,16 @@ class InputListenerComponent{
                     this.movementComponent.movement[0] = 0
                 default:
                     break;
+                case "t":
+                    textInput.focus();
+                    this.movementComponent.movement[0] = 0
+                    this.movementComponent.movement[1] = 0
+                break;
+                break;
             }
             if(!this.movementComponent.movement[0] && !this.movementComponent.movement[1]){
-                this.animationComponent.offset = 0
-                room.actions.animationChanged.send(this.animationComponent.offset);
+                this.animationComponent.setAnimation("idle")
+                room.actions.animationChanged.send(this.animationComponent.animation);
             }
         }
     })
@@ -127,7 +138,7 @@ class InputListenerComponent{
     testHitbox(){
         for (let i = 0; i < this.players.length; i++) {
             const playerTest = this.players[i];
-            if(playerTest.id != this.player.id && !playerTest.muted){
+            if(playerTest.id != this.player.id && !playerTest.muted && !playerTest.movementComponent.animationPlaying && !playerTest.grabbedBy){
                 const hit = this.movementComponent.testHitbox(playerTest.movementComponent.pos, playerTest.animationComponent.size);
                 if(hit){
                     return playerTest;

@@ -43,7 +43,7 @@ function connectToRoom(roomCode, nick, avatar,soundOff){
 
     const player = new Player(selfId, nick, avatar, frames);
     const game= new Game(player, players, room, soundOff.checked);
-
+    
     players.push(player);
     room.actions.playerInfo.send(player);   //send player data to all peers
     updateOnline(players) 
@@ -104,10 +104,10 @@ function connectToRoom(roomCode, nick, avatar,soundOff){
     }
 
     //Update animations
-    room.actions.animationChanged.onMessage = ((offset, {peerId}) => {
+    room.actions.animationChanged.onMessage = ((animation, {peerId}) => {
         const player = getById(peerId);
-        player.animationComponent.offset = offset;
-        if(offset == 128){
+        player.animationComponent.setAnimation(animation);
+        if(animation == "sleep"){
             player.sleep = true;
         }else if(player.sleep){
             player.sleep = false;
@@ -147,8 +147,9 @@ function connectToRoom(roomCode, nick, avatar,soundOff){
         player.release();
 
         //Fall animation
+        released.movementComponent.animationPlaying = true;
         const initialPos = released.movementComponent.pos[1];
-        switch(side[0]){
+        switch(side[0]){ //Side to throw
 			case 1:
 				released.movementComponent.movement[0] = 1;		
 			break;
@@ -164,7 +165,7 @@ function connectToRoom(roomCode, nick, avatar,soundOff){
                 if(released.movementComponent.pos[1] == initialPos){
                     released.movementComponent.movement = [0,0]
                     clearInterval(interval);
-                    released.movementComponent.canMove = true;
+                    released.movementComponent.animationPlaying = false;
                     released.movementComponent.lockTyping = false;
                 }
             },10)
@@ -173,6 +174,9 @@ function connectToRoom(roomCode, nick, avatar,soundOff){
 
     room.actions.hit.onMessage = (msg, {peerId}) => {
         if(msg.target == selfId){
+            player.movementComponent.animationPlaying = true;
+            console.log(msg)
+            player.movementComponent.movement[1] = 0
             switch(msg.side[0]){
                 case 1:
                     player.movementComponent.movement[0] = 1;		
@@ -181,10 +185,9 @@ function connectToRoom(roomCode, nick, avatar,soundOff){
                     player.movementComponent.movement[0] = -1
                 break;
             }
-            player.movementComponent.speed = 3;
             setTimeout(() =>{
-                player.movementComponent.speed = 2;
                 player.movementComponent.movement[0] = 0;
+                player.movementComponent.animationPlaying = false;
             }, 500 )
         }
     }

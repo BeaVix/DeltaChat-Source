@@ -64,6 +64,7 @@ function displayMessage(nick, msg){
 	}
 	p.textContent = nick + ": " + msg;
 	chatWindow.append(p)
+	chatWindow.scroll(0, chatWindow.scrollHeight)
 }
 
 function serverMessage(msg, color){
@@ -71,6 +72,7 @@ function serverMessage(msg, color){
 	p.style.color = color;
 	p.textContent = "[CLIENT]: " + msg;
 	chatWindow.append(p)
+	chatWindow.scroll(0, chatWindow.scrollHeight)
 }
 
 export {displayMessage, serverMessage, ChatBoxComponent}
