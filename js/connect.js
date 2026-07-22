@@ -33,6 +33,7 @@ function connectToRoom(roomCode, nick, avatar,soundOff){
 
     switch(avatar){
         case "pippins":
+        case "green pippins":    
         case "ruddin":
         case "lancer":
             frames = 0;
