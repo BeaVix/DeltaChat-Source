@@ -65,6 +65,11 @@ class InputListenerComponent{
                         this.player.grabbing = undefined;
                     }
                     break;
+                case "q":
+                    if(this.player.animationComponent.avatar == "kawkaw" || this.player.animationComponent.avatar == "flowery"){
+                        const index = Math.floor(Math.random()*this.player.randomSfx.length)
+                        this.player.playSound(this.player.randomSfx[index])
+                    }
                 default:
                 break;
             }
