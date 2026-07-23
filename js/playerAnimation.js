@@ -18,6 +18,13 @@ class PlayerAnimation extends AnimationComponent{
                 this.atlas.down = 96
                 this.atlas.up = 128;
                 break;
+            case "noyno":
+            case "flowery":
+                this.atlas.up = 32
+                this.atlas.left = 64
+                this.atlas.right = 96
+                this.atlas.sleep = 128
+                break
         }
     }
 

@@ -36,6 +36,8 @@ function connectToRoom(roomCode, nick, avatar,soundOff){
         case "green pippins":    
         case "ruddin":
         case "lancer":
+        case "pink (ghost)":
+        case "pink":
             frames = 0;
             break;
         default:

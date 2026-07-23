@@ -22,6 +22,7 @@ class Player{
                 bubble = "sleep_bubbleS"
                 break;
             case "ralsei":
+            case "noyno":
                 bubble = "sleep_bubbleR"
             default:
                 break;

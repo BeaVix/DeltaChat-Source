@@ -2,10 +2,17 @@ class AnimationComponent{
     constructor(frames, avatar){
         this.frames = frames
         this.avatar = avatar;
-        if(this.avatar != "rabbick"){
-            this.size = [16,16];
-        }else{
-            this.size = [15,16]
+        switch(avatar){
+            case "rabbick":
+                this.size = [15,16]
+            break;
+            case "pink":
+            case "pink (ghost)":
+                this.size = [24, 26];
+            break;
+            default:
+                this.size = [16,16]
+            break;
         }
         
         this.frame = [0,0];
