@@ -13,6 +13,7 @@ class Room{
         this.actions.animationChanged = room.makeAction("animationChanged");
         this.actions.grab = room.makeAction("grab");
         this.actions.release = room.makeAction("release");
+        this.actions.playSound = room.makeAction("playSound");
     }
 }
 

@@ -68,7 +68,9 @@ class InputListenerComponent{
                 case "q":
                     if(this.player.animationComponent.avatar == "kawkaw" || this.player.animationComponent.avatar == "flowery"){
                         const index = Math.floor(Math.random()*this.player.randomSfx.length)
-                        this.player.playSound(this.player.randomSfx[index])
+                        const sound = this.player.randomSfx[index]
+                        this.player.playSound(sound)
+                        this.room.actions.playSound.send(sound);
                     }
                 default:
                 break;

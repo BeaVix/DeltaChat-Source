@@ -199,6 +199,11 @@ function connectToRoom(roomCode, nick, avatar,soundOff){
         const mute = getById(peerId);
         mute.muted = true;
     }
+
+    room.actions.playSound.onMessage = (sound, {peerId}) => {
+        const playing = getById(peerId);
+        playing.playSound(sound);
+    }
     
 }
 
