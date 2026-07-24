@@ -10,6 +10,12 @@ class AnimationComponent{
             case "pink (ghost)":
                 this.size = [24, 26];
             break;
+            case "spamton":
+                this.size = [24,25]
+            break;
+                case "jackpins":
+                this.size = [13, 17]
+            break;
             default:
                 this.size = [16,16]
             break;

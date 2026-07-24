@@ -9,7 +9,6 @@ class CommandComponent{
         this.commands = [
 			new Command("mute", this.mute, 1), 
 			new Command("leave", this.leaveRoom, 0),
-			new Command("changeMap", this.changeMap, 1),
 			new Command("sleep", this.sleep, 0),
 		]
     }
@@ -31,35 +30,10 @@ class CommandComponent{
         obj.room.room.leave();
         location.reload();
     }
-    changeMap(obj, map){
-        obj.canvas.bg.setBg(map);
-        let size;
-        let changed = false;
-        switch (map) {
-            case "castletown":
-                size = [320,240]
-                changed = true;
-                break;
-        
-            case "castletown_1":
-                size = [640,480]
-                changed = true;
-                break;
-        }
-        if(changed){
-            obj.player.movementComponent.mapSize = size
-            obj.lastMapChange = obj.player.id
-            obj.msg("Changed map", "white")
-            obj.room.actions.mapChanged.send({map: map, size: size});
-        }else{
-            obj.msg("No such map!", "red")
-        }
-
-    }
     sleep(obj){
-        obj.player.animationComponent.offset = 128;
+        obj.player.animationComponent.setAnimation("sleep")
         obj.player.sleep = true;
-        obj.room.actions.animationChanged.send(obj.player.animationComponent.offset)
+        obj.room.actions.animationChanged.send("sleep")
     }
 }
 

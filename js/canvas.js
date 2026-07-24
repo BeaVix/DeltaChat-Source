@@ -111,7 +111,7 @@ class Canvas{
                 this.c.drawImage(player.sleepBubble.sprite, x, y-17)
             }
         }
-        this.drawText(x+player.animationComponent.size[0]/2, y+25, player.nick,"#000000","#ffff00");     //Draws nickname
+        this.drawText(x+width/2, y+height+6, player.nick,"#000000","#ffff00");     //Draws nickname
         this.drawText(x+8, y-5,chat.message, chat.messageBorder+chat.messageOpacity, chat.messageColor+chat.messageOpacity);    //Draws message
 
     }

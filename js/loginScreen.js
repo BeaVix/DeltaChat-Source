@@ -11,6 +11,7 @@ const chatBox = document.querySelector("#chat-container");
 const sideBar = document.querySelector("#side-bar");
 const musicChk = document.querySelector("#soundOff");
 const portrait = document.querySelector("#portrait");
+const map = document.querySelector("#map");
 
 const strLen = 9;
 
@@ -43,8 +44,9 @@ confirmBtn.addEventListener("click", e => {
     const nick = nickInput.value;
     const roomCode = roomInput.value;
     const avatar = avatarSlct.value;
+    const mapValue = map.value;
 
     if(roomCode != ""){
-        connectToRoom(roomCode, nick, avatar, soundOff)
+        connectToRoom(roomCode, mapValue, nick, avatar, soundOff)
     }
 });

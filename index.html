@@ -12,8 +12,12 @@
 				<input type="text" naem="nickInput" id="nickInput">
 				<label for="roomInput" >Room code</label>
 				<div class="group">
-				<input type="text" id="roomInput" name="roomInput" value="DUMBWorld" required>
-				<button id="randomizeBtn">Randomize</button>
+					<input type="text" id="roomInput" name="roomInput" value="DUMBWorld" required>
+					<button id="randomizeBtn">Randomize</button>
+					<select id ="map">
+						<option value="castletown" selected>Castletown north</option>
+						<option value="castletown_1">Castletown south</option>
+					</select>
 				</div>
 				<div style="display: flex; justify-content: center; gap: 5px; padding: 5px;">
 					<select id ="avatar">
@@ -22,16 +26,24 @@
 						<option value="kris">Kris</option>
 						<option value="susie">Susie</option>
 						<option value="ralsei">Ralsei</optin>
+						<option value="noelle">Noelle</option>
+						<option value="berdly">Berdly</option>
 						<option value="lancer">Lancer</option>
 						<option value="ruddin">Ruddin</option>
 						<option value="rabbick">Rabbick</option>
+						<option value="spamton">Spamton</option>
 						<option value="bibliox">Bibliox</option>
 						<option value="flowery">Flowery</option>
 						<option value="pink">Pink</option>
 						<option value="pink (ghost)">Pink (ghost)</option>
 						<option value="kawkaw">KawKaw</option>
 						<option value="friend">__</option>
+						<option value="frisk">Frisk</option>
+						<option value="flowey">Flowey</option>
+						<option value="chara">Chara</option>
 						<option value="noyno">Noyno</option>
+						<option value="jackpins">Jackpins</option>
+						<option value="orange rabbick">Orange Rabbick</option>
 					</select>
 					<img src="portrait_pippins.png" style="image-rendering: crisp-edges;" id="portrait">
 				</div>
@@ -58,8 +70,8 @@
 			<div class="side-bar" id="side-bar" style="display: none;">
 				<div id="online-peers">Currently online (<span id="online-number">1</span>):</div>
 				<div id="online-list"></div>
-				<div>
-					<hr>
+				<hr>
+				<div id="music-container">
 					<p id="now-playing">Now playing: Castletown</p>
 					<div class="button-container">
 						<button id="previous-song">Previous</button>

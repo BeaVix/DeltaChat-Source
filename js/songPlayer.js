@@ -1,6 +1,7 @@
 const nextSongBtn = document.querySelector("#next-song");
 const previousSongBtn = document.querySelector("#previous-song");
 const nowPlaying = document.querySelector("#now-playing");
+const container = document.querySelector("#music-container");
 
 class songPlayer{
 	constructor(soundOff){
@@ -15,11 +16,14 @@ class songPlayer{
 
 		this.musicPlayer.loop = true;
 		this.musicPlayer.volume = 0.4;
+		this.musicPlayer.controls = true;
 		if(!soundOff){
 			this.musicPlayer.autoplay = true;
 		}
 
 		this.changeSong(this.songIndex)
+
+		container.append(this.musicPlayer)
 
 		nextSongBtn.onclick = e => {
 			if(this.songIndex < this.songs.length-1){

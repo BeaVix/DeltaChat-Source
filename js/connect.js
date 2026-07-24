@@ -9,7 +9,7 @@ const roomId = document.querySelector("#room-id")
 
 let players = []
 
-function connectToRoom(roomCode, nick, avatar,soundOff){
+function connectToRoom(roomCode, map, nick, avatar,soundOff){
     const roomConfig = {
         appId: 'com.trystero-demo.lol',
 
@@ -24,8 +24,8 @@ function connectToRoom(roomCode, nick, avatar,soundOff){
             }
         ]
 	}
-    const roomI = joinRoom(roomConfig, roomCode);
-    const room = new Room(roomI);
+    const finalRoomCode = roomCode + "_"+map;
+    const roomI = joinRoom(roomConfig, finalRoomCode);
 
     roomId.textContent ="ROOM: "+ roomCode;
 
@@ -38,6 +38,7 @@ function connectToRoom(roomCode, nick, avatar,soundOff){
         case "lancer":
         case "pink (ghost)":
         case "pink":
+        case "jackpins":
             frames = 0;
             break;
         default:
@@ -45,176 +46,12 @@ function connectToRoom(roomCode, nick, avatar,soundOff){
     }
 
     const player = new Player(selfId, nick, avatar, frames);
-    const game= new Game(player, players, room, soundOff.checked);
+    const room = new Room(roomI, roomCode,roomConfig,  players, player, map);
+    const game= new Game(player, players, room, map, soundOff.checked);
     
     players.push(player);
     room.actions.playerInfo.send(player);   //send player data to all peers
     updateOnline(players) 
-
-    //Send player data to new peer
-    room.room.onPeerJoin = (peerId) => {
-        room.actions.playerInfo.send({info: player, bg: game.canvasComponent.bg.name, joined: game.chatBoxComponent.commandComponent.lastMapChange}, {target: peerId})
-    }
-
-    //receive player data
-    room.actions.playerInfo.onMessage = ({info, bg, joined}, {peerId}) => {
-        if(!getById(peerId)){
-            const newPlayer = new Player(info.id, info.nick, info.animationComponent.avatar, info.animationComponent.frames)
-            newPlayer.movementComponent.pos = info.movementComponent.pos;
-            newPlayer.grabbing = info.grabbing;
-            newPlayer.grabbed = info.grabbed;
-            newPlayer.sleep = info.sleep;
-            newPlayer.animationComponent.offset = info.animationComponent.offset;
-            if(player.id != joined && joined == peerId){
-                game.canvasComponent.bg.setBg(bg);
-            }
-            serverMessage(newPlayer.nick+" joined!", "green");
-            newPlayer.playSound("snd_power");
-            players.push(newPlayer);
-            updateOnline(players);
-        }
-    }
-
-    //Remove player
-    room.room.onPeerLeave = (peerId) =>{
-        const peer = getById(peerId);
-        serverMessage(peer.nick +" left!", "red");
-        const index = players.indexOf(peer);
-        players.splice(index,1);
-        updateOnline(players)
-    }
-
-    //Receive player movement
-    room.actions.move.onMessage = (pos, {peerId})=>{
-        const player = getById(peerId);
-        player.movementComponent.pos[0] = pos[0];
-        player.movementComponent.pos[1] = pos[1];
-        if(player.grabbing){
-            const grabbing = getById(player.grabbing);
-            grabbing.movementComponent.pos[0] = pos[0];
-            grabbing.movementComponent.pos[1] = pos[1];
-        }
-    }
-
-    //Receive chat message
-    room.actions.chat.onMessage = ({nick, msg}, {peerId})=>{
-        const player = getById(peerId);
-        if(!player.muted){
-            displayMessage(nick, msg);
-            player.playSound("snd_board_text_main_end")
-            player.chatComponent.setMessage(msg);
-        }
-    }
-
-    //Update animations
-    room.actions.animationChanged.onMessage = ((animation, {peerId}) => {
-        const player = getById(peerId);
-        player.animationComponent.setAnimation(animation);
-        if(animation == "sleep"){
-            player.sleep = true;
-        }else if(player.sleep){
-            player.sleep = false;
-        }
-    });
-
-    //change map
-    room.actions.mapChanged.onMessage = (({map, size}, {peerId}) => {
-        game.canvasComponent.bg.setBg(map)
-        const peer = getById(peerId)
-        player.movementComponent.mapSize = size;
-        game.lastMapChange = peerId
-        serverMessage(peer.nick+" changed the map!", "white");
-    })
-
-    room.actions.grab.onMessage = ((target, {peerId}) =>{
-        const grabber = getById(peerId);
-        const grabbed = getById(target);
-
-        console.log(peerId, target)
-
-        grabbed.movementComponent.canMove = false;
-        grabbed.movementComponent.lockTyping = true;
-        grabbed.animationComponent.rotation = 90;
-        grabbed.grabbedBy = peerId;
-        
-        grabber.grabbing = target;
-        grabber.playSound("snd_board_lift")
-    })
-
-    room.actions.release.onMessage = ({ side, target}, {peerId}) =>{
-        const player = getById(peerId);
-        const released = getById(target);
-
-        released.animationComponent.rotation = 0;
-        released.grabbedBy = undefined;
-        player.release();
-
-        //Fall animation
-        released.movementComponent.animationPlaying = true;
-        const initialPos = released.movementComponent.pos[1];
-        switch(side[0]){ //Side to throw
-			case 1:
-				released.movementComponent.movement[0] = 1;		
-			break;
-			case -1:
-				released.movementComponent.movement[0] = -1
-			break;
-		}
-        released.movementComponent.movement[1] = -1
-        released.playSound("snd_board_throw");
-        setTimeout(()=>{
-            released.movementComponent.movement[1] = 1
-            const interval = setInterval(()=>{
-                if(released.movementComponent.pos[1] == initialPos){
-                    released.movementComponent.movement = [0,0]
-                    clearInterval(interval);
-                    released.movementComponent.animationPlaying = false;
-                    released.movementComponent.lockTyping = false;
-                }
-            },10)
-        },150)
-    }
-
-    room.actions.hit.onMessage = (msg, {peerId}) => {
-        if(msg.target == selfId){
-            player.movementComponent.animationPlaying = true;
-            console.log(msg)
-            player.movementComponent.movement[1] = 0
-            switch(msg.side[0]){
-                case 1:
-                    player.movementComponent.movement[0] = 1;		
-                break;
-                case -1:
-                    player.movementComponent.movement[0] = -1
-                break;
-            }
-            setTimeout(() =>{
-                player.movementComponent.movement[0] = 0;
-                player.movementComponent.animationPlaying = false;
-            }, 500 )
-        }
-    }
-
-    room.actions.mute.onMessage = (o,{peerId}) =>{
-        const mute = getById(peerId);
-        mute.muted = true;
-    }
-
-    room.actions.playSound.onMessage = (sound, {peerId}) => {
-        const playing = getById(peerId);
-        playing.playSound(sound);
-    }
-    
-}
-
-function getById(id){
-    for (let i = 0; i < players.length; i++) {
-        const player = players[i];
-        if(player.id == id){
-            return player;
-        }
-    }
-    return 0;
 }
 
 export {connectToRoom}
