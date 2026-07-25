@@ -16,6 +16,15 @@ class AnimationComponent{
                 case "jackpins":
                 this.size = [13, 17]
             break;
+            case "tenna":
+                this.size = [16,32]
+                break;
+            case "eram":
+                this.size = [32,31]
+            break;
+            case "lamen":
+                this.size = [23,41]
+                break;
             default:
                 this.size = [16,16]
             break;

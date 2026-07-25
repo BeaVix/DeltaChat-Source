@@ -8,7 +8,7 @@ class Player{
         this.nick = nick;
         this.muted = false;
         this.animationComponent = new PlayerAnimation(frames, avatar);
-        this.movementComponent = new MovementComponent(2, [150,140], this.animationComponent);
+        this.movementComponent = new MovementComponent(2, [160 - this.animationComponent.size[0]/2,120], this.animationComponent);
         this.chatComponent = new ChatComponent();
         this.grabbedBy;
         this.grabbing;
@@ -25,6 +25,30 @@ class Player{
             case "ralsei":
             case "noyno":
                 bubble = "sleep_bubbleR"
+                break;
+            case "eram":
+                this.randomSfx = [
+                    "snd_board_mantle_laugh_slow",
+                    "snd_board_mantle_laugh_mid",
+                    "snd_board_mantle_laugh_fast",
+                ]
+                break;
+            case "spamton":
+                this.randomSfx = [
+                    "spamton_laugh_noise"
+                ]
+                break;
+            case "pink":
+            case "pink (ghost)":
+                this.randomSfx = [
+                    "snd_pink_gasp",
+                    "snd_pink_huh",
+                    "snd_pink_laugh_long",
+                    "snd_pink_laugh_short",
+                    "snd_pink_mew",
+                    "snd_pink_throw",
+                    "snd_pink_throw2",
+                ]
                 break;
             case "kawkaw":
                 this.randomSfx = [
@@ -60,7 +84,8 @@ class Player{
                     "./flowery/snd_flowery_voiceclip_imsorryonceagainikeptaladyinwaiting",
                     "./flowery/snd_flowery_voiceclip_nonono",
                     "./flowery/snd_flowery_voiceclip_sanfran",
-                    "./flowery/snd_flowery_voiceclip_itsmeflowery"
+                    "./flowery/snd_flowery_voiceclip_itsmeflowery",
+                    "./flowery/snd_flowery_voiceclip_im_falling"
                 ]
                 break;
             default:

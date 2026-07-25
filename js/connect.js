@@ -35,7 +35,6 @@ function connectToRoom(roomCode, map, nick, avatar,soundOff){
         case "pippins":
         case "green pippins":    
         case "ruddin":
-        case "lancer":
         case "pink (ghost)":
         case "pink":
         case "jackpins":

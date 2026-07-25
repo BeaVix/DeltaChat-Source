@@ -1,3 +1,4 @@
+import { selfId } from "trystero";
 import { AnimationComponent } from "./animationComponent";
 import { Background } from "./bg";
 
@@ -7,27 +8,33 @@ class Canvas{
         this.c = canvas.getContext("2d")
         this.showMessage = false;
         this.bg = bg;
+        this.cameraPosition = [0,0]
+        this.cameraSize = [320, 240]
     }
     
 
-    clearScreen(){
+    clearScreen(player){
         if(!this.bg.sprite.complete){
-            this.c.fillStyle = '#aaaaaa';
-            this.c.fillRect(0, 0, 700, 540);
-            this.c.fillStyle = '#000000';
+            this.c.fillStyle = '#aaaaaqa';
         }else{
-            this.c.drawImage(this.bg.sprite, 0,0);
+            const startingPositionX = this.cameraSize[0]/2 - player.animationComponent.size[0]/2
+            const startingPositionY = this.cameraSize[1]/2 - player.animationComponent.size[1]/2
+            if(player.movementComponent.pos[0] != startingPositionX){
+                this.cameraPosition[0] = player.movementComponent.pos[0] - startingPositionX
+            }
+            if(player.movementComponent.pos[1] != startingPositionY){
+                this.cameraPosition[1] = player.movementComponent.pos[1] - startingPositionY
+
+            }
+            this.c.fillStyle = '#000000';
+            this.c.fillRect(0, 0, 800, 540);
+            this.c.drawImage(this.bg.sprite, this.cameraPosition[0], this.cameraPosition[1], this.cameraSize[0], this.cameraSize[1], 0,0,this.cameraSize[0], this.cameraSize[1])
         }
     }
 
     setCanvas(){
-        if(this.bg.sprite.width == 640){
-            this.canvas.width = this.bg.sprite.width;
-            this.canvas.height = this.bg.sprite.height;
-        }else{
-            this.canvas.width = this.bg.sprite.width*2;
-            this.canvas.height = this.bg.sprite.height*2;
-        }
+        this.canvas.width = 640;
+        this.canvas.height = 480;
         this.c.scale(this.bg.scale, this.bg.scale);
         this.c.imageSmoothingEnabled = false;
         this.c.textAlign = "center";
@@ -35,9 +42,9 @@ class Canvas{
 
     //Draws frame
     draw(timestamp, players){
-        this.clearScreen();
+        this.clearScreen(players[0]);
         if(this.bg.animated && this.bg.animationComponent.sprite.complete){
-            this.c.drawImage(this.bg.animationComponent.sprite, this.bg.animationComponent.frame[0], this.bg.animationComponent.frame[1], this.bg.animationComponent.size[0], this.bg.animationComponent.size[1], this.bg.animatedPos[0], this.bg.animatedPos[1], this.bg.animationComponent.size[0], this.bg.animationComponent.size[1])
+            this.c.drawImage(this.bg.animationComponent.sprite, this.bg.animationComponent.frame[0], this.bg.animationComponent.frame[1], this.bg.animationComponent.size[0], this.bg.animationComponent.size[1], this.bg.animatedPos[0] - this.cameraPosition[0], this.bg.animatedPos[1] - this.cameraPosition[1], this.bg.animationComponent.size[0], this.bg.animationComponent.size[1])
             this.bg.animationComponent.update(timestamp);
         }
         for (let i = 0; i < players.length; i++) {
@@ -86,8 +93,15 @@ class Canvas{
     }
 
     drawPlayer(player){
-        const x = player.movementComponent.pos[0];
-        const y = player.movementComponent.pos[1];
+        let x,y;
+        if(player.id == selfId){
+            x = this.cameraSize[0]/2 - player.animationComponent.size[0]/2
+            y = this.cameraSize[1]/2 - player.animationComponent.size[0]/2
+        }else{
+            x = player.movementComponent.pos[0] - this.cameraPosition[0];
+            y = player.movementComponent.pos[1]- this.cameraPosition[1];
+        }
+        
         const height = player.animationComponent.size[1]
         const width = player.animationComponent.size[0]
         const sprite = player.animationComponent.sprite;
@@ -100,7 +114,7 @@ class Canvas{
                 this.c.drawImage(sprite, 0, 16, width, -height, -25, height/2, width, -height);
                 this.c.restore();
             }else{
-                this.c.drawImage(sprite, player.animationComponent.frame[0], player.animationComponent.frame[1], width, height, x, y, width, height);    //Draws sprite
+                this.c.drawImage(sprite, player.animationComponent.frame[0], player.animationComponent.frame[1], width, height, x, y , width, height);    //Draws sprite
             }
             
         }

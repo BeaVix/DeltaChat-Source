@@ -12,27 +12,21 @@ class Background{
         switch(background.toLowerCase()){
             case "castletown":
                 this.name = "castletown";
-                this.setSrc("castle_town.png");
+                this.setSrc("castletown.png");
                 this.animated = true;
                 this.animationComponent.frames = 3;
                 this.animationComponent.sprite.src = "fountain.png"
                 this.animatedPos = [147,-1]
                 this.animationComponent.size = [24,66];
-                this.movementComponent.mapSize = [320,240]
+                this.movementComponent.mapSize = [320,580]
                 this.scale = 2
-                this.exits = {
-                    south: "castletown_1",
-                }
             break;
-            case "castletown_1":
-                this.name = "castletown_1";
-                this.setSrc("Castle_Town_Chapter_1.png");
+            case "cafe":
+                this.name = "cafe";
+                this.setSrc("cafe.png");
                 this.animated = false;
-                this.scale = 1
                 this.movementComponent.mapSize = [640,480]
-                this.exits = {
-                    north: "castletown",
-                }
+                this.scale = 2
             break;
             default:
                 return 0;

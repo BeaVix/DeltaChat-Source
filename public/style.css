@@ -11,6 +11,7 @@ body{
 	min-height: 90vh;
 	justify-content: center;
 	align-items: center;
+	font-size: 1.4rem;
 }
 
 #gameWindow{
@@ -29,7 +30,51 @@ body{
 .setup{
 	display: flex;
 	flex-direction: column;
+	max-width: 440px;
 }
+
+/*THIS IS THE NEW STUFF FOR THE CHARA SELECT*/
+
+.setup label {
+	margin-bottom: 0.3rem;
+}
+
+.character-panel {
+	width: 100%;
+	margin-top: 1rem;
+}
+
+.character-panel .avatar {
+	image-rendering: crisp-edges;
+	width: 25px;
+	margin-right: 0.6rem;
+	margin-bottom: 0.4rem;
+	transition: transform .1s ease;
+}
+
+.character-panel .avatar:hover {
+	transform: scale(1.1);
+	cursor: pointer;
+}
+
+#portrait {
+	width: 25px;
+	margin-right: 0.6rem;
+}
+
+.avatar.selected{
+	transform: scale(1.1);
+	outline: 3px solid #ffe36e;
+}
+
+.selectedChara {
+	display: flex;
+	margin: 0.7rem 0;
+	justify-content: center;
+	align-items: center;
+}
+
+/*END NEW STYLES*/
 
 .chat-container{
 	margin: 5px;

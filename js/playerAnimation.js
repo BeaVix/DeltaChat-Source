@@ -19,6 +19,35 @@ class PlayerAnimation extends AnimationComponent{
             case "flowey":
                 this.atlas.sleep.frames = 1;
             break;
+            case"aqua":
+                this.atlas.up.pos = 64;
+                this.atlas.right.pos = 96; 
+            break;
+            case "lamen":
+                this.atlas.idle.frames = 4;
+                this.atlas.left.pos = 90
+                this.atlas.left.frames = 4
+                break;
+            case "shadow guy":
+                this.atlas.idle.pos = 156;
+                this.atlas.down.pos = 156;
+                this.atlas.up.pos = 63;
+                this.atlas.left.pos = 84;
+                this.atlas.right.pos = 132;
+                break;
+            case "eram":
+                this.atlas.idle.pos = 192;
+                this.atlas.sleep.pos = 256;
+                this.atlas.sleep.frames = 6;
+                this.atlas.right.pos = 128;
+                break;
+            case "tenna":
+                this.atlas.idle.pos = 48;
+                this.atlas.up.pos = 16;
+                this.atlas.right.pos = 80;
+                this.atlas.down.pos = 112;
+                this.atlas.left.pos = 144;
+                break;
             case "spamton":
                 this.atlas.idle.pos = 216;
                 this.atlas.idle.frames = 3

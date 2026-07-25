@@ -37,16 +37,10 @@ const textInput = document.querySelector("#textInput")
 
         if(obj.player.movementComponent.movement[0] || obj.player.movementComponent.movement[1]){
             obj.player.movementComponent.move();
+                 
             obj.room.actions.move.send(obj.player.movementComponent.pos)
         }
         let newMap;
-        if(obj.player.movementComponent.pos[1] == obj.player.movementComponent.mapSize[1] - obj.player.animationComponent.size[1]){
-            newMap = this.bg.exits["south"]
-            this.player.movementComponent.pos[1] = 0
-        }else if(!obj.player.movementComponent.pos[1]){
-            newMap = this.bg.exits["north"]
-            this.player.movementComponent.pos[1] = 200
-        }
         if(newMap){
             obj.loadMap(newMap)
         }
@@ -66,6 +60,8 @@ const textInput = document.querySelector("#textInput")
         const roomCode = this.room.roomCode;
         const newRoom = joinRoom(this.room.roomConfig, finalRoomCode)
         this.room = new Room(newRoom, roomCode, roomConfig, this.players, this.player, newMap)
+        this.inputListenerComponent.room = this.room;
+        this.chatBoxComponent.room = this.room;
        
         this.room.actions.playerInfo.send(this.player);
         this.bg.setBg(newMap)

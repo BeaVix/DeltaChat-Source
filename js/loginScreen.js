@@ -2,7 +2,6 @@ import { connectToRoom } from "./connect";
 
 const nickInput = document.querySelector("#nickInput");
 const roomInput = document.querySelector("#roomInput");
-const avatarSlct = document.querySelector("#avatar")
 const randomizeBtn = document.querySelector("#randomizeBtn");
 const confirmBtn = document.querySelector("#confirm-nick-btn");
 const setupScreen = document.querySelector("#setup-window");
@@ -12,20 +11,12 @@ const sideBar = document.querySelector("#side-bar");
 const musicChk = document.querySelector("#soundOff");
 const portrait = document.querySelector("#portrait");
 const map = document.querySelector("#map");
+const avatarSlct = document.querySelector("#characterName")
 
 const strLen = 9;
 
 let alphanumeric = "ABCDEFGHIJKMNLOPQRSTUVWXYZ1234567890"
 alphanumeric = alphanumeric.split("");
-
-avatarSlct.addEventListener("change", loadPortrait)
-avatarSlct.addEventListener("load", loadPortrait);
-
-function loadPortrait(){
-    const val = avatarSlct.value;
-    let src = "portrait_"+val+".png"
-    portrait.src = src;
-}
 
 randomizeBtn.addEventListener("click", e => {
     let codeStr = ""
@@ -43,7 +34,7 @@ confirmBtn.addEventListener("click", e => {
     sideBar.style.display = "block";
     const nick = nickInput.value;
     const roomCode = roomInput.value;
-    const avatar = avatarSlct.value;
+    const avatar = avatarSlct.textContent.toLowerCase();
     const mapValue = map.value;
 
     if(roomCode != ""){
