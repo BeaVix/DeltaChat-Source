@@ -1,0 +1,385 @@
+ [{
+        "id": "pippins",
+        "name": "Pippins",
+        "image": "portrait_pippins.png",
+        "size": [16,16],
+        "animations":{
+            "idle": {"pos": 0, "frames": 1}
+        }
+    },
+    {
+        "id": "green pippins",
+        "name": "Green Pippins",
+        "image": "portrait_green pippins.png",
+        "size": [16,16],
+        "animations":{
+            "idle": {"pos": 0, "frames": 1}
+        }
+    },
+    {
+        "id": "kris",
+        "name": "Kris",
+        "image": "portrait_kris.png",
+        "size": [16,16],
+        "animations":{
+            "idle":{"pos":0, "frames":2},
+            "walk_left":{"pos":32, "frames": 2},
+            "walk_right":{"pos":64, "frames": 2},
+            "walk_up":{"pos":96, "frames": 2},
+            "walk_down":{"pos":0, "frames": 2},
+            "sleep": {"pos":128,"frames": 2 }
+        }
+    },
+    {
+        "id": "susie",
+        "name": "Susie",
+        "image": "portrait_susie.png",
+        "size": [16,16],
+        "animations":{
+            "idle":{"pos":0, "frames":2},
+            "walk_left":{"pos":32, "frames": 2},
+            "walk_right":{"pos":64, "frames": 2},
+            "walk_up":{"pos":96, "frames": 2},
+            "walk_down":{"pos":0, "frames": 2},
+            "sleep": {"pos":128,"frames": 2 }
+        },
+        "sleepBubble": "sleep_bubbleS"
+    },
+    {
+        "id": "ralsei",
+        "name": "Ralsei",
+        "image": "portrait_ralsei.png",
+        "size": [16,16],
+        "animations":{
+            "idle":{"pos":0, "frames":2},
+            "walk_left":{"pos":32, "frames": 2},
+            "walk_right":{"pos":64, "frames": 2},
+            "walk_up":{"pos":96, "frames": 2},
+            "walk_down":{"pos":0, "frames": 2},
+            "sleep": {"pos":128,"frames": 2 }
+        },
+        "sleepBubble": "sleep_bubbleR"
+    },
+     {
+        "id": "noelle",
+        "name": "Noelle",
+        "image": "portrait_noelle.png",
+        "size": [16,16],
+        "animations":{
+            "idle":{"pos":0, "frames":2},
+            "walk_left":{"pos":32, "frames": 2},
+            "walk_right":{"pos":64, "frames": 2},
+            "walk_up":{"pos":96, "frames": 2},
+            "walk_down":{"pos":0, "frames": 2},
+            "sleep": {"pos":128,"frames": 2 }
+        }
+    },
+     {
+        "id": "berdly",
+        "name": "Berdly",
+        "image": "portrait_berdly.png",
+        "size": [16,16],
+        "animations":{
+            "idle":{"pos":0, "frames":2},
+            "walk_left":{"pos":32, "frames": 2},
+            "walk_right":{"pos":64, "frames": 2},
+            "walk_up":{"pos":96, "frames": 2},
+            "walk_down":{"pos":0, "frames": 2},
+            "sleep": {"pos":128,"frames": 2 }
+        }
+    },
+    {
+        "id": "lancer",
+        "name": "Lancer",
+        "image": "portrait_lancer.png",
+        "size": [16,16],
+        "animations":{
+            "idle":{"pos":0, "frames":2},
+            "walk_left":{"pos":32, "frames": 2},
+            "walk_right":{"pos":64, "frames": 2},
+            "walk_up":{"pos":96, "frames": 2},
+            "walk_down":{"pos":0, "frames": 2},
+            "sleep": {"pos":128,"frames": 2 }
+        }
+    },
+    {
+        "id": "ruddin",
+        "name": "Ruddin",
+        "image": "portrait_ruddin.png",
+        "size": [16,16],
+        "animations":{
+            "idle": {"pos": 0, "frames": 1}
+        }
+    },
+    {
+        "id": "rabbick",
+        "name": "Rabbick",
+        "image": "portrait_rabbick.png",
+        "size": [16,16],
+        "animations":{
+            "idle": {"pos": 0, "frames": 2}
+        }
+    },
+    {
+        "id": "spamton",
+        "name": "Spamton",
+        "image": "portrait_spamton.png",
+        "size": [24,25],
+        "animations":{
+            "idle":{"pos":216, "frames":3},
+            "walk_left":{"pos":0, "frames": 2},
+            "walk_right":{"pos":120, "frames": 2},
+            "walk_up":{"pos":48, "frames": 3},
+            "walk_down":{"pos":0, "frames": 2},
+            "sleep": {"pos":168,"frames": 1 }
+        },
+        "sfx":[
+            "spamton_laugh_noise"
+        ]
+    },
+    {
+        "id": "tenna",
+        "name": "Tenna",
+        "image": "portrait_tenna.png",
+        "size": [32,16],
+        "animations":{
+            "idle":{"pos":48, "frames":2},
+            "walk_left":{"pos":144, "frames": 2},
+            "walk_right":{"pos":80, "frames": 2},
+            "walk_up":{"pos":16, "frames": 2},
+            "walk_down":{"pos":112, "frames": 2},
+            "sleep": {"pos":48,"frames": 1 }
+        }
+    },
+    {
+        "id": "bibliox",
+        "name": "Bibliox",
+        "image": "portrait_bibliox.png",
+        "size": [16,16],
+        "animations":{
+            "idle": {"pos": 0, "frames": 2}
+        }
+    },
+    {
+        "id": "flowery",
+        "name": "Flowery",
+        "image": "portrait_flowery.png",
+        "size": [16,16],
+        "animations":{
+            "idle":{"pos":0, "frames":2},
+            "walk_left":{"pos":64, "frames": 2},
+            "walk_right":{"pos":96, "frames": 2},
+            "walk_up":{"pos":32, "frames": 2},
+            "walk_down":{"pos":0, "frames": 2},
+            "sleep": {"pos":128,"frames": 2 }
+        },
+        "sfx":[
+                "./flowery/snd_flowery_voiceclip_all_according_to_all_according_to_plant",
+                "./flowery/snd_flowery_voiceclip_glue",
+                "./flowery/snd_flowery_voiceclip_go_home",
+                "./flowery/snd_flowery_voiceclip_heh_it_s_my_jarona",
+                "./flowery/snd_flowery_voiceclip_hereicome",
+                "./flowery/snd_flowery_voiceclip_hereicomesanfrandisc",
+                "./flowery/snd_flowery_voiceclip_hereicomesanfrandisco_strong",
+                "./flowery/snd_flowery_voiceclip_hereicomesanfrandisco_weak",
+                "./flowery/snd_flowery_voiceclip_heyguysithinkifoundaglue",
+                "./flowery/snd_flowery_voiceclip_mysterious_wind",
+                "./flowery/snd_flowery_voiceclip_my_king",
+                "./flowery/snd_flowery_voiceclip_what_a_predictable_creature",
+                "./flowery/snd_flowery_voiceclip_theyre_eating_my_flesh",
+                "./flowery/snd_flowery_voiceclip_yourdadsmybestfriend",
+                "./flowery/snd_flowery_voiceclip_your_dad",
+                "./flowery/snd_flowery_voiceclip_stingus",
+                "./flowery/snd_flowery_voiceclip_sorrytokeepyouwaiting1",
+                "./flowery/snd_flowery_voiceclip_flowers_blooms_in_your_heart",
+                "./flowery/snd_flowery_voiceclip_mostlys",
+                "./flowery/snd_flowery_voiceclip_yes",
+                "./flowery/snd_flowery_voiceclip_imsorryonceagainikeptaladyinwaiting",
+                "./flowery/snd_flowery_voiceclip_nonono",
+                "./flowery/snd_flowery_voiceclip_sanfran",
+                "./flowery/snd_flowery_voiceclip_itsmeflowery",
+                "./flowery/snd_flowery_voiceclip_im_falling"
+            ]
+    },
+    {
+        "id": "aqua",
+        "name": "Aqua",
+        "image": "portrait_aqua.png",
+        "size": [16,16],
+        "animations":{
+            "idle":{"pos":0, "frames":2},
+            "walk_left":{"pos":32, "frames": 2},
+            "walk_right":{"pos":96, "frames": 2},
+            "walk_up":{"pos":64, "frames": 2},
+            "walk_down":{"pos":0, "frames": 2},
+            "sleep": {"pos":128,"frames": 1 }
+        }
+    },
+    {
+        "id": "pink",
+        "name": "Pink",
+        "image": "portrait_pink.png",
+        "size":[24, 26],
+        "animations":{
+            "idle":{"pos":0, "frames":1}
+        },
+        "sfx":[
+            "snd_pink_gasp",
+            "snd_pink_huh",
+            "snd_pink_laugh_long",
+            "snd_pink_laugh_short",
+            "snd_pink_mew",
+            "snd_pink_throw",
+            "snd_pink_throw2"
+        ]
+    },
+    {
+        "id": "pink (ghost)",
+        "name": "Pink (Ghost)",
+        "image": "portrait_pink (ghost).png",
+        "size":[24, 26],
+        "animations":{
+            "idle":{"pos":0, "frames":1}
+        },
+        "sfx":[
+            "snd_pink_gasp",
+            "snd_pink_huh",
+            "snd_pink_laugh_long",
+            "snd_pink_laugh_short",
+            "snd_pink_mew",
+            "snd_pink_throw",
+            "snd_pink_throw2"
+        ]
+    },
+    {
+        "id": "kawkaw",
+        "name": "KawKaw",
+        "image": "portrait_kawkaw.png",
+        "size": [16,16],
+        "animations":{
+            "idle":{"pos":0, "frames":2},
+            "walk_left":{"pos":32, "frames": 2},
+            "walk_right":{"pos":64, "frames": 2},
+            "walk_up":{"pos":128, "frames": 2},
+            "walk_down":{"pos":96, "frames": 2},
+            "sleep": {"pos":128,"frames": 2 }
+        },
+        "sfx":[
+            "snd_bird_happy_1",
+            "snd_bird_happy_2",
+            "snd_bird_licking_1",
+            "snd_bird_licking_2",
+            "snd_bird_licking_3"
+        ]
+    },
+    {
+        "id": "friend",
+        "name": "Friend",
+        "image": "portrait_friend.png",
+        "size": [16,16],
+        "animations":{
+            "idle":{"pos":0, "frames":1},
+            "walk_left":{"pos":32, "frames": 1},
+            "walk_right":{"pos":64, "frames": 1},
+            "walk_up":{"pos":96, "frames": 1},
+            "walk_down":{"pos":0, "frames": 1},
+            "sleep": {"pos":128,"frames": 1 }
+        },
+        "sfx":[
+            "snd_crowd_laugh"
+        ]
+    },
+    {
+        "id": "eram",
+        "name": "Eram",
+        "image": "portrait_eram.png",
+        "size": [32,31],
+        "animations":{
+            "idle":{"pos":192, "frames":2},
+            "walk_left":{"pos":32, "frames": 2},
+            "walk_right":{"pos":128, "frames": 2},
+            "walk_up":{"pos":96, "frames": 2},
+            "walk_down":{"pos":0, "frames": 2},
+            "sleep": {"pos":256,"frames": 6 }
+        },
+        "sfx":[
+            "snd_board_mantle_laugh_slow",
+            "snd_board_mantle_laugh_mid",
+            "snd_board_mantle_laugh_fast"
+        ]
+    },
+    {
+        "id": "frisk",
+        "name": "Frisk",
+        "image": "portrait_frisk.png",
+        "size": [16,16],
+        "animations":{
+            "idle":{"pos":0, "frames":2},
+            "walk_left":{"pos":32, "frames": 2},
+            "walk_right":{"pos":64, "frames": 2},
+            "walk_up":{"pos":96, "frames": 2},
+            "walk_down":{"pos":0, "frames": 2},
+            "sleep": {"pos":128,"frames": 1 }
+        }
+    },
+    {
+        "id": "flowey",
+        "name": "Flowey",
+        "image": "portrait_flowey.png",
+        "size": [16,16],
+        "animations":{
+            "idle":{"pos":0, "frames":1},
+            "walk_left":{"pos":16, "frames": 4},
+            "walk_right":{"pos":16, "frames": 4},
+            "walk_up":{"pos":16, "frames": 4},
+            "walk_down":{"pos":16, "frames": 4},
+            "sleep": {"pos":96,"frames": 1 }
+        }
+    },
+    {
+        "id": "chara",
+        "name": "Chara",
+        "image": "portrait_chara.png",
+        "size": [16,16],
+        "animations":{
+            "idle":{"pos":0, "frames":2},
+            "walk_left":{"pos":32, "frames": 2},
+            "walk_right":{"pos":64, "frames": 2},
+            "walk_up":{"pos":96, "frames": 2},
+            "walk_down":{"pos":0, "frames": 2},
+            "sleep": {"pos":128,"frames": 1 }
+        }
+    },
+    {
+        "id": "noyno",
+        "name": "Noyno",
+        "image": "portrait_noyno.png",
+        "size": [16,16],
+        "animations":{
+            "idle":{"pos":0, "frames":2},
+            "walk_left":{"pos":64, "frames": 2},
+            "walk_right":{"pos":96, "frames": 2},
+            "walk_up":{"pos":32, "frames": 2},
+            "walk_down":{"pos":0, "frames": 2},
+            "sleep": {"pos":128,"frames": 1 }
+        }
+    },
+    {
+        "id": "jackpins",
+        "name": "Jackpins",
+        "image": "portrait_jackpins.png",
+        "size": [16,16],
+        "animations":{
+            "idle":{"pos": 0, "frames": 1}
+        }
+    },
+    {
+        "id":"orange rabbick",
+        "name": "Orange Rabbick",
+        "image": "portrait_orange rabbick.png",
+        "size": [16,16],
+        "animations":{
+            "idle": {"pos": 0, "frames": 2}
+        }
+    }
+]

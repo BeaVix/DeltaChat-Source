@@ -15,12 +15,14 @@ function connectToRoom(roomCode, map, nick, avatar,soundOff){
 
         turnConfig:[
             {
-                urls:[
-                    "stun:stun.cloudflare.com:3478",
-                    "turn:turn.cloudflare.com:3478?transport=udp"
-                ],
-                username:"g070096ddaefb7bd59e4bfed110ebf61d75cdb718632bd582b2d41759c3d180e",
-                credential:"809ec1156bc5d44ac7fa4aea1b98ea230c9b67b8deba7aeec72aa0352d83db43"
+                urls:["turn:turn.cloudflare.com:3478?transport=udp",
+			"turn:turn.cloudflare.com:3478?transport=tcp",
+			"turns:turn.cloudflare.com:5349?transport=tcp",	
+			"turn:turn.cloudflare.com:53?transport=udp",
+			"turn:turn.cloudflare.com:80?transport=tcp",
+			"turns:turn.cloudflare.com:443?transport=tcp"],
+			username:"g0875ddc3b910f13ddb0ab82a9523f816a1f70cd8f8f381ec520da55f8041bbd",
+			credential:"ec9cdaf98463e6761cf49526b77dd4d16a36960fb42a22c2946734a8cbe19921"
             }
         ]
 	}

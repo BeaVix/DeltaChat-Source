@@ -1,35 +1,8 @@
 class AnimationComponent{
-    constructor(frames, avatar){
+    constructor(frames, avatar, size){
         this.frames = frames
         this.avatar = avatar;
-        switch(avatar){
-            case "rabbick":
-                this.size = [15,16]
-            break;
-            case "pink":
-            case "pink (ghost)":
-                this.size = [24, 26];
-            break;
-            case "spamton":
-                this.size = [24,25]
-            break;
-                case "jackpins":
-                this.size = [13, 17]
-            break;
-            case "tenna":
-                this.size = [16,32]
-                break;
-            case "eram":
-                this.size = [32,31]
-            break;
-            case "lamen":
-                this.size = [23,41]
-                break;
-            default:
-                this.size = [16,16]
-            break;
-        }
-        
+        this.size = size;
         this.frame = [0,0];
         this.currentFrame = 0;
         this.framerate = 345    //milliseconds
@@ -53,7 +26,7 @@ class AnimationComponent{
             this.lastUpdate = timestamp
         }
         const delta = timestamp - this.lastUpdate;
-        if(delta >= this.framerate && this.frames){
+        if(delta >= this.framerate && this.frames && this.size){
             this.nextFrame();
             this.lastUpdate = timestamp
         }

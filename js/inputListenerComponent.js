@@ -15,22 +15,22 @@ class InputListenerComponent{
                 case "arrowup":
                 case "w":
                     this.movementComponent.movement[1] = -1
-                    this.animationComponent.setAnimation("up");
+                    this.animationComponent.setAnimation("walk_up");
                     break;
                 case "arrowdown":
                 case "s":
                     this.movementComponent.movement[1] = 1
-                    this.animationComponent.setAnimation("down")
+                    this.animationComponent.setAnimation("walk_down")
                     break;
                 case "arrowright":
                 case "d":
                     this.movementComponent.movement[0] = 1
-                    this.animationComponent.setAnimation("right")
+                    this.animationComponent.setAnimation("walk_right")
                     break;
                 case "arrowleft":
                 case "a":
                     this.movementComponent.movement[0] = -1
-                    this.animationComponent.setAnimation("left")
+                    this.animationComponent.setAnimation("walk_left")
                     break;
                 case "m":
                     if(!this.musicPlayer.paused){
@@ -66,9 +66,9 @@ class InputListenerComponent{
                     }
                     break;
                 case "q":
-                    if(this.player.randomSfx){
-                        const index = Math.floor(Math.random()*this.player.randomSfx.length)
-                        const sound = this.player.randomSfx[index]
+                    if(this.player.data.sfx){
+                        const index = Math.floor(Math.random()*this.player.data.sfx.length)
+                        const sound = this.player.data.sfx[index]
                         this.player.playSound(sound)
                         this.room.actions.playSound.send(sound);
                     }

@@ -118,7 +118,7 @@ class Canvas{
             }
             
         }
-        if(player.sleep){
+        if(player.animationComponent.animation == "sleep"){
             if(!player.sleepBubble.currentFrame){
                 this.c.drawImage(player.sleepBubble.sprite, x, y-16)
             }else{
