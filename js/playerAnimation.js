@@ -23,7 +23,7 @@ class PlayerAnimation extends AnimationComponent{
             this.currentFrame = 0
         }
         if(this.avatar){
-            this.frame[0] = (this.size[0]*this.currentFrame) + this.offset
+            this.frame[0] = (this.size[0]*this.currentFrame) + (this.size[0]*this.offset)
         }
     }
     

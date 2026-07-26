@@ -23,11 +23,11 @@
         "size": [16,16],
         "animations":{
             "idle":{"pos":0, "frames":2},
-            "walk_left":{"pos":32, "frames": 2},
-            "walk_right":{"pos":64, "frames": 2},
-            "walk_up":{"pos":96, "frames": 2},
+            "walk_left":{"pos":2, "frames": 2},
+            "walk_right":{"pos":4, "frames": 2},
+            "walk_up":{"pos":6, "frames": 2},
             "walk_down":{"pos":0, "frames": 2},
-            "sleep": {"pos":128,"frames": 2 }
+            "sleep": {"pos":8,"frames": 2 }
         }
     },
     {
@@ -37,11 +37,11 @@
         "size": [16,16],
         "animations":{
             "idle":{"pos":0, "frames":2},
-            "walk_left":{"pos":32, "frames": 2},
-            "walk_right":{"pos":64, "frames": 2},
-            "walk_up":{"pos":96, "frames": 2},
+            "walk_left":{"pos":2, "frames": 2},
+            "walk_right":{"pos":4, "frames": 2},
+            "walk_up":{"pos":6, "frames": 2},
             "walk_down":{"pos":0, "frames": 2},
-            "sleep": {"pos":128,"frames": 2 }
+            "sleep": {"pos":8,"frames": 2 }
         },
         "sleepBubble": "sleep_bubbleS"
     },
@@ -52,11 +52,11 @@
         "size": [16,16],
         "animations":{
             "idle":{"pos":0, "frames":2},
-            "walk_left":{"pos":32, "frames": 2},
-            "walk_right":{"pos":64, "frames": 2},
-            "walk_up":{"pos":96, "frames": 2},
+            "walk_left":{"pos":2, "frames": 2},
+            "walk_right":{"pos":4, "frames": 2},
+            "walk_up":{"pos":6, "frames": 2},
             "walk_down":{"pos":0, "frames": 2},
-            "sleep": {"pos":128,"frames": 2 }
+            "sleep": {"pos":8,"frames": 2 }
         },
         "sleepBubble": "sleep_bubbleR"
     },
@@ -67,11 +67,11 @@
         "size": [16,16],
         "animations":{
             "idle":{"pos":0, "frames":2},
-            "walk_left":{"pos":32, "frames": 2},
-            "walk_right":{"pos":64, "frames": 2},
-            "walk_up":{"pos":96, "frames": 2},
+            "walk_left":{"pos":2, "frames": 2},
+            "walk_right":{"pos":4, "frames": 2},
+            "walk_up":{"pos":6, "frames": 2},
             "walk_down":{"pos":0, "frames": 2},
-            "sleep": {"pos":128,"frames": 2 }
+            "sleep": {"pos":8,"frames": 2 }
         }
     },
      {
@@ -81,11 +81,11 @@
         "size": [16,16],
         "animations":{
             "idle":{"pos":0, "frames":2},
-            "walk_left":{"pos":32, "frames": 2},
-            "walk_right":{"pos":64, "frames": 2},
-            "walk_up":{"pos":96, "frames": 2},
+            "walk_left":{"pos":2, "frames": 2},
+            "walk_right":{"pos":4, "frames": 2},
+            "walk_up":{"pos":6, "frames": 2},
             "walk_down":{"pos":0, "frames": 2},
-            "sleep": {"pos":128,"frames": 2 }
+            "sleep": {"pos":8,"frames": 2 }
         }
     },
     {
@@ -95,11 +95,11 @@
         "size": [16,16],
         "animations":{
             "idle":{"pos":0, "frames":2},
-            "walk_left":{"pos":32, "frames": 2},
-            "walk_right":{"pos":64, "frames": 2},
-            "walk_up":{"pos":96, "frames": 2},
+            "walk_left":{"pos":2, "frames": 2},
+            "walk_right":{"pos":4, "frames": 2},
+            "walk_up":{"pos":6, "frames": 2},
             "walk_down":{"pos":0, "frames": 2},
-            "sleep": {"pos":128,"frames": 2 }
+            "sleep": {"pos":8,"frames": 2 }
         }
     },
     {
@@ -108,7 +108,7 @@
         "image": "portrait_ruddin.png",
         "size": [16,16],
         "animations":{
-            "idle": {"pos": 0, "frames": 1}
+            "idle": {"pos": 0, "frames": 2}
         }
     },
     {
@@ -126,12 +126,12 @@
         "image": "portrait_spamton.png",
         "size": [24,25],
         "animations":{
-            "idle":{"pos":216, "frames":3},
+            "idle":{"pos":9, "frames":3},
             "walk_left":{"pos":0, "frames": 2},
-            "walk_right":{"pos":120, "frames": 2},
-            "walk_up":{"pos":48, "frames": 3},
+            "walk_right":{"pos":5, "frames": 2},
+            "walk_up":{"pos":2, "frames": 3},
             "walk_down":{"pos":0, "frames": 2},
-            "sleep": {"pos":168,"frames": 1 }
+            "sleep": {"pos":7,"frames": 1 }
         },
         "sfx":[
             "spamton_laugh_noise"
@@ -141,15 +141,16 @@
         "id": "tenna",
         "name": "Tenna",
         "image": "portrait_tenna.png",
-        "size": [32,16],
+        "size": [16,32],
         "animations":{
-            "idle":{"pos":48, "frames":2},
-            "walk_left":{"pos":144, "frames": 2},
-            "walk_right":{"pos":80, "frames": 2},
-            "walk_up":{"pos":16, "frames": 2},
-            "walk_down":{"pos":112, "frames": 2},
-            "sleep": {"pos":48,"frames": 1 }
-        }
+            "idle":{"pos":3, "frames":2},
+            "walk_left":{"pos":9, "frames": 2},
+            "walk_right":{"pos":5, "frames": 2},
+            "walk_up":{"pos":1, "frames": 2},
+            "walk_down":{"pos":7, "frames": 2},
+            "sleep": {"pos":0,"frames": 1 }
+        },
+        "sleepBubble":"sleep_bubbleS"
     },
     {
         "id": "bibliox",
@@ -161,17 +162,31 @@
         }
     },
     {
+        "id": "wicabel",
+        "name": "Wicabel",
+        "image": "portrait_wicabel.png",
+        "size":[21,31],
+        "animations":{
+            "idle":{"pos":0, "frames":2},
+            "walk_left":{"pos":2, "frames": 2},
+            "walk_right":{"pos":4, "frames": 2},
+            "walk_up":{"pos":6, "frames": 2},
+            "walk_down":{"pos":0, "frames": 2},
+            "sleep": {"pos":8,"frames": 2 }
+        }
+    },
+    {
         "id": "flowery",
         "name": "Flowery",
         "image": "portrait_flowery.png",
         "size": [16,16],
         "animations":{
             "idle":{"pos":0, "frames":2},
-            "walk_left":{"pos":64, "frames": 2},
-            "walk_right":{"pos":96, "frames": 2},
-            "walk_up":{"pos":32, "frames": 2},
+            "walk_left":{"pos":4, "frames": 2},
+            "walk_right":{"pos":6, "frames": 2},
+            "walk_up":{"pos":2, "frames": 2},
             "walk_down":{"pos":0, "frames": 2},
-            "sleep": {"pos":128,"frames": 2 }
+            "sleep": {"pos":8,"frames": 2 }
         },
         "sfx":[
                 "./flowery/snd_flowery_voiceclip_all_according_to_all_according_to_plant",
@@ -208,11 +223,11 @@
         "size": [16,16],
         "animations":{
             "idle":{"pos":0, "frames":2},
-            "walk_left":{"pos":32, "frames": 2},
-            "walk_right":{"pos":96, "frames": 2},
-            "walk_up":{"pos":64, "frames": 2},
+            "walk_left":{"pos":2, "frames": 2},
+            "walk_right":{"pos":6, "frames": 2},
+            "walk_up":{"pos":4, "frames": 2},
             "walk_down":{"pos":0, "frames": 2},
-            "sleep": {"pos":128,"frames": 1 }
+            "sleep": {"pos":8,"frames": 1 }
         }
     },
     {
@@ -258,11 +273,11 @@
         "size": [16,16],
         "animations":{
             "idle":{"pos":0, "frames":2},
-            "walk_left":{"pos":32, "frames": 2},
-            "walk_right":{"pos":64, "frames": 2},
-            "walk_up":{"pos":128, "frames": 2},
-            "walk_down":{"pos":96, "frames": 2},
-            "sleep": {"pos":128,"frames": 2 }
+            "walk_left":{"pos":2, "frames": 2},
+            "walk_right":{"pos":4, "frames": 2},
+            "walk_up":{"pos":8, "frames": 2},
+            "walk_down":{"pos":6, "frames": 2},
+            "sleep": {"pos":8,"frames": 2 }
         },
         "sfx":[
             "snd_bird_happy_1",
@@ -279,11 +294,11 @@
         "size": [16,16],
         "animations":{
             "idle":{"pos":0, "frames":1},
-            "walk_left":{"pos":32, "frames": 1},
-            "walk_right":{"pos":64, "frames": 1},
-            "walk_up":{"pos":96, "frames": 1},
+            "walk_left":{"pos":2, "frames": 1},
+            "walk_right":{"pos":4, "frames": 1},
+            "walk_up":{"pos":6, "frames": 1},
             "walk_down":{"pos":0, "frames": 1},
-            "sleep": {"pos":128,"frames": 1 }
+            "sleep": {"pos":8,"frames": 1 }
         },
         "sfx":[
             "snd_crowd_laugh"
@@ -295,12 +310,12 @@
         "image": "portrait_eram.png",
         "size": [32,31],
         "animations":{
-            "idle":{"pos":192, "frames":2},
-            "walk_left":{"pos":32, "frames": 2},
-            "walk_right":{"pos":128, "frames": 2},
-            "walk_up":{"pos":96, "frames": 2},
+            "idle":{"pos":6, "frames":2},
+            "walk_left":{"pos":0, "frames": 2},
+            "walk_right":{"pos":3, "frames": 2},
+            "walk_up":{"pos":4, "frames": 2},
             "walk_down":{"pos":0, "frames": 2},
-            "sleep": {"pos":256,"frames": 6 }
+            "sleep": {"pos":8,"frames": 6 }
         },
         "sfx":[
             "snd_board_mantle_laugh_slow",
@@ -315,11 +330,11 @@
         "size": [16,16],
         "animations":{
             "idle":{"pos":0, "frames":2},
-            "walk_left":{"pos":32, "frames": 2},
-            "walk_right":{"pos":64, "frames": 2},
-            "walk_up":{"pos":96, "frames": 2},
+            "walk_left":{"pos":2, "frames": 2},
+            "walk_right":{"pos":4, "frames": 2},
+            "walk_up":{"pos":6, "frames": 2},
             "walk_down":{"pos":0, "frames": 2},
-            "sleep": {"pos":128,"frames": 1 }
+            "sleep": {"pos":8,"frames": 1 }
         }
     },
     {
@@ -329,11 +344,39 @@
         "size": [16,16],
         "animations":{
             "idle":{"pos":0, "frames":1},
-            "walk_left":{"pos":16, "frames": 4},
-            "walk_right":{"pos":16, "frames": 4},
-            "walk_up":{"pos":16, "frames": 4},
-            "walk_down":{"pos":16, "frames": 4},
-            "sleep": {"pos":96,"frames": 1 }
+            "walk_left":{"pos":1, "frames": 4},
+            "walk_right":{"pos":1, "frames": 4},
+            "walk_up":{"pos":1, "frames": 4},
+            "walk_down":{"pos":1, "frames": 4},
+            "sleep": {"pos":5,"frames": 1 }
+        }
+    },
+    {
+        "id": "sans",
+        "name":"sans",
+        "image": "portrait_sans.png",
+        "size":[16,16],
+        "animations":{
+            "idle":{"pos":0, "frames":2},
+            "walk_left":{"pos":4, "frames": 2},
+            "walk_right":{"pos":2, "frames": 2},
+            "walk_up":{"pos":6, "frames": 2},
+            "walk_down":{"pos":0, "frames": 2},
+            "sleep": {"pos":8,"frames": 2}
+        }
+    },
+    {
+        "id":"papyrus",
+        "name":"Papyrus",
+        "image": "portrait_papyrus.png",
+        "size":[16,21],
+        "animations":{
+            "idle":{"pos":0, "frames":2},
+            "walk_left":{"pos":4, "frames": 2},
+            "walk_right":{"pos":2, "frames": 2},
+            "walk_up":{"pos":6, "frames": 2},
+            "walk_down":{"pos":0, "frames": 2},
+            "sleep": {"pos":8,"frames": 2}
         }
     },
     {
@@ -343,11 +386,25 @@
         "size": [16,16],
         "animations":{
             "idle":{"pos":0, "frames":2},
-            "walk_left":{"pos":32, "frames": 2},
-            "walk_right":{"pos":64, "frames": 2},
-            "walk_up":{"pos":96, "frames": 2},
+            "walk_left":{"pos":2, "frames": 2},
+            "walk_right":{"pos":4, "frames": 2},
+            "walk_up":{"pos":6, "frames": 2},
             "walk_down":{"pos":0, "frames": 2},
-            "sleep": {"pos":128,"frames": 1 }
+            "sleep": {"pos":8,"frames": 1 }
+        }
+    },
+    {
+        "id":"green pluey",
+        "name": "Green Pluey",
+        "image": "portrait_green pluey.png",
+        "size": [16,16],
+        "animations":{
+            "idle":{"pos":7, "frames":2},
+            "walk_left":{"pos":2, "frames": 2},
+            "walk_right":{"pos":4, "frames": 1},
+            "walk_up":{"pos":5, "frames": 2},
+            "walk_down":{"pos":0, "frames": 2},
+            "sleep": {"pos":9,"frames": 1 }
         }
     },
     {
@@ -357,11 +414,11 @@
         "size": [16,16],
         "animations":{
             "idle":{"pos":0, "frames":2},
-            "walk_left":{"pos":64, "frames": 2},
-            "walk_right":{"pos":96, "frames": 2},
-            "walk_up":{"pos":32, "frames": 2},
+            "walk_left":{"pos":4, "frames": 2},
+            "walk_right":{"pos":6, "frames": 2},
+            "walk_up":{"pos":2, "frames": 2},
             "walk_down":{"pos":0, "frames": 2},
-            "sleep": {"pos":128,"frames": 1 }
+            "sleep": {"pos":8,"frames": 1 }
         }
     },
     {
@@ -380,6 +437,20 @@
         "size": [16,16],
         "animations":{
             "idle": {"pos": 0, "frames": 2}
+        }
+    },
+    {
+        "id": "lamen",
+        "name": "Lamen",
+        "image": "portrait_lamen.png",
+        "size": [23,41],
+        "animations":{
+            "idle":{"pos": 0, "frames":4},
+            "walk_left":{"pos": 4, "frames": 4},
+            "walk_right":{"pos":8, "frames":4},
+            "walk_down":{"pos":0, "frames":4},
+            "walk_up":{"pos":12, "frames":4},
+            "sleep":{"pos":16, "frames":1}
         }
     }
 ]
