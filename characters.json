@@ -4,7 +4,13 @@
         "image": "portrait_pippins.png",
         "size": [16,16],
         "animations":{
-            "idle": {"pos": 0, "frames": 1}
+            "idle": {"pos": 0, "frames": 1},
+            "walk_left":{"pos":0, "frames": 1},
+            "walk_right":{"pos":0, "frames": 1},
+            "walk_up":{"pos":0, "frames": 1},
+            "walk_down":{"pos":0, "frames": 1},
+            "sleep": {"pos":0,"frames": 1 }
+            
         }
     },
     {
@@ -13,7 +19,12 @@
         "image": "portrait_green pippins.png",
         "size": [16,16],
         "animations":{
-            "idle": {"pos": 0, "frames": 1}
+            "idle": {"pos": 0, "frames": 1},
+            "walk_left":{"pos":0, "frames": 1},
+            "walk_right":{"pos":0, "frames": 1},
+            "walk_up":{"pos":0, "frames": 1},
+            "walk_down":{"pos":0, "frames": 1},
+            "sleep": {"pos":0,"frames": 1 }
         }
     },
     {
@@ -108,7 +119,12 @@
         "image": "portrait_ruddin.png",
         "size": [16,16],
         "animations":{
-            "idle": {"pos": 0, "frames": 2}
+            "idle": {"pos": 0, "frames": 1},
+            "walk_left":{"pos":0, "frames": 1},
+            "walk_right":{"pos":0, "frames": 1},
+            "walk_up":{"pos":0, "frames": 1},
+            "walk_down":{"pos":0, "frames": 1},
+            "sleep": {"pos":0,"frames": 1 }
         }
     },
     {
@@ -117,7 +133,12 @@
         "image": "portrait_rabbick.png",
         "size": [16,16],
         "animations":{
-            "idle": {"pos": 0, "frames": 2}
+            "idle": {"pos": 0, "frames": 2},
+            "walk_left":{"pos":0, "frames": 2},
+            "walk_right":{"pos":0, "frames": 2},
+            "walk_up":{"pos":0, "frames": 2},
+            "walk_down":{"pos":0, "frames": 2},
+            "sleep": {"pos":0,"frames": 2 }
         }
     },
     {
@@ -158,7 +179,12 @@
         "image": "portrait_bibliox.png",
         "size": [16,16],
         "animations":{
-            "idle": {"pos": 0, "frames": 2}
+            "idle": {"pos": 0, "frames": 2},
+            "walk_left":{"pos":0, "frames": 2},
+            "walk_right":{"pos":0, "frames": 2},
+            "walk_up":{"pos":0, "frames": 2},
+            "walk_down":{"pos":0, "frames": 2},
+            "sleep": {"pos":0,"frames": 2 }
         }
     },
     {
@@ -236,7 +262,12 @@
         "image": "portrait_pink.png",
         "size":[24, 26],
         "animations":{
-            "idle":{"pos":0, "frames":1}
+            "idle":{"pos":0, "frames":1},
+            "walk_left":{"pos":0, "frames": 1},
+            "walk_right":{"pos":0, "frames": 1},
+            "walk_up":{"pos":0, "frames": 1},
+            "walk_down":{"pos":0, "frames": 1},
+            "sleep": {"pos":0,"frames": 1 }
         },
         "sfx":[
             "snd_pink_gasp",
@@ -254,7 +285,12 @@
         "image": "portrait_pink (ghost).png",
         "size":[24, 26],
         "animations":{
-            "idle":{"pos":0, "frames":1}
+            "idle":{"pos":0, "frames":1},
+            "walk_left":{"pos":0, "frames": 1},
+            "walk_right":{"pos":0, "frames": 1},
+            "walk_up":{"pos":0, "frames": 1},
+            "walk_down":{"pos":0, "frames": 1},
+            "sleep": {"pos":0,"frames": 1 }
         },
         "sfx":[
             "snd_pink_gasp",
@@ -427,7 +463,12 @@
         "image": "portrait_jackpins.png",
         "size": [16,16],
         "animations":{
-            "idle":{"pos": 0, "frames": 1}
+            "idle":{"pos": 0, "frames": 1},
+            "walk_left":{"pos":0, "frames": 1},
+            "walk_right":{"pos":0, "frames": 1},
+            "walk_up":{"pos":0, "frames": 1},
+            "walk_down":{"pos":0, "frames": 1},
+            "sleep": {"pos":0,"frames": 1 }
         }
     },
     {
@@ -436,7 +477,12 @@
         "image": "portrait_orange rabbick.png",
         "size": [16,16],
         "animations":{
-            "idle": {"pos": 0, "frames": 2}
+            "idle": {"pos": 0, "frames": 2},
+            "walk_left":{"pos":0, "frames": 1},
+            "walk_right":{"pos":0, "frames": 1},
+            "walk_up":{"pos":0, "frames": 1},
+            "walk_down":{"pos":0, "frames": 1},
+            "sleep": {"pos":0,"frames": 1 }
         }
     },
     {
