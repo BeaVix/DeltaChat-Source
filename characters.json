@@ -216,6 +216,7 @@
             "walk_down":{"pos":0, "frames": 2},
             "sleep": {"pos":7,"frames": 1 }
         },
+        "sleepBubble": "sleep_bubbleSP",
         "sfx":[
             "spamton_laugh_noise"
         ]
@@ -559,7 +560,7 @@
             "walk_right":{"pos":8, "frames":4},
             "walk_down":{"pos":0, "frames":4},
             "walk_up":{"pos":12, "frames":4},
-            "sleep":{"pos":16, "frames":1}
+            "sleep":{"pos":0, "frames":1}
         }
     }
 ]
