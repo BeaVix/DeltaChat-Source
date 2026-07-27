@@ -117,15 +117,59 @@
         "id": "ruddin",
         "name": "Ruddin",
         "image": "portrait_ruddin.png",
-        "size": [16,16],
+        "size": [17,16],
         "animations":{
-            "idle": {"pos": 0, "frames": 1},
-            "walk_left":{"pos":0, "frames": 1},
-            "walk_right":{"pos":0, "frames": 1},
-            "walk_up":{"pos":0, "frames": 1},
-            "walk_down":{"pos":0, "frames": 1},
-            "sleep": {"pos":0,"frames": 1 }
+            "idle": {"pos": 0, "frames": 2},
+            "walk_left":{"pos":2, "frames": 2},
+            "walk_right":{"pos":4, "frames": 2},
+            "walk_up":{"pos":8, "frames": 2},
+            "walk_down":{"pos":6, "frames": 2},
+            "sleep": {"pos":10,"frames": 2 }
+        },
+        "sleepBubble":"sleep_bubbleR"
+    },
+    {
+        "id": "ruddin red",
+        "name": "Ruddin Red",
+        "image": "portrait_ruddin red.png",
+        "size": [17,16],
+        "animations":{
+            "idle": {"pos": 0, "frames": 2},
+            "walk_left":{"pos":2, "frames": 2},
+            "walk_right":{"pos":4, "frames": 2},
+            "walk_up":{"pos":8, "frames": 2},
+            "walk_down":{"pos":6, "frames": 2},
+            "sleep": {"pos":10,"frames": 2 }
+        },
+        "sleepBubble":"sleep_bubbleS"
+    },{
+        "id": "ruddin blue",
+        "name": "Ruddin Blue",
+        "image": "portrait_ruddin blue.png",
+        "size": [17,16],
+        "animations":{
+            "idle": {"pos": 0, "frames": 2},
+            "walk_left":{"pos":2, "frames": 2},
+            "walk_right":{"pos":4, "frames": 2},
+            "walk_up":{"pos":8, "frames": 2},
+            "walk_down":{"pos":6, "frames": 2},
+            "sleep": {"pos":10,"frames": 2 }
         }
+    },
+    {
+        "id": "ruddin yellow",
+        "name": "Ruddin Yellow",
+        "image": "portrait_ruddin yellow.png",
+        "size": [17,16],
+        "animations":{
+            "idle": {"pos": 0, "frames": 2},
+            "walk_left":{"pos":2, "frames": 2},
+            "walk_right":{"pos":4, "frames": 2},
+            "walk_up":{"pos":8, "frames": 2},
+            "walk_down":{"pos":6, "frames": 2},
+            "sleep": {"pos":10,"frames": 2 }
+        },
+        "sleepBubble":"sleep_bubbleS"
     },
     {
         "id": "rabbick",
