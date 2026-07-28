@@ -91,6 +91,12 @@ class Room{
         }
     });
 
+    this.actions.changeAvatar.onMessage = ((avatar, {peerId}) =>{
+        const player = this.getById(peerId);
+        player.setAvatar(avatar);
+        updateOnline(players)
+    })
+
     this.actions.grab.onMessage = ((target, {peerId}) =>{
         const grabber = this.getById(peerId);
         const grabbed = this.getById(target);

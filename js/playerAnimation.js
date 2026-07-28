@@ -26,7 +26,6 @@ class PlayerAnimation extends AnimationComponent{
             this.frame[0] = (this.size[0]*this.currentFrame) + (this.size[0]*this.offset)
         }
     }
-    
 }
 
 export {PlayerAnimation}
