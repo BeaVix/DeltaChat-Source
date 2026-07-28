@@ -41,24 +41,26 @@ class Player{
     }
 
     setAvatar(avatar){
-
+        let found = false;
         for (let i = 0; i < characterData.length; i++) {
             const character = characterData[i];
             if(character.id == avatar){
                 this.data = character;
+                found = true
                 break
             }
         }
-        if(!this.animationComponent){
-            this.animationComponent = new PlayerAnimation(0, avatar, this.data.size, this.data.animations);
-            this.movementComponent = new MovementComponent(2, [160 - this.data.size[0]/2,120], this.animationComponent);
-        }else{
-            this.animationComponent.setAvatar(avatar)
-            this.animationComponent.size = this.data.size
-            this.animationComponent.animations = this.data.animations
+        if(found){
+            if(!this.animationComponent){
+                this.animationComponent = new PlayerAnimation(0, avatar, this.data.size, this.data.animations);
+                this.movementComponent = new MovementComponent(2, [160 - this.data.size[0]/2,120], this.animationComponent);
+            }else{
+                this.animationComponent.setAvatar(avatar)
+                this.animationComponent.size = this.data.size
+                this.animationComponent.animations = this.data.animations
+            }
         }
-        
-        
+        return found
     }
 }
 

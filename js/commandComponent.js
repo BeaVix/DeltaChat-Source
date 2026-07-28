@@ -40,12 +40,16 @@ class CommandComponent{
     }
     avatar(obj, avatar){
         avatar = avatar.replace("_", " ")
-        obj.player.setAvatar(avatar)
-        obj.player.animationComponent.setAnimation("idle");
-        this.sprite = new Image();
-        obj.room.actions.changeAvatar.send(avatar)
-        obj.room.actions.animationChanged.send("idle")
-        updateOnline(obj.players)
+        if(obj.player.setAvatar(avatar)){
+            obj.player.animationComponent.setAnimation("idle");
+            this.sprite = new Image();
+            obj.room.actions.changeAvatar.send(avatar)
+            obj.room.actions.animationChanged.send("idle")
+            updateOnline(obj.players)
+        }else{
+            obj.msg("No such avatar (hint: replace spaces with underscores!)", "red")
+        }
+        
     }
 }
 
