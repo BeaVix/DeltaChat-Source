@@ -15,6 +15,7 @@ class Room{
         this.actions.chat = room.makeAction("chat");
         this.actions.move = room.makeAction("move");
         this.actions.changeAvatar = room.makeAction("changeAvatar");
+        this.actions.changeNick = room.makeAction("changeNick");
         this.actions.playerInfo = room.makeAction("playerInfo");
         this.actions.hit = room.makeAction("hit");
         this.actions.mute = room.makeAction("mute");
@@ -94,6 +95,12 @@ class Room{
     this.actions.changeAvatar.onMessage = ((avatar, {peerId}) =>{
         const player = this.getById(peerId);
         player.setAvatar(avatar);
+        updateOnline(players)
+    })
+
+    this.actions.changeNick.onMessage = ((nick, {peerId}) =>{
+        const player = this.getById(peerId);
+        player.nick = nick;
         updateOnline(players)
     })
 

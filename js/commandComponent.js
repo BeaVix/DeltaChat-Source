@@ -9,10 +9,12 @@ class CommandComponent{
         this.msg = msg;
         this.canvas = canvas;
         this.commands = [
-			new Command("mute", this.mute, 1), 
-			new Command("leave", this.leaveRoom, 0),
-			new Command("sleep", this.sleep, 0),
-            new Command("avatar", this.avatar, 1),
+			new Command("mute", this.mute, 1, "Mute player"), 
+			new Command("leave", this.leaveRoom, 0, "Leave room"),
+			new Command("sleep", this.sleep, 0, "Sleep emote"),
+            new Command("avatar", this.avatar, 1, "Change avatar"),
+            new Command("nick", this.nick, 1, "Change nickname"),
+            new Command("help", this.help, 0, "Show this list")
 		]
     }
 
@@ -49,7 +51,17 @@ class CommandComponent{
         }else{
             obj.msg("No such avatar (hint: replace spaces with underscores!)", "red")
         }
-        
+    }
+    nick(obj, name){
+        name  = name.replace("_", " ");
+        obj.player.nick = name;
+        obj.room.actions.changeNick.send(name)
+        updateOnline(obj.players)
+    }
+    help(obj){
+        obj.commands.forEach(command => {
+            obj.msg(command.name+": " + command.desc, "white")
+        });
     }
 }
 
