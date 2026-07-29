@@ -8,14 +8,7 @@ class Player{
         this.id = id;
         this.nick = nick;
 
-        for (let i = 0; i < characterData.length; i++) {
-            const character = characterData[i];
-            if(character.id == avatar){
-                this.data = character;
-                console.log(this.data)
-                break
-            }
-        }
+        this.data = characterData.find(character => character.id == avatar)
 
         this.muted = false;
         this.animationComponent = new PlayerAnimation(frames, avatar, this.data.size, this.data.animations);
