@@ -4,7 +4,7 @@ class MovementComponent{
         this.pos = pos;
         this.animationComponent = animationComponent
         this.movement = [0,0]
-        this.lastMovement = [1,0];
+        this.lastMovement = [0,0];
         this.yAcc = 0; 
         this.canMove = true;
         this.lockTyping = false;
@@ -15,28 +15,19 @@ class MovementComponent{
     }
     
     move(){
-        if((this.movement[0] == -1 && this.pos[0] > 0) || (this.movement[0] == 1 && this.pos[0] < this.mapSize[0] - this.animationComponent.size[0]) ){
-            this.pos[0] += this.movement[0]*this.speed[0];
-        }
-        if((this.movement[1] == -1 && this.pos[1]> 0) || (this.movement[1] == 1 && this.pos[1] < this.mapSize[1] - this.animationComponent.size[1])){
-            this.pos[1] += this.movement[1]*this.speed[1];
-        }
-        
-        if(this.movement[0]){
+        this.pos[0] += this.movement[0]*this.speed[0]
+        this.pos[1] += this.movement[1]*this.speed[1]
             this.lastMovement[0] = this.movement[0];
-        }
-        if(this.movement[1]){
             this.lastMovement[1] = this.movement[1];
-        }
     }
 
-    testHitbox(posO, sizeO){ 	// Position of the hitbox, width and heigth, position of entity
+    testHitbox(posO, sizeO){ 	// Position of the hitbox, width and heigth
         const hitboxPos = [this.pos[0]+this.hitboxPos[0], this.pos[1]+this.hitboxPos[1]]
         return(
         (hitboxPos[0] < posO[0] + sizeO[0] &&
-        hitboxPos[0]  > posO[0]) ||
-        (hitboxPos[1] < posO[1] + sizeO[1] &&
-        hitboxPos[1] > posO[1])
+        hitboxPos[0] + this.hitboxSize[0] > posO[0] &&
+        hitboxPos[1] < posO[1] + sizeO[1] &&
+        hitboxPos[1] + this.hitboxSize[1] > posO[1])
     );
 }
 }

@@ -1,0 +1,42 @@
+[
+        {
+        "id": "castletown",
+        "size": [320,580],
+        "image": "castletown",
+        "frames": 3,
+        "hitboxes":[],
+        "objects":[
+            {
+                "name": "cafeshop 1",
+                "image":"cafeShop_1.png",
+                "pos":[185,230],
+                "size":[79,83]
+            }
+        ]
+    },
+    {
+        "id": "cafe",
+        "size": [640,480],
+        "image": "cafe",
+        "frames": 0,
+        "hitboxes":[
+            {
+                "size":[400,78],
+                "pos":[0,402]
+            },
+            {
+                "size":[240,40],
+                "pos":[400,440]
+            },
+            {
+                "size":[120,38],
+                "pos":[520,402]
+            },
+            {
+                "size":[20,402],
+                "pos":[620, 0]
+            }
+        ],
+        "objects":[]
+    }
+]

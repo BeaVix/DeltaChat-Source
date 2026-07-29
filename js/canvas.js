@@ -1,6 +1,7 @@
 import { selfId } from "trystero";
 import { AnimationComponent } from "./animationComponent";
 import { Background } from "./bg";
+import { Player } from "./Player";
 
 class Canvas{
     constructor(bg){
@@ -14,7 +15,7 @@ class Canvas{
     
 
     clearScreen(player){
-        if(!this.bg.sprite.complete){
+        if(!this.bg.animationComponent.sprite.complete){
             this.c.fillStyle = '#aaaaaqa';
         }else{
             const startingPositionX = this.cameraSize[0]/2 - player.animationComponent.size[0]/2
@@ -28,14 +29,21 @@ class Canvas{
             }
             this.c.fillStyle = '#000000';
             this.c.fillRect(0, 0, 800, 540);
-            this.c.drawImage(this.bg.sprite, this.cameraPosition[0], this.cameraPosition[1], this.cameraSize[0], this.cameraSize[1], 0,0,this.cameraSize[0], this.cameraSize[1])
-        }
+            this.c.drawImage(this.bg.animationComponent.sprite, this.bg.animationComponent.frame[0] + this.cameraPosition[0], this.cameraPosition[1], this.cameraSize[0], this.cameraSize[1], 0,0,this.cameraSize[0], this.cameraSize[1])
+            this.c.fillStyle = '#000000';
+            this.c.fillRect(this.bg.size[0]-this.cameraPosition[0], 0-this.cameraPosition[1], 200, 580)
+            this.c.fillRect(-this.bg.size[0]-this.cameraPosition[0], 0-this.cameraPosition[1], this.bg.size[0], 580)
+            this.c.fillStyle = '#ff0000';
+            this.bg.hitboxes.forEach(hitbox => {
+                this.c.fillRect(hitbox.pos[0]-this.cameraPosition[0], hitbox.pos[1]-this.cameraPosition[1], hitbox.size[0], hitbox.size[1])
+            });
+        }   
     }
 
     setCanvas(){
         this.canvas.width = 640;
         this.canvas.height = 480;
-        this.c.scale(this.bg.scale, this.bg.scale);
+        this.c.scale(2,2);
         this.c.imageSmoothingEnabled = false;
         this.c.textAlign = "center";
     }
@@ -43,24 +51,41 @@ class Canvas{
     //Draws frame
     draw(timestamp, players){
         this.clearScreen(players[0]);
-        if(this.bg.animated && this.bg.animationComponent.sprite.complete){
-            this.c.drawImage(this.bg.animationComponent.sprite, this.bg.animationComponent.frame[0], this.bg.animationComponent.frame[1], this.bg.animationComponent.size[0], this.bg.animationComponent.size[1], this.bg.animatedPos[0] - this.cameraPosition[0], this.bg.animatedPos[1] - this.cameraPosition[1], this.bg.animationComponent.size[0], this.bg.animationComponent.size[1])
-            this.bg.animationComponent.update(timestamp);
-        }
-        for (let i = 0; i < players.length; i++) {
-            const player = players[i];
+        let drawQueue = []
+        this.bg.objects.forEach(object => {
+            drawQueue.push(object)
+        })
+        players.forEach(player => {
             if(!player.muted){
-                this.drawPlayer(player);
-                player.animationComponent.update(timestamp);
-                player.sleepBubble.update(timestamp);
+                drawQueue.push(player)
             }
-        }
+        });
+        drawQueue.sort((a,b) => {
+            if(a instanceof Player && !(b instanceof Player)){
+                return (b.pos[1] + b.size[1] - a.animationComponent.size[1]*2) - a.movementComponent.pos[1]
+            }else if( b instanceof Player && !(a instanceof Player)){
+                return (a.pos[1] + a.size[1] - b.animationComponent.size[1]*2) - b.movementComponent.pos[1]
+            }else{
+                return 0
+            }
+        })
+        drawQueue.forEach(object => {
+            if(object instanceof Player){
+                this.drawPlayer(object)
+                object.animationComponent.update(timestamp)
+                object.sleepBubble.update(timestamp)
+            }else{
+                let img = new Image;
+                img.src = object.image
+                this.c.drawImage(img, object.pos[0] - this.cameraPosition[0], object.pos[1] - this.cameraPosition[1])
+            }
+        })
         this.bg.animationComponent.update(timestamp)
     }
 
     drawText(x, y, str, strokeColor = "#000000", color="#ffffff",size="10px",font="Determination mono") {
         if(str){
-            const maxWidth = 80;    //pixels per lines
+            const maxWidth = 100;    //pixels per lines
             this.c.font = size + " " + font
             this.c.strokeStyle= strokeColor
             this.c.linewidth = 8

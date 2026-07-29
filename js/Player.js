@@ -8,6 +8,7 @@ class Player{
         this.id = id;
         this.nick = nick;
 
+        this.data = characterData.find(character => character.id == avatar)
         this.setAvatar(avatar)
 
         this.muted = false;

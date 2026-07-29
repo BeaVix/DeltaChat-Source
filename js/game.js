@@ -6,6 +6,7 @@ import { Background } from "./bg";
 import { joinRoom } from "trystero";
 import { updateOnline } from "./onlineSidebar";
 import { Room } from "./Room";
+import maps from "./../maps.json";
 
 const sendButton = document.querySelector("#sendButton")
 const textInput = document.querySelector("#textInput")
@@ -17,14 +18,17 @@ const textInput = document.querySelector("#textInput")
         this.room = room;
         this.soundOff = soundOff;
         this.lastUpdate = 0
+        this.hitBounds = false;
+
+        let mapData = maps.find(m => m.id == map)
 
         this.musicPlayer = new songPlayer(soundOff);
         this.inputListenerComponent = new InputListenerComponent(player, players, room, this.musicPlayer.musicPlayer);
-        this.bg = new Background(map, player.movementComponent);
+        this.bg = new Background(mapData, player.movementComponent);
         this.canvasComponent = new Canvas(this.bg);
         this.chatBoxComponent = new ChatBoxComponent(player, players, room, serverMessage, this.canvasComponent);
 
-        this.bg.sprite.onload = (e => {
+        this.bg.animationComponent.sprite.onload = (e => {
             this.canvasComponent.setCanvas()
         })
 
@@ -34,10 +38,20 @@ const textInput = document.querySelector("#textInput")
 
     gameLoop(timestamp, obj){
         obj.canvasComponent.draw(timestamp, obj.players);
+        obj.bg.hitboxes.forEach(hitbox => {
+                while(obj.player.movementComponent.testHitbox(hitbox.pos, hitbox.size)){
+                    if (obj.player.movementComponent.lastMovement[0]) {
+                        obj.player.movementComponent.pos[0] -= 1*obj.player.movementComponent.lastMovement[0]
+                    }
+                    if (obj.player.movementComponent.lastMovement[1]) {
+                        obj.player.movementComponent.pos[1] -= 1*obj.player.movementComponent.lastMovement[1]
+                    }
+                }
+            });
 
-        if(obj.player.movementComponent.movement[0] || obj.player.movementComponent.movement[1]){
+        if((obj.player.movementComponent.movement[0] || obj.player.movementComponent.movement[1])){
             obj.player.movementComponent.move();
-                 
+            
             obj.room.actions.move.send(obj.player.movementComponent.pos)
         }
         let newMap;
