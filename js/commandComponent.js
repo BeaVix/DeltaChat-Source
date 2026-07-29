@@ -1,4 +1,6 @@
 import { Command } from "./command"
+import { updateOnline } from "./onlineSidebar";
+
 class CommandComponent{
     constructor(player, players, room, msg, canvas){
         this.player = player;
@@ -10,6 +12,7 @@ class CommandComponent{
 			new Command("mute", this.mute, 1), 
 			new Command("leave", this.leaveRoom, 0),
 			new Command("sleep", this.sleep, 0),
+            new Command("avatar", this.avatar, 1),
 		]
     }
 
@@ -34,6 +37,19 @@ class CommandComponent{
         obj.player.animationComponent.setAnimation("sleep")
         obj.player.sleep = true;
         obj.room.actions.animationChanged.send("sleep")
+    }
+    avatar(obj, avatar){
+        avatar = avatar.replace("_", " ")
+        if(obj.player.setAvatar(avatar)){
+            obj.player.animationComponent.setAnimation("idle");
+            this.sprite = new Image();
+            obj.room.actions.changeAvatar.send(avatar)
+            obj.room.actions.animationChanged.send("idle")
+            updateOnline(obj.players)
+        }else{
+            obj.msg("No such avatar (hint: replace spaces with underscores!)", "red")
+        }
+        
     }
 }
 

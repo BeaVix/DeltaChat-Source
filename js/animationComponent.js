@@ -1,14 +1,12 @@
 class AnimationComponent{
     constructor(frames, avatar, size){
         this.frames = frames
-        this.avatar = avatar;
+        this.setAvatar(avatar)
         this.size = size;
         this.frame = [0,0];
         this.currentFrame = 0;
         this.framerate = 345    //milliseconds
         this.lastUpdate = 0;
-        this.sprite = new Image();
-        this.sprite.src = this.avatar + ".png";
         this.rotation = 0;   //degs
     }
 
@@ -30,6 +28,12 @@ class AnimationComponent{
             this.nextFrame();
             this.lastUpdate = timestamp
         }
+    }
+
+    setAvatar(avatar){
+        this.avatar = avatar
+        this.sprite = new Image();
+        this.sprite.src = this.avatar + ".png";
     }
 }
 
