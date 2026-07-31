@@ -4,7 +4,7 @@ import { PlayerAnimation } from "./playerAnimation";
 import { AnimationComponent } from "./animationComponent";
 import characterData from "./../characters.json";
 class Player{
-    constructor(id, nick, avatar, frames){
+    constructor(id, nick, avatar, frames, initialPos){
         this.id = id;
         this.nick = nick;
 

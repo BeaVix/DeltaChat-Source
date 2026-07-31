@@ -11,6 +11,17 @@ class Canvas{
         this.bg = bg;
         this.cameraPosition = [0,0]
         this.cameraSize = [320, 240]
+
+        this.setDrawQueue();
+    }
+
+    setDrawQueue(){
+        this.drawQueue = []
+        this.bg.objects.forEach(object => {
+            if(object.image){
+                this.drawQueue.push({data: object, animationComponent: new AnimationComponent(object.frames, object.image, object.size)})
+            }
+        });
     }
     
 
@@ -18,8 +29,8 @@ class Canvas{
         if(!this.bg.animationComponent.sprite.complete){
             this.c.fillStyle = '#aaaaaqa';
         }else{
-            const startingPositionX = this.cameraSize[0]/2 - player.animationComponent.size[0]/2
-            const startingPositionY = this.cameraSize[1]/2 - player.animationComponent.size[1]/2
+            const startingPositionX = (this.cameraSize[0]/2 - player.animationComponent.size[0]/2)
+            const startingPositionY = (this.cameraSize[1]/2 - player.animationComponent.size[1]/2)
             if(player.movementComponent.pos[0] != startingPositionX){
                 this.cameraPosition[0] = player.movementComponent.pos[0] - startingPositionX
             }
@@ -33,10 +44,12 @@ class Canvas{
             this.c.fillStyle = '#000000';
             this.c.fillRect(this.bg.size[0]-this.cameraPosition[0], 0-this.cameraPosition[1], 200, 580)
             this.c.fillRect(-this.bg.size[0]-this.cameraPosition[0], 0-this.cameraPosition[1], this.bg.size[0], 580)
+
+            /*
             this.c.fillStyle = '#ff0000';
             this.bg.hitboxes.forEach(hitbox => {
                 this.c.fillRect(hitbox.pos[0]-this.cameraPosition[0], hitbox.pos[1]-this.cameraPosition[1], hitbox.size[0], hitbox.size[1])
-            });
+            });*/
         }   
     }
 
@@ -48,38 +61,52 @@ class Canvas{
         this.c.textAlign = "center";
     }
 
-    //Draws frame
+    /*Draws frame*/
     draw(timestamp, players){
+        //Check if size of draw queue is consistent with number of objects to draw
+        if(this.drawQueue.length > this.bg.objects.length + players.length){
+            this.drawQueue = this.drawQueue.filter(object =>{
+                if (object instanceof Player){
+                    return players.find(player => object.id == player.id)
+                }else{
+                    return true;
+                }
+            })
+        }else if(this.drawQueue.length < this.bg.objects.length + players.length){
+            this.drawQueue.push(...players)
+        }
+
         this.clearScreen(players[0]);
-        let drawQueue = []
-        this.bg.objects.forEach(object => {
-            drawQueue.push(object)
-        })
-        players.forEach(player => {
-            if(!player.muted){
-                drawQueue.push(player)
-            }
-        });
-        drawQueue.sort((a,b) => {
+        
+        //y-sort sprites
+        this.drawQueue.sort((a,b) => {
             if(a instanceof Player && !(b instanceof Player)){
-                return (b.pos[1] + b.size[1] - a.animationComponent.size[1]*2) - a.movementComponent.pos[1]
+                return a.movementComponent.pos[1] - ( (b.data.pos[1] + b.data.size[1])*b.data.scale - a.animationComponent.size[1]*2)
             }else if( b instanceof Player && !(a instanceof Player)){
-                return (a.pos[1] + a.size[1] - b.animationComponent.size[1]*2) - b.movementComponent.pos[1]
+                return ( (a.data.pos[1] + a.data.size[1])*a.data.scale - b.animationComponent.size[1]*2) - b.movementComponent.pos[1]
             }else{
                 return 0
             }
         })
-        drawQueue.forEach(object => {
+
+        //Draw objects in the queue
+        this.drawQueue.forEach(object => {
             if(object instanceof Player){
                 this.drawPlayer(object)
                 object.animationComponent.update(timestamp)
                 object.sleepBubble.update(timestamp)
             }else{
-                let img = new Image;
-                img.src = object.image
-                this.c.drawImage(img, object.pos[0] - this.cameraPosition[0], object.pos[1] - this.cameraPosition[1])
+                this.c.scale(object.data.scale,object.data.scale)
+                if(object.data.frames){
+                    this.c.drawImage(object.animationComponent.sprite, object.animationComponent.frame[0], object.animationComponent.frame[1], object.data.size[0],object.data.size[1], object.data.pos[0] - this.cameraPosition[0]/object.data.scale, object.data.pos[1]- this.cameraPosition[1]/object.data.scale, object.data.size[0],object.data.size[1])
+                    object.animationComponent.update(timestamp)
+                }else{
+                    this.c.drawImage(object.animationComponent.sprite, object.data.pos[0] - this.cameraPosition[0]/object.data.scale, object.data.pos[1] - this.cameraPosition[1]/object.data.scale)
+                }
+                this.c.scale(1/object.data.scale,1/object.data.scale)
             }
         })
+
         this.bg.animationComponent.update(timestamp)
     }
 

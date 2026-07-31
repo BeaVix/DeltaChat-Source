@@ -117,9 +117,9 @@
         ]
     },
     {
-        "id": "ruddin",
-        "name": "Ruddin",
-        "image": "portrait_ruddin.png",
+        "id": "rudinn",
+        "name": "Rudinn",
+        "image": "portrait_rudinn.png",
         "size": [17,16],
         "animations":{
             "idle": {"pos": 0, "frames": 2},
@@ -132,9 +132,9 @@
         "sleepBubble":"sleep_bubbleR"
     },
     {
-        "id": "ruddin red",
-        "name": "Ruddin Red",
-        "image": "portrait_ruddin red.png",
+        "id": "rudinn red",
+        "name": "Rudinn Red",
+        "image": "portrait_rudinn red.png",
         "size": [17,16],
         "animations":{
             "idle": {"pos": 0, "frames": 2},
@@ -146,9 +146,9 @@
         },
         "sleepBubble":"sleep_bubbleS"
     },{
-        "id": "ruddin blue",
-        "name": "Ruddin Blue",
-        "image": "portrait_ruddin blue.png",
+        "id": "rudinn blue",
+        "name": "Rudinn Blue",
+        "image": "portrait_rudinn blue.png",
         "size": [17,16],
         "animations":{
             "idle": {"pos": 0, "frames": 2},
@@ -160,9 +160,9 @@
         }
     },
     {
-        "id": "ruddin yellow",
-        "name": "Ruddin Yellow",
-        "image": "portrait_ruddin yellow.png",
+        "id": "rudinn yellow",
+        "name": "Rudinn Yellow",
+        "image": "portrait_rudinn yellow.png",
         "size": [17,16],
         "animations":{
             "idle": {"pos": 0, "frames": 2},

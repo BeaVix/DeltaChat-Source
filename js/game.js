@@ -28,6 +28,8 @@ const textInput = document.querySelector("#textInput")
         this.canvasComponent = new Canvas(this.bg);
         this.chatBoxComponent = new ChatBoxComponent(player, players, room, serverMessage, this.canvasComponent);
 
+        this.loaders = this.bg.objects.filter((object) => object.type == "levelLoader")
+
         this.bg.animationComponent.sprite.onload = (e => {
             this.canvasComponent.setCanvas()
         })
@@ -38,6 +40,14 @@ const textInput = document.querySelector("#textInput")
 
     gameLoop(timestamp, obj){
         obj.canvasComponent.draw(timestamp, obj.players);
+
+        obj.loaders.forEach(loader => {
+            if(obj.player.movementComponent.testHitbox(loader.pos, loader.size)){
+                this.loadMap(loader.map)
+            }
+        })
+
+        // Process map hitboxes
         obj.bg.hitboxes.forEach(hitbox => {
                 while(obj.player.movementComponent.testHitbox(hitbox.pos, hitbox.size)){
                     if (obj.player.movementComponent.lastMovement[0]) {
@@ -76,9 +86,20 @@ const textInput = document.querySelector("#textInput")
         this.room = new Room(newRoom, roomCode, roomConfig, this.players, this.player, newMap)
         this.inputListenerComponent.room = this.room;
         this.chatBoxComponent.room = this.room;
+        let mapData = maps.find(m => m.id == newMap)
        
+        this.player.movementComponent.pos = mapData.spawnPos[this.bg.id];
+        this.bg.objects = mapData.objects
+        this.loaders = this.bg.objects.filter((object) => object.type == "levelLoader")
+        this.canvasComponent.setDrawQueue()
+        
+        this.bg.id = mapData.id
+
         this.room.actions.playerInfo.send(this.player);
-        this.bg.setBg(newMap)
+        
+        this.bg.animationComponent.setAvatar(mapData.image)
+        this.bg.animationComponent.frames = mapData.frames
+        
     }
 }
 

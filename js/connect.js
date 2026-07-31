@@ -4,6 +4,7 @@ import { updateOnline } from './onlineSidebar';
 import { Player } from './Player';
 import { Game } from './game';
 import { displayMessage, serverMessage } from './chatBox';
+import maps from "./../maps.json"
 
 const roomId = document.querySelector("#room-id")
 
@@ -15,14 +16,17 @@ function connectToRoom(roomCode, map, nick, avatar,soundOff){
 
         turnConfig:[
             {
-                urls:["turn:turn.cloudflare.com:3478?transport=udp",
-			"turn:turn.cloudflare.com:3478?transport=tcp",
-			"turns:turn.cloudflare.com:5349?transport=tcp",	
-			"turn:turn.cloudflare.com:53?transport=udp",
-			"turn:turn.cloudflare.com:80?transport=tcp",
-			"turns:turn.cloudflare.com:443?transport=tcp"],
-			username:"g0875ddc3b910f13ddb0ab82a9523f816a1f70cd8f8f381ec520da55f8041bbd",
-			credential:"ec9cdaf98463e6761cf49526b77dd4d16a36960fb42a22c2946734a8cbe19921"
+                "urls":
+                [
+                    "turn:turn.cloudflare.com:3478?transport=udp",
+                    "turn:turn.cloudflare.com:3478?transport=tcp",
+                    "turns:turn.cloudflare.com:5349?transport=tcp",
+                    "turn:turn.cloudflare.com:53?transport=udp",
+                    "turn:turn.cloudflare.com:80?transport=tcp",
+                    "turns:turn.cloudflare.com:443?transport=tcp"
+                ],
+                "username":"g03da9b858657aec92514e6ed36a015a93c68e71fc179cbfac136a8d755bf8d3",
+                "credential":"398afc7c71dab0fdf3cbb9736347943ab383a3af1a8066edcdcb5f57a7dd9acb"
             }
         ]
 	}
@@ -32,20 +36,6 @@ function connectToRoom(roomCode, map, nick, avatar,soundOff){
     roomId.textContent ="ROOM: "+ roomCode;
 
     let frames = 2
-
-    switch(avatar){
-        case "pippins":
-        case "green pippins":    
-        case "ruddin":
-        case "pink (ghost)":
-        case "pink":
-        case "jackpins":
-            frames = 0;
-            break;
-        default:
-            break;
-    }
-
     const player = new Player(selfId, nick, avatar, frames);
     const room = new Room(roomI, roomCode,roomConfig,  players, player, map);
     const game= new Game(player, players, room, map, soundOff.checked);

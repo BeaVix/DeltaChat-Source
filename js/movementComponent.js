@@ -8,7 +8,7 @@ class MovementComponent{
         this.yAcc = 0; 
         this.canMove = true;
         this.lockTyping = false;
-        this.hitboxPos = [10, 0]
+        this.hitboxPos = [0, 0]
         this.hitboxSize = [20,20]
         this.mapSize = [320,240]
         this.animationPlaying = false;
