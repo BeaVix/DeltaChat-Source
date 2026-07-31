@@ -3,13 +3,14 @@ import { Player } from "./Player";
 import { displayMessage, serverMessage } from "./chatBox";
 import { updateOnline } from "./onlineSidebar";
 class Room{
-    constructor(room, roomCode, roomConfig, players, player, bg){
+    constructor(room, roomCode, roomConfig, players, player, bg, volumeControl){
         this.room = room;
         this.roomConfig = roomConfig
         this.roomCode = roomCode
         this.player = player;
         this.players = players
         this.bg = bg
+        this.volumeControl = volumeControl
 
         this.actions = {}
         this.actions.chat = room.makeAction("chat");
@@ -38,10 +39,8 @@ class Room{
             newPlayer.grabbing = info.grabbing;
             newPlayer.grabbed = info.grabbed;
             newPlayer.sleep = info.sleep;
-            newPlayer.animationComponent.offset = info.animationComponent.offset;
-            if(player.id != joined && joined == peerId){
-                game.canvasComponent.bg.setBg(bg);
-            }
+            newPlayer.animationComponent.setAnimation(info.animation)
+            newPlayer.sfx.volume = this.volumeControl.volume;
             serverMessage(newPlayer.nick+" joined!", "green");
             newPlayer.playSound("snd_power");
             players.push(newPlayer);

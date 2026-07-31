@@ -8,6 +8,7 @@ import { updateOnline } from "./onlineSidebar";
 import { Room } from "./Room";
 import maps from "./../maps.json";
 
+
 const sendButton = document.querySelector("#sendButton")
 const textInput = document.querySelector("#textInput")
 

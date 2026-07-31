@@ -4,6 +4,7 @@ import { updateOnline } from './onlineSidebar';
 import { Player } from './Player';
 import { Game } from './game';
 import { displayMessage, serverMessage } from './chatBox';
+import { VolumeControl } from "./volumeControl";
 import maps from "./../maps.json"
 
 const roomId = document.querySelector("#room-id")
@@ -35,9 +36,11 @@ function connectToRoom(roomCode, map, nick, avatar,soundOff){
 
     roomId.textContent ="ROOM: "+ roomCode;
 
+    const volumeControl = new VolumeControl(players);
+
     let frames = 2
     const player = new Player(selfId, nick, avatar, frames);
-    const room = new Room(roomI, roomCode,roomConfig,  players, player, map);
+    const room = new Room(roomI, roomCode,roomConfig,  players, player, map, volumeControl);
     const game= new Game(player, players, room, map, soundOff.checked);
     
     players.push(player);
