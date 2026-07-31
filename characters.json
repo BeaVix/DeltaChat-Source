@@ -75,6 +75,7 @@
         "id": "noelle",
         "name": "Noelle",
         "image": "portrait_noelle.png",
+        "by":"pianpian, loveletterworm (base)",
         "size": [16,16],
         "animations":{
             "idle":{"pos":0, "frames":2},
@@ -89,6 +90,7 @@
         "id": "berdly",
         "name": "Berdly",
         "image": "portrait_berdly.png",
+        "by":"pianpian, loveletterworm (base)",
         "size": [16,16],
         "animations":{
             "idle":{"pos":0, "frames":2},
@@ -103,6 +105,7 @@
         "id": "lancer",
         "name": "Lancer",
         "image": "portrait_lancer.png",
+        "by":"pianpian",
         "size": [16,16],
         "animations":{
             "idle":{"pos":0, "frames":2},
@@ -120,6 +123,7 @@
         "id": "rudinn",
         "name": "Rudinn",
         "image": "portrait_rudinn.png",
+        "by":"riggedbones",
         "size": [17,16],
         "animations":{
             "idle": {"pos": 0, "frames": 2},
@@ -134,6 +138,7 @@
     {
         "id": "rudinn red",
         "name": "Rudinn Red",
+        "by":"riggedbones",
         "image": "portrait_rudinn red.png",
         "size": [17,16],
         "animations":{
@@ -148,6 +153,7 @@
     },{
         "id": "rudinn blue",
         "name": "Rudinn Blue",
+        "by":"riggedbones",
         "image": "portrait_rudinn blue.png",
         "size": [17,16],
         "animations":{
@@ -162,6 +168,7 @@
     {
         "id": "rudinn yellow",
         "name": "Rudinn Yellow",
+        "by":"riggedbones",
         "image": "portrait_rudinn yellow.png",
         "size": [17,16],
         "animations":{
@@ -177,6 +184,7 @@
        {
         "id": "bludinn",
         "name": "Bludinn",
+        "by":"seavil, riggedbones (base)",
         "image": "portrait_bludinn.png",
         "size": [17,16],
         "animations":{
@@ -206,6 +214,7 @@
     {
         "id": "spamton",
         "name": "Spamton",
+        "by":"spamton g. spamton",
         "image": "portrait_spamton.png",
         "size": [24,25],
         "animations":{
@@ -225,6 +234,7 @@
         "id": "tenna",
         "name": "Tenna",
         "image": "portrait_tenna.png",
+        "by":"spamton g. spamton",
         "size": [16,32],
         "animations":{
             "idle":{"pos":3, "frames":2},
@@ -235,6 +245,21 @@
             "sleep": {"pos":0,"frames": 1 }
         },
         "sleepBubble":"sleep_bubbleS"
+    },
+    {
+        "id": "knight",
+        "name": "Knight",
+        "image": "portrait_knight.png",
+        "by":"Lamen",
+        "size": [17,24],
+        "animations":{
+            "idle":{"pos":0, "frames":2},
+            "walk_left":{"pos":4, "frames": 2},
+            "walk_right":{"pos":2, "frames": 2},
+            "walk_up":{"pos":6, "frames": 2},
+            "walk_down":{"pos":0, "frames": 2},
+            "sleep": {"pos":0,"frames": 2 }
+        }
     },
     {
         "id": "bibliox",
@@ -253,6 +278,7 @@
     {
         "id": "wicabel",
         "name": "Wicabel",
+        "by":"seavil",
         "image": "portrait_wicabel.png",
         "size":[21,31],
         "animations":{
@@ -267,6 +293,7 @@
     {
         "id": "flowery",
         "name": "Flowery",
+        "by":"Lamen",
         "image": "portrait_flowery.png",
         "size": [16,16],
         "animations":{
@@ -308,6 +335,7 @@
     {
         "id": "aqua",
         "name": "Aqua",
+        "by":"Sharkartist",
         "image": "portrait_aqua.png",
         "size": [16,16],
         "animations":{
@@ -323,6 +351,7 @@
         "id": "pink",
         "name": "Pink",
         "image": "portrait_pink.png",
+        "by":"Number-1-pink-fan",
         "size":[24, 26],
         "animations":{
             "idle":{"pos":0, "frames":1},
@@ -345,6 +374,7 @@
     {
         "id": "pink (ghost)",
         "name": "Pink (Ghost)",
+        "by":"Number-1-pink-fan",
         "image": "portrait_pink (ghost).png",
         "size":[24, 26],
         "animations":{
@@ -366,9 +396,25 @@
         ]
     },
     {
+        "id": "shi",
+        "name": "Shi",
+        "image": "portrait_shi.png",
+        "by":"Drangev",
+        "size": [16,16],
+        "animations":{
+            "idle":{"pos":0, "frames":2},
+            "walk_left":{"pos":2, "frames": 2},
+            "walk_right":{"pos":4, "frames": 2},
+            "walk_up":{"pos":8, "frames": 2},
+            "walk_down":{"pos":6, "frames": 2},
+            "sleep": {"pos":8,"frames": 2 }
+        }
+    },
+    {
         "id": "kawkaw",
         "name": "KawKaw",
         "image": "portrait_kawkaw.png",
+        "by":"Drangev",
         "size": [16,16],
         "animations":{
             "idle":{"pos":0, "frames":2},
@@ -426,6 +472,7 @@
         "id": "frisk",
         "name": "Frisk",
         "image": "portrait_frisk.png",
+        "by":"Lamen",
         "size": [16,16],
         "animations":{
             "idle":{"pos":0, "frames":2},
@@ -440,6 +487,7 @@
         "id": "flowey",
         "name": "Flowey",
         "image": "portrait_flowey.png",
+        "by":"Lamen",
         "size": [16,16],
         "animations":{
             "idle":{"pos":0, "frames":1},
@@ -454,6 +502,7 @@
         "id": "sans",
         "name":"sans",
         "image": "portrait_sans.png",
+        "by":"Lamen",
         "size":[16,16],
         "animations":{
             "idle":{"pos":0, "frames":2},
@@ -468,6 +517,7 @@
         "id":"papyrus",
         "name":"Papyrus",
         "image": "portrait_papyrus.png",
+        "by":"Lamen",
         "size":[16,21],
         "animations":{
             "idle":{"pos":0, "frames":2},
@@ -482,6 +532,7 @@
         "id": "chara",
         "name": "Chara",
         "image": "portrait_chara.png",
+        "by":"Lamen",
         "size": [16,16],
         "animations":{
             "idle":{"pos":0, "frames":2},
@@ -496,6 +547,7 @@
         "id":"green pluey",
         "name": "Green Pluey",
         "image": "portrait_green pluey.png",
+        "by":"Gionori",
         "size": [16,16],
         "animations":{
             "idle":{"pos":8, "frames":2},
@@ -511,6 +563,7 @@
         "id": "noyno",
         "name": "Noyno",
         "image": "portrait_noyno.png",
+        "by":"Lamen",
         "size": [16,16],
         "animations":{
             "idle":{"pos":0, "frames":2},
@@ -525,6 +578,7 @@
         "id": "jackpins",
         "name": "Jackpins",
         "image": "portrait_jackpins.png",
+        "by":"greenpippins",
         "size": [16,16],
         "animations":{
             "idle":{"pos": 0, "frames": 1},
@@ -553,6 +607,7 @@
         "id": "lamen",
         "name": "Lamen",
         "image": "portrait_lamen.png",
+        "by":"Lamen (obviously)",
         "size": [23,41],
         "animations":{
             "idle":{"pos": 0, "frames":4},

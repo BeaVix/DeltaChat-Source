@@ -69,9 +69,15 @@ body{
 
 .selectedChara {
 	display: flex;
+	flex-direction: column;
 	margin: 0.7rem 0;
 	justify-content: center;
 	align-items: center;
+}
+
+.charCredit{
+	display: none;
+	font-size: 1rem;
 }
 
 /*END NEW STYLES*/
