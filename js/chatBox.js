@@ -4,6 +4,9 @@ import { CommandComponent } from "./commandComponent";
 const chatWindow = document.querySelector("#chatBox")
 const sendButton = document.querySelector("#sendButton")
 const textInput = document.querySelector("#textInput")
+let isScrolling = false
+let autoScroll = false
+let scrollEndTimer;
 
 class ChatBoxComponent{
 	constructor(player, players, room, msg, canvas,updateLastMapChange){
@@ -36,6 +39,14 @@ class ChatBoxComponent{
 				this.player.movementComponent.canMove = true
 			}
 		}
+
+		chatWindow.onscroll = e =>{
+			if(!autoScroll && Math.abs(chatWindow.scrollHeight - chatWindow.clientHeight - chatWindow.scrollTop)>1){
+				isScrolling = true;
+			}else if(Math.abs(chatWindow.scrollHeight - chatWindow.clientHeight - chatWindow.scrollTop)<=1){
+				isScrolling = false
+			}
+		}
 	}
 	evaluateCommand(msg){
 		let args = msg.slice(1).split(" ");
@@ -64,7 +75,7 @@ function displayMessage(nick, msg){
 	}
 	p.textContent = nick + ": " + msg;
 	chatWindow.append(p)
-	chatWindow.scroll(0, chatWindow.scrollHeight)
+	scroll();
 }
 
 function serverMessage(msg, color){
@@ -72,7 +83,15 @@ function serverMessage(msg, color){
 	p.style.color = color;
 	p.textContent = "[CLIENT]: " + msg;
 	chatWindow.append(p)
-	chatWindow.scroll(0, chatWindow.scrollHeight)
+	scroll();
+}
+
+function scroll(){
+	if(!isScrolling){
+		autoScroll = true
+		chatWindow.scroll(0, chatWindow.scrollHeight)
+		autoScroll = false
+	}
 }
 
 export {displayMessage, serverMessage, ChatBoxComponent}

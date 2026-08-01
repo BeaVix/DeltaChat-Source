@@ -39,7 +39,7 @@ class Room{
             newPlayer.grabbing = info.grabbing;
             newPlayer.grabbed = info.grabbed;
             newPlayer.sleep = info.sleep;
-            newPlayer.animationComponent.setAnimation(info.animation)
+            newPlayer.animationComponent.setAnimation(info.animationComponent.animation)
             newPlayer.sfx.volume = this.volumeControl.volume;
             serverMessage(newPlayer.nick+" joined!", "green");
             newPlayer.playSound("snd_power");

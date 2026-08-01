@@ -3,6 +3,7 @@ const volumeSlider = document.querySelector("#sfxVolume");
 class VolumeControl{
     constructor(players){
         this.players = players
+        this.volume = 1
         volumeSlider.addEventListener("change", e => {
             this.volume = volumeSlider.value/100
             this.players.forEach(player => {

@@ -73,7 +73,7 @@ class Canvas{
                 }
             })
         }else if(this.drawQueue.length < this.bg.objects.length + players.length){
-            this.drawQueue.push(...players)
+            this.drawQueue.push(...players.filter(player => !this.drawQueue.includes(player)))
         }
 
         this.clearScreen(players[0]);

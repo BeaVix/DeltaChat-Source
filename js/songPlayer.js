@@ -10,7 +10,13 @@ class songPlayer{
 			"castletown_empty",
 			"castletown",
 			"castle_funk",
-			"paradise_paradise"
+			"paradise_paradise",
+			"flower_cafe",
+			"greenroom",
+			"shop_3",
+			"Castle Town Unfinished",
+			"tv_world",
+			"kris_piano_waitingroom"
 		]
 		this.songIndex = 0;
 

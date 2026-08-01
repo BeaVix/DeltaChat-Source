@@ -39,7 +39,10 @@
             "walk_up":{"pos":6, "frames": 2},
             "walk_down":{"pos":0, "frames": 2},
             "sleep": {"pos":8,"frames": 2 }
-        }
+        },
+        "sfx":[
+            "snd_pombark"
+        ]
     },
     {
         "id": "susie",
@@ -54,7 +57,11 @@
             "walk_down":{"pos":0, "frames": 2},
             "sleep": {"pos":8,"frames": 2 }
         },
-        "sleepBubble": "sleep_bubbleS"
+        "sleepBubble": "sleep_bubbleS",
+        "sfx":[
+            "snd_sussurprise",
+            "snd_suslaugh"
+        ]
     },
     {
         "id": "ralsei",
@@ -69,7 +76,11 @@
             "walk_down":{"pos":0, "frames": 2},
             "sleep": {"pos":8,"frames": 2 }
         },
-        "sleepBubble": "sleep_bubbleR"
+        "sleepBubble": "sleep_bubbleR",
+        "sfx":[
+            "snd_ralseising1",
+            "snd_ralseising2"
+        ]
     },
      {
         "id": "noelle",
@@ -84,7 +95,11 @@
             "walk_up":{"pos":6, "frames": 2},
             "walk_down":{"pos":0, "frames": 2},
             "sleep": {"pos":8,"frames": 2 }
-        }
+        },
+        "sfx":[
+            "snd_noelle_scared"
+        ],
+        "specialSfx": "snd_ominous"
     },
      {
         "id": "berdly",
@@ -259,7 +274,12 @@
             "walk_up":{"pos":6, "frames": 2},
             "walk_down":{"pos":0, "frames": 2},
             "sleep": {"pos":0,"frames": 2 }
-        }
+        },
+        "sfx":[
+            "snd_knight_hurt",
+            "snd_knight_hurtb"
+        ],
+        "specialSfx":"snd_knightroar"
     },
     {
         "id": "bibliox",
@@ -329,7 +349,9 @@
                 "./flowery/snd_flowery_voiceclip_nonono",
                 "./flowery/snd_flowery_voiceclip_sanfran",
                 "./flowery/snd_flowery_voiceclip_itsmeflowery",
-                "./flowery/snd_flowery_voiceclip_im_falling"
+                "./flowery/snd_flowery_voiceclip_im_falling",
+                "./flowery/snd_flowery_voiceclip_say_that_again",
+                "./flowery/snd_flowery_voiceclip_suckle_it_up"
             ]
     },
     {
@@ -496,7 +518,12 @@
             "walk_up":{"pos":1, "frames": 4},
             "walk_down":{"pos":1, "frames": 4},
             "sleep": {"pos":5,"frames": 1 }
-        }
+        },
+        "sfx":[
+            "snd_floweylaugh",
+            "snd_wonderfulidea",
+            "snd_ehurt1"
+        ]
     },
     {
         "id": "sans",
@@ -511,7 +538,10 @@
             "walk_up":{"pos":6, "frames": 2},
             "walk_down":{"pos":0, "frames": 2},
             "sleep": {"pos":8,"frames": 2}
-        }
+        },
+        "sfx":[
+            "mus_rimshot"
+        ]
     },
     {
         "id":"papyrus",

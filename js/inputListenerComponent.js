@@ -67,8 +67,12 @@ class InputListenerComponent{
                     break;
                 case "q":
                     if(this.player.data.sfx){
+                        const specialSfxChance = Math.floor(Math.random() * 100)
                         const index = Math.floor(Math.random()*this.player.data.sfx.length)
-                        const sound = this.player.data.sfx[index]
+                        let sound = this.player.data.sfx[index]
+                        if(specialSfxChance == 1 && this.player.data.specialSfx){
+                           sound = this.player.data.specialSfx
+                        }else
                         this.player.playSound(sound)
                         this.room.actions.playSound.send(sound);
                     }
