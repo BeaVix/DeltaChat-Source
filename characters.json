@@ -11,7 +11,8 @@
             "walk_down":{"pos":0, "frames": 1},
             "sleep": {"pos":0,"frames": 1 }
             
-        }
+        },
+         "sfx":["snd_pinball"]
     },
     {
         "id": "green pippins",
@@ -25,7 +26,8 @@
             "walk_up":{"pos":0, "frames": 1},
             "walk_down":{"pos":0, "frames": 1},
             "sleep": {"pos":0,"frames": 1 }
-        }
+        },
+         "sfx":["snd_pinball"]
     },
     {
         "id": "kris",
@@ -282,6 +284,38 @@
         "specialSfx":"snd_knightroar"
     },
     {
+        "id":"small mike",
+        "name":"Small Mike",
+        "image": "portrait_small mike.png",
+        "by": "greenpippins",
+        "size": [16,16],
+        "animations":{
+            "idle":{"pos":0, "frames":2},
+            "walk_left":{"pos":4, "frames": 2},
+            "walk_right":{"pos":6, "frames": 2},
+            "walk_up":{"pos":8, "frames": 2},
+            "walk_down":{"pos":2, "frames": 2},
+            "sleep": {"pos":10,"frames": 2 }
+        },
+        "sleepBubble":"sleep_bubbleSM"
+    },
+    {
+        "id":"cowboy hat mike",
+        "name":"Cowboy Hat Mike",
+        "image": "portrait_cowboy hat mike.png",
+        "by": "greenpippins",
+        "size": [16,33],
+        "animations":{
+            "idle":{"pos":0, "frames":2},
+            "walk_left":{"pos":4, "frames": 2},
+            "walk_right":{"pos":6, "frames": 2},
+            "walk_up":{"pos":8, "frames": 2},
+            "walk_down":{"pos":2, "frames": 2},
+            "sleep": {"pos":10,"frames": 2 }
+        },
+        "sleepBubble":"sleep_bubbleSM"
+    },
+    {
         "id": "bibliox",
         "name": "Bibliox",
         "image": "portrait_bibliox.png",
@@ -425,11 +459,11 @@
         "size": [16,16],
         "animations":{
             "idle":{"pos":0, "frames":2},
-            "walk_left":{"pos":2, "frames": 2},
-            "walk_right":{"pos":4, "frames": 2},
-            "walk_up":{"pos":8, "frames": 2},
+            "walk_left":{"pos":4, "frames": 2},
+            "walk_right":{"pos":6, "frames": 2},
+            "walk_up":{"pos":2, "frames": 2},
             "walk_down":{"pos":6, "frames": 2},
-            "sleep": {"pos":8,"frames": 2 }
+            "sleep": {"pos":0,"frames": 2 }
         }
     },
     {
@@ -617,7 +651,8 @@
             "walk_up":{"pos":0, "frames": 1},
             "walk_down":{"pos":0, "frames": 1},
             "sleep": {"pos":0,"frames": 1 }
-        }
+        },
+        "sfx":["snd_pinball"]
     },
     {
         "id":"orange rabbick",
