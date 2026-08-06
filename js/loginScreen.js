@@ -43,6 +43,7 @@ randomizeBtn.addEventListener("click", e => {
         codeStr += char;
     }
     roomInput.value = codeStr;
+    localStorage.setItem("roomCode", roomInput.value);
 });
 
 musicVolSlider.addEventListener("change", e =>{
