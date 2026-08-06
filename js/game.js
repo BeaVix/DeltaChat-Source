@@ -13,17 +13,18 @@ const sendButton = document.querySelector("#sendButton")
 const textInput = document.querySelector("#textInput")
 
  class Game{
-    constructor(player, players, room, map, soundOff){
+    constructor(player, players, room, map, musVolume){
         this.player = player;
         this.players = players;
         this.room = room;
-        this.soundOff = soundOff;
+        this.musVolume = musVolume;
         this.lastUpdate = 0
         this.hitBounds = false;
 
         let mapData = maps.find(m => m.id == map)
 
-        this.musicPlayer = new songPlayer(soundOff);
+        this.musicPlayer = new songPlayer();
+        this.musicPlayer.musicPlayer.volume = musVolume/100
         this.inputListenerComponent = new InputListenerComponent(player, players, room, this.musicPlayer.musicPlayer);
         this.bg = new Background(mapData, player.movementComponent);
         this.canvasComponent = new Canvas(this.bg);

@@ -8,12 +8,21 @@ function updateOnline(players){
         const player = players[i];
         const p = document.createElement("p")
         const img = document.createElement("img");
+        const text = document.createTextNode(" "+player.nick)
+        const span = document.createElement("span");
+
         img.style.imageRendering = "crisp-edges";
         img.style.marginLeft = "5px"
         img.style.width = "15px"
         img.src ="portrait_" + player.animationComponent.avatar + ".png"
-        p.textContent = "- "+player.nick + " ID: " + player.id;
+
+        span.textContent = "ID: "+player.id
+        span.style.marginLeft = "1rem"
+
         p.append(img)
+        p.append(text);
+        p.append(span)
+
         onlineList.append(p);
     }
 }

@@ -3,15 +3,34 @@
 	src: url(DeterminationMonoWebRegular-Z5oq.ttf);
 }
 
+@font-face {
+	font-family: 'Deltarune';
+	src: url(deltarune.ttf);
+}
+
+header{
+	font-family: 'Deltarune';
+	text-align: center;
+}
+
+h1:hover{
+	animation: dizzy 1s linear infinite normal both;
+}
+
+.title-clone{
+	display: none;
+}
+
 body{
 	display: flex;
+	flex-direction: column;
 	font-family: 'Determination mono';
 	background-color: rgb(27, 27, 27);
 	color: white;
 	min-height: 90vh;
-	justify-content: center;
 	align-items: center;
 	font-size: 1.4rem;
+	image-rendering: pixelated;
 }
 
 #gameWindow{
@@ -31,6 +50,17 @@ body{
 	display: flex;
 	flex-direction: column;
 	max-width: 440px;
+	row-gap: 1rem;
+}
+
+.group{
+	display: flex;
+	flex-direction: row;
+}
+
+.input-group{
+	display: flex;
+	flex-direction: column;
 }
 
 /*THIS IS THE NEW STUFF FOR THE CHARA SELECT*/
@@ -41,7 +71,6 @@ body{
 
 .character-panel {
 	width: 100%;
-	margin-top: 1rem;
 }
 
 .character-panel .avatar {
@@ -82,24 +111,67 @@ body{
 
 /*END NEW STYLES*/
 
-.chat-container{
-	margin: 5px;
-	max-width: 17%;
-	background-image: url("chat_bg.png");
+details{
+	display: flex;
+	text-align: center;
+	margin-bottom: 1rem;
 }
 
-.chat-window{
+.chat-container{
+	margin: 5px;
 	
+}
+
+input[type="radio"]{
+	position: absolute;
+	opacity: 0;
+}
+
+label:hover{
+	cursor: pointer;
+}
+
+.window{
+	display: none;
+	background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(1, 0, 69, 0.5)), url("chat_bg.png");
 	margin-bottom: 5px;
 	border: 1px dashed rgb(0, 225, 255);
 	overflow-y: scroll;
-	min-height: 100%;
+	min-height: 95%;
 	max-height:200px;
-	max-width: 400px;
-	background-color: rgba(0, 0, 0, 0.655);
+	width: 220px;
 }
 
-.chat-window p{
+.options-window{
+	padding-top: 1rem;
+}
+
+input:checked + label{
+	color: yellow;
+}
+
+
+input:checked[id="chatbutton-music"] ~ .music-window{
+	display: block;
+}
+
+input:checked[id="chatbutton-chat"] ~ .chat-window{
+	display: block;
+}
+
+input:checked[id="chatbutton-chat"] ~ .chat-ui{
+	display: block;
+}
+
+input:checked[id="chatbutton-options"] ~ .options-window{
+	display: block;
+}
+
+.chat-ui{
+	display: none;
+}
+
+.window p, .window span{
 	background-color: black;
 }
 
@@ -115,4 +187,19 @@ body{
 
 #online-list{
 	max-width: 400px;
+}
+
+footer{
+	margin-top: 5rem;
+	text-align: center;
+	color: gray;
+	font-size: 1rem;
+}
+
+@keyframes dizzy {
+	0%{text-shadow:0px 0px}
+	20%{text-shadow:0px 0px 5px}
+	40%{text-shadow:0px 0px 10px}
+	60%{text-shadow:0px 0px 5px}
+	80%{text-shadow:0px 0px 0px}
 }

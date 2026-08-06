@@ -2,16 +2,16 @@ import { Command } from "./command"
 import { updateOnline } from "./onlineSidebar";
 
 class CommandComponent{
-    constructor(player, players, room, msg, canvas){
+    constructor(player, players, room, msg){
         this.player = player;
         this.room = room;
         this.players = players;
         this.msg = msg;
-        this.canvas = canvas;
         this.commands = [
 			new Command("mute", this.mute, 1, "Mute player"), 
 			new Command("leave", this.leaveRoom, 0, "Leave room"),
 			new Command("sleep", this.sleep, 0, "Sleep emote"),
+            new Command("sloop", this.sleep,0,"Sloop emote"),
             new Command("avatar", this.avatar, 1, "Change avatar"),
             new Command("nick", this.nick, 1, "Change nickname"),
             new Command("help", this.help, 0, "Show this list")

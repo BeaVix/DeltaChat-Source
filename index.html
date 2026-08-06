@@ -5,22 +5,34 @@
 		<link href="style.css" rel="stylesheet"/>
 	</head>
 	<body>
+		<header>
+			<h1>deltAchat</h1>
+			<h1 class="title-clone">deltAchat</h1>
+		</header>
 		<div class="container">
 			<div class="setup" id="setup-window">
-				<h1>DELTACHAT</h1>
-				<label for="nickInput">Name</label>
-				<input type="text" naem="nickInput" id="nickInput">
-				<label for="roomInput" >Room code</label>
-				<div class="group">
-					<input type="text" id="roomInput" name="roomInput" value="DUMBWorld" required>
-					<button id="randomizeBtn">Randomize</button>
-					<select id ="map">
+				<div class="input-group">
+					<label for="nickInput">Name</label>
+					<input type="text" naem="nickInput" id="nickInput">
+				</div>
+				<div class="input-group">
+					<label for="roomInput" >Room code</label>
+					<div class="group">
+						<input type="text" id="roomInput" name="roomInput" value="DUMBWorld" required>
+						<div style="text-align: end;"><button id="randomizeBtn">Randomize</button></div>
+					</div>
+				</div>
+					
+				<div class="input-group">
+					<label for="map">Map</label>
+					<select name="map" id ="map">
 						<option value="castletown" selected>Castletown</option>
 						<option value="cafe">Cafe</option>
 					</select>
 				</div>
+				<label for="character-grid">Avatar</label>
 				<div style="display: flex; justify-content: center; gap: 5px; padding: 5px;">
-					<div class="character-panel">
+					<div class="character-panel" name="character-grid">
 
 						<div id="characterGrid" class="character-grid"></div>
 						
@@ -37,19 +49,53 @@
 						
 					</div>
 				</div>
-				<div style="display: flex; justify-content: center;">
-					<label>Mute music</label>
-					<input type="checkbox" id="soundOff" value="true"/>
-				</div>
-				<button id="confirm-nick-btn">Confirm</button>
+				<details>
+					<summary>Game options</summary>	
+					<div>
+						<label for="sound">Music volume</label>
+						<input type="range" min="0" max="100" value="100" id="musicVolume-preGame">
+					</div>
+					<div>
+						<label for="Volume">SFX volume</label>
+						<input type="range" min="0" max="100" value="100" id="sfxVolume-preGame">
+					</div>
+					
+				</details>
+			<button id="confirm-nick-btn">Enter</button>
+			<footer>CHARACTER GRID BY ELANGEL2006</footer>
 			</div> 
 			<div class="chat-container" id="chat-container" style="display:none;">
-				<div class="chat-window" id="chatBox">
+					<input type="radio" name="chatbutton" id="chatbutton-chat" checked>
+					<label for="chatbutton-chat">Chat</label>
+
+					<input type="radio" name="chatbutton" id="chatbutton-music">
+					<label for="chatbutton-music">Music</label>
+					
+					<input type="radio" name="chatbutton" id="chatbutton-options">
+					<label for="chatbutton-options">Options</label>
+				
+				<div class="window chat-window" id="chatBox">
 				</div>
 				<div class="chat-ui">
 					<input type="text" id="textInput">
 					<button id="sendButton">Send</button>
 				</div>
+
+				<div class="window music-window" id="musicBox">
+					<div id="music-container">
+						<p id="now-playing">Now playing: Castletown</p>
+						<div class="button-container">
+							<button id="previous-song">Previous</button>
+							<button id="next-song">Next</button>
+						</div>
+					</div>
+				</div>
+				
+				<div class="window options-window" id="optionsBox">
+					<span>SFX vol:</span>
+					<input type="range" min="0" max="100" value="100" id="sfxVolume">
+				</div>
+
 			</div>
 			<div id="gameWindow" style="display:none; position: relative;" >
 				<canvas id="canvas" width="640" height="454px">
@@ -61,16 +107,6 @@
 				<div id="online-peers">Currently online (<span id="online-number">1</span>):</div>
 				<div id="online-list"></div>
 				<hr>
-				<div id="music-container">
-					<p id="now-playing">Now playing: Castletown</p>
-					<div class="button-container">
-						<button id="previous-song">Previous</button>
-						<button id="next-song">Next</button>
-					</div>
-					<div>
-						<span>SFX vol:</span>
-						<input type="range" min="0" max="100" value="100" id="sfxVolume">
-					</div>
 				</div>
 			</div>
 		</div>

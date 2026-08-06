@@ -8,15 +8,33 @@ const setupScreen = document.querySelector("#setup-window");
 const gameScreen = document.querySelector("#gameWindow");
 const chatBox = document.querySelector("#chat-container");
 const sideBar = document.querySelector("#side-bar");
-const musicChk = document.querySelector("#soundOff");
+const musicVolSlider = document.querySelector("#musicVolume-preGame");
 const portrait = document.querySelector("#portrait");
 const map = document.querySelector("#map");
 const avatarSlct = document.querySelector("#characterName")
+const volumeSlider = document.querySelector("#sfxVolume-preGame")
+
+const musicAudio = new Audio("snd_ralseising1.wav")
+const sfxAudio = new Audio("snd_splat.wav")
 
 const strLen = 9;
 
+const nick = localStorage.getItem("nick") || ""
+const roomCode = localStorage.getItem("roomCode") || "DUMBWorld"
+
+nickInput.value = nick
+roomInput.value = roomCode
+
 let alphanumeric = "ABCDEFGHIJKMNLOPQRSTUVWXYZ1234567890"
 alphanumeric = alphanumeric.split("");
+
+nickInput.addEventListener("change", e=>{
+    localStorage.setItem("nick", nickInput.value);
+})
+
+roomInput.addEventListener("change", e => {
+    localStorage.setItem("roomCode", roomInput.value);
+})
 
 randomizeBtn.addEventListener("click", e => {
     let codeStr = ""
@@ -27,6 +45,18 @@ randomizeBtn.addEventListener("click", e => {
     roomInput.value = codeStr;
 });
 
+musicVolSlider.addEventListener("change", e =>{
+    musicAudio.volume = musicVolSlider.value/100;
+    musicAudio.fastSeek(0)
+    musicAudio.play()
+})
+
+volumeSlider.addEventListener("change", e =>{
+    sfxAudio.volume = volumeSlider.value/100;
+    sfxAudio.fastSeek(0)
+    sfxAudio.play()
+})
+
 confirmBtn.addEventListener("click", e => {
     setupScreen.style.display = "none";
     gameScreen.style.display = "block";
@@ -36,8 +66,10 @@ confirmBtn.addEventListener("click", e => {
     const roomCode = roomInput.value;
     const avatar = avatarSlct.textContent.toLowerCase();
     const mapValue = map.value;
+    const volume = volumeSlider.value
+    const musicVol = musicVolSlider.value
 
     if(roomCode != ""){
-        connectToRoom(roomCode, mapValue, nick, avatar, soundOff)
+        connectToRoom(roomCode, mapValue, nick, avatar, musicVol, volume)
     }
 });
