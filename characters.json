@@ -267,7 +267,7 @@
         "id": "knight",
         "name": "Knight",
         "image": "portrait_knight.png",
-        "by":"Lamen",
+        "by":"Absol",
         "size": [17,24],
         "animations":{
             "idle":{"pos":0, "frames":2},
@@ -296,6 +296,22 @@
             "walk_up":{"pos":8, "frames": 2},
             "walk_down":{"pos":2, "frames": 2},
             "sleep": {"pos":10,"frames": 2 }
+        },
+        "sleepBubble":"sleep_bubbleSM"
+    },
+    {
+        "id":"pluey",
+        "name":"Pluey",
+        "image": "portrait_pluey.png",
+        "by": "spamton g. spamton",
+        "size": [30,24],
+        "animations":{
+            "idle":{"pos":0, "frames":9},
+            "walk_left":{"pos":0, "frames": 9},
+            "walk_right":{"pos":0, "frames": 9},
+            "walk_up":{"pos":0, "frames": 9},
+            "walk_down":{"pos":0, "frames": 9},
+            "sleep": {"pos":9,"frames": 1}
         },
         "sleepBubble":"sleep_bubbleSM"
     },
@@ -347,7 +363,7 @@
     {
         "id": "flowery",
         "name": "Flowery",
-        "by":"Lamen",
+        "by":"Absol",
         "image": "portrait_flowery.png",
         "size": [16,16],
         "animations":{
@@ -528,7 +544,7 @@
         "id": "frisk",
         "name": "Frisk",
         "image": "portrait_frisk.png",
-        "by":"Lamen",
+        "by":"Absol",
         "size": [16,16],
         "animations":{
             "idle":{"pos":0, "frames":2},
@@ -543,7 +559,7 @@
         "id": "flowey",
         "name": "Flowey",
         "image": "portrait_flowey.png",
-        "by":"Lamen",
+        "by":"Absol",
         "size": [16,16],
         "animations":{
             "idle":{"pos":0, "frames":1},
@@ -563,7 +579,7 @@
         "id": "sans",
         "name":"sans",
         "image": "portrait_sans.png",
-        "by":"Lamen",
+        "by":"Absol",
         "size":[16,16],
         "animations":{
             "idle":{"pos":0, "frames":2},
@@ -581,7 +597,7 @@
         "id":"papyrus",
         "name":"Papyrus",
         "image": "portrait_papyrus.png",
-        "by":"Lamen",
+        "by":"Absol",
         "size":[16,21],
         "animations":{
             "idle":{"pos":0, "frames":2},
@@ -596,7 +612,7 @@
         "id": "chara",
         "name": "Chara",
         "image": "portrait_chara.png",
-        "by":"Lamen",
+        "by":"Absol",
         "size": [16,16],
         "animations":{
             "idle":{"pos":0, "frames":2},
@@ -627,7 +643,7 @@
         "id": "noyno",
         "name": "Noyno",
         "image": "portrait_noyno.png",
-        "by":"Lamen",
+        "by":"Absol",
         "size": [16,16],
         "animations":{
             "idle":{"pos":0, "frames":2},
@@ -666,21 +682,6 @@
             "walk_up":{"pos":0, "frames": 1},
             "walk_down":{"pos":0, "frames": 1},
             "sleep": {"pos":0,"frames": 1 }
-        }
-    },
-    {
-        "id": "lamen",
-        "name": "Lamen",
-        "image": "portrait_lamen.png",
-        "by":"Lamen (obviously)",
-        "size": [23,41],
-        "animations":{
-            "idle":{"pos": 0, "frames":4},
-            "walk_left":{"pos": 4, "frames": 4},
-            "walk_right":{"pos":8, "frames":4},
-            "walk_down":{"pos":0, "frames":4},
-            "walk_up":{"pos":12, "frames":4},
-            "sleep":{"pos":0, "frames":1}
         }
     }
 ]
