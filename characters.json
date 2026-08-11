@@ -137,6 +137,26 @@
         ]
     },
     {
+        "id": "ralsei hatless",
+        "name": "Ralsei Hatless",
+        "image": "portrait_ralsei hatless.png",
+        "by": "Absol",
+        "size": [16,16],
+        "animations":{
+            "idle":{"pos":0, "frames":2},
+            "walk_left":{"pos":2, "frames": 2},
+            "walk_right":{"pos":4, "frames": 2},
+            "walk_up":{"pos":6, "frames": 2},
+            "walk_down":{"pos":0, "frames": 2},
+            "sleep": {"pos":8,"frames": 2 }
+        },
+        "sleepBubble": "sleep_bubbleRH",
+        "sfx":[
+            "snd_ralseising1",
+            "snd_ralseising2"
+        ]
+    },
+    {
         "id": "rudinn",
         "name": "Rudinn",
         "image": "portrait_rudinn.png",
@@ -227,6 +247,28 @@
             "walk_down":{"pos":0, "frames": 2},
             "sleep": {"pos":0,"frames": 2 }
         }
+    },
+         {
+        "id": "queen",
+        "name": "queen",
+        "image": "portrait_queen.png",
+        "by":"computerbug",
+        "size": [16,31],
+        "animations":{
+            "idle":{"pos":0, "frames":2},
+            "walk_left":{"pos":14, "frames": 4},
+            "walk_right":{"pos":10, "frames": 4},
+            "walk_up":{"pos":6, "frames": 4},
+            "walk_down":{"pos":2, "frames": 4},
+            "sleep": {"pos":16,"frames": 2}
+        },
+        "sfx":[
+            "snd_queen_laugh_0",
+            "snd_queen_hoot_0",
+            "snd_queen_hoot_1",
+            "snd_queen_hoot_2"
+        ],
+        "specialSfx":"snd_queen_bandicoot"
     },
     {
         "id": "spamton",
@@ -622,6 +664,25 @@
             "walk_down":{"pos":0, "frames": 2},
             "sleep": {"pos":8,"frames": 1 }
         }
+    },
+    {
+        "id": "big shot",
+        "name": "Big Shot",
+        "by":"WWABroadcast",
+        "image": "portrait_big shot.png",
+        "size": [20,25],
+        "animations":{
+            "idle":{"pos":0, "frames":2},
+            "walk_left":{"pos":6, "frames": 2},
+            "walk_right":{"pos":8, "frames": 2},
+            "walk_up":{"pos":4, "frames": 2},
+            "walk_down":{"pos":2, "frames": 2},
+            "sleep": {"pos":10,"frames": 2}
+        },
+        "sleepBubble": "sleep_bubbleSP",
+        "sfx":[
+            "spamton_laugh_noise"
+        ]
     },
     {
         "id":"green pluey",
