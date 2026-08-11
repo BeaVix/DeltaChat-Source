@@ -72,7 +72,7 @@ class InputListenerComponent{
                         let sound = this.player.data.sfx[index]
                         if(specialSfxChance == 1 && this.player.data.specialSfx){
                            sound = this.player.data.specialSfx
-                        }else
+                        }
                         this.player.sound.playSound(sound)
                         this.room.actions.playSound.send(sound);
                     }
