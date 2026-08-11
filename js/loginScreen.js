@@ -13,9 +13,11 @@ const portrait = document.querySelector("#portrait");
 const map = document.querySelector("#map");
 const avatarSlct = document.querySelector("#characterName")
 const volumeSlider = document.querySelector("#sfxVolume-preGame")
+const playerVolSlider = document.querySelector("#playerVolume-preGame") 
 
 const musicAudio = new Audio("snd_ralseising1.wav")
 const sfxAudio = new Audio("snd_splat.wav")
+const playerAudio = new Audio("snd_pombark.wav")
 
 const strLen = 9;
 
@@ -58,6 +60,12 @@ volumeSlider.addEventListener("change", e =>{
     sfxAudio.play()
 })
 
+playerVolSlider.addEventListener("change", e =>{
+    playerAudio.volume = playerVolSlider.value/100;
+    playerAudio.fastSeek(0)
+    playerAudio.play()
+})
+
 confirmBtn.addEventListener("click", e => {
     setupScreen.style.display = "none";
     gameScreen.style.display = "block";
@@ -69,8 +77,9 @@ confirmBtn.addEventListener("click", e => {
     const mapValue = map.value;
     const volume = volumeSlider.value
     const musicVol = musicVolSlider.value
+    const playerVol = playerVolSlider.value
 
     if(roomCode != ""){
-        connectToRoom(roomCode, mapValue, nick, avatar, musicVol, volume)
+        connectToRoom(roomCode, mapValue, nick, avatar, musicVol, volume, playerVol)
     }
 });

@@ -4,14 +4,15 @@ import { updateOnline } from './onlineSidebar';
 import { Player } from './Player';
 import { Game } from './game';
 import { displayMessage, serverMessage } from './chatBox';
-import { VolumeControl } from "./volumeControl";
 import maps from "./../maps.json"
+import { SoundComponent } from './soundComponent';
 
 const roomId = document.querySelector("#room-id")
+const sfxVolume = document.querySelector("#sfxVolume")
 
 let players = []
 
-function connectToRoom(roomCode, map, nick, avatar,soundOff, volume){
+function connectToRoom(roomCode, map, nick, avatar,musVol, volume, playerVol){
     const roomConfig = {
         appId: 'com.trystero-demo.lol',
 
@@ -36,17 +37,19 @@ function connectToRoom(roomCode, map, nick, avatar,soundOff, volume){
 
     roomId.textContent ="ROOM: "+ roomCode;
 
-    const volumeControl = new VolumeControl(players);
+    const globalSFX = new SoundComponent(sfxVolume);
+    globalSFX.setVolume(volume)
 
     let frames = 2
     const player = new Player(selfId, nick, avatar, frames);
-    const room = new Room(roomI, roomCode,roomConfig,  players, player, map, volumeControl);
-    const game= new Game(player, players, room, map, soundOff);
+    const room = new Room(roomI, roomCode,roomConfig,  players, player, map, globalSFX);
+    const game= new Game(player, players, room, map, musVol);
     
+    player.sound.setVolume(playerVol);
+
     players.push(player);
     room.actions.playerInfo.send(player);   //send player data to all peers
-    updateOnline(players) 
-    volumeControl.setVolume(volume)
+    updateOnline(players)
 }
 
 export {connectToRoom}

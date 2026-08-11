@@ -7,6 +7,7 @@ import { joinRoom } from "trystero";
 import { updateOnline } from "./onlineSidebar";
 import { Room } from "./Room";
 import maps from "./../maps.json";
+import { SoundComponent } from "./soundComponent";
 
 
 const sendButton = document.querySelector("#sendButton")

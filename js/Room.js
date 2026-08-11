@@ -3,14 +3,14 @@ import { Player } from "./Player";
 import { displayMessage, serverMessage } from "./chatBox";
 import { updateOnline } from "./onlineSidebar";
 class Room{
-    constructor(room, roomCode, roomConfig, players, player, bg, volumeControl){
+    constructor(room, roomCode, roomConfig, players, player, bg, globalSFX){
         this.room = room;
         this.roomConfig = roomConfig
         this.roomCode = roomCode
         this.player = player;
         this.players = players
         this.bg = bg
-        this.volumeControl = volumeControl
+        this.globalSFX = globalSFX
 
         this.actions = {}
         this.actions.chat = room.makeAction("chat");
@@ -40,9 +40,8 @@ class Room{
             newPlayer.grabbed = info.grabbed;
             newPlayer.sleep = info.sleep;
             newPlayer.animationComponent.setAnimation(info.animationComponent.animation)
-            newPlayer.sfx.volume = this.volumeControl.volume;
             serverMessage(newPlayer.nick+" joined!", "green");
-            newPlayer.playSound("snd_power");
+            this.globalSFX.playSound("snd_power");
             players.push(newPlayer);
             updateOnline(players);
         }
@@ -74,7 +73,7 @@ class Room{
         const player = this.getById(peerId);
         if(!player.muted){
             displayMessage(nick, msg);
-            player.playSound("snd_board_text_main_end")
+            this.globalSFX.playSound("snd_board_text_main_end")
             player.chatComponent.setMessage(msg);
         }
     }
@@ -115,7 +114,7 @@ class Room{
         grabbed.grabbedBy = peerId;
         
         grabber.grabbing = target;
-        grabber.playSound("snd_board_lift")
+        grabber.sound.playSound("snd_board_lift")
     })
 
     this.actions.release.onMessage = ({ side, target}, {peerId}) =>{
@@ -138,7 +137,7 @@ class Room{
 			break;
 		}
         released.movementComponent.movement[1] = -1
-        released.playSound("snd_board_throw");
+        released.sound.playSound("snd_board_throw");
         setTimeout(()=>{
             released.movementComponent.movement[1] = 1
             const interval = setInterval(()=>{
@@ -179,7 +178,7 @@ class Room{
 
     this.actions.playSound.onMessage = (sound, {peerId}) => {
         const playing = this.getById(peerId);
-        playing.playSound(sound);
+        playing.sound.playSound(sound);
     }
     }
     getById(id){

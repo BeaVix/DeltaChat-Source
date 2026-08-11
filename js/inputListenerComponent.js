@@ -54,7 +54,7 @@ class InputListenerComponent{
                             playerTest.animationComponent.rotation = 90;
                             playerTest.movementComponent.pos = this.player.movementComponent.pos
                             this.room.actions.grab.send(playerTest.id)
-                            this.player.playSound("snd_board_lift")
+                            this.player.sound.playSound("snd_board_lift")
                         }
                     }else{
                         this.room.actions.release.send({side: this.player.movementComponent.lastMovement, target: this.player.grabbing})
@@ -73,7 +73,7 @@ class InputListenerComponent{
                         if(specialSfxChance == 1 && this.player.data.specialSfx){
                            sound = this.player.data.specialSfx
                         }else
-                        this.player.playSound(sound)
+                        this.player.sound.playSound(sound)
                         this.room.actions.playSound.send(sound);
                     }
                 default:

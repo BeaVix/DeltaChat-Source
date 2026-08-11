@@ -3,6 +3,9 @@ import { MovementComponent } from "./movementComponent";
 import { PlayerAnimation } from "./playerAnimation";
 import { AnimationComponent } from "./animationComponent";
 import characterData from "./../characters.json";
+import { SoundComponent } from "./soundComponent";
+
+const playerVolume = document.querySelector("#playerVolume")
 class Player{
     constructor(id, nick, avatar, frames, initialPos){
         this.id = id;
@@ -14,10 +17,10 @@ class Player{
         this.muted = false;
         
         this.chatComponent = new ChatComponent();
+        this.sound = new SoundComponent(playerVolume);
         this.grabbedBy;
         this.grabbing;
-        this.sfx = new Audio();
-        this.sfx.autoplay = true;
+
         
         this.sleep = false;
         let sleepBubble = "sleep_bubbleK"
@@ -35,10 +38,6 @@ class Player{
     }
     release(){
         this.grabbing = undefined;
-    }
-
-    playSound(src){
-        this.sfx.src = src + ".wav"
     }
 
     setAvatar(avatar){
@@ -59,6 +58,9 @@ class Player{
                 this.animationComponent.setAvatar(avatar)
                 this.animationComponent.size = this.data.size
                 this.animationComponent.animations = this.data.animations
+                if(this.data.sleepBubble){
+                    this.sleepBubble.setAvatar(this.data.sleepBubble)
+                }
             }
         }
         return found
