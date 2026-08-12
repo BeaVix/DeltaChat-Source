@@ -81,15 +81,18 @@ class Canvas{
         //y-sort sprites
             this.drawQueue.sort((a,b) => {
             if(a instanceof Player && !(b instanceof Player)){
-                return (a.movementComponent.pos[1] + a.animationComponent.size[1]*2) - ( (b.data.pos[1] + b.data.size[1])*b.data.scale )
+                return (a.movementComponent.pos[1] + a.animationComponent.size[1]*2) - (b.data.pos[1]+ b.data.size[1] )*b.data.scale 
+                console.log(b.data.pos[1])
             }else if( b instanceof Player && !(a instanceof Player)){
-                return ( (a.data.pos[1] + a.data.size[1])*a.data.scale) - (b.movementComponent.pos[1] + b.animationComponent.size[1]*2)
+                return ( a.data.pos[1] + a.data.size[1])*a.data.scale - (b.movementComponent.pos[1] + b.animationComponent.size[1]*2)
             }else if (a instanceof Player && b instanceof Player){
                 return a.movementComponent.pos[1] - b.movementComponent.pos[1]
             }else{
-                return  a.data.pos[1]- b.data.pos[1]
+                return  a.data.pos[1]*a.data.scale - b.data.pos[1]*b.data.scale
             }
         })
+
+        console.log(players[0].movementComponent.pos[1])
 
         //Draw objects in the queue
         this.drawQueue.forEach(object => {
