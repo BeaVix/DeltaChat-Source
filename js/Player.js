@@ -60,6 +60,8 @@ class Player{
                 this.animationComponent.animations = this.data.animations
                 if(this.data.sleepBubble){
                     this.sleepBubble.setAvatar(this.data.sleepBubble)
+                }else{
+                    this.sleepBubble.setAvatar("sleep_bubbleK")
                 }
             }
         }
