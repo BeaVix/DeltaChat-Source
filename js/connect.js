@@ -27,8 +27,8 @@ function connectToRoom(roomCode, map, nick, avatar,musVol, volume, playerVol){
 			"turn:turn.cloudflare.com:80?transport=tcp",
 			"turns:turn.cloudflare.com:443?transport=tcp"
 			],
-            "username":"g02a32ec65a19a193bf8a74b5009c8b33081b80fdc4d74b169a9d5eeedaf6fa8",
-            "credential":"321d6b13183dc5136ce241e4530d4e0a3772687f69bd6c2c9643c2571c89c132"
+            "username":"g07638b83f8ae846e8b8544098ae19891c044a42d5e4c8548576b21bbf890659",
+            "credential":"edb8f5bf62b9838c015b885c17aa2082f92dbec978266607033140d24a8d1ac2"
         }
         ]
 }
@@ -43,7 +43,7 @@ function connectToRoom(roomCode, map, nick, avatar,musVol, volume, playerVol){
     let frames = 2
     const player = new Player(selfId, nick, avatar, frames);
     const room = new Room(roomI, roomCode,roomConfig,  players, player, map, globalSFX);
-    const game= new Game(player, players, room, map, musVol);
+    const game= new Game(player, players, room, map, musVol, globalSFX);
     
     player.sound.setVolume(playerVol);
 

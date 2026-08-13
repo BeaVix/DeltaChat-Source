@@ -14,13 +14,14 @@ const sendButton = document.querySelector("#sendButton")
 const textInput = document.querySelector("#textInput")
 
  class Game{
-    constructor(player, players, room, map, musVolume){
+    constructor(player, players, room, map, musVolume, globalSfx){
         this.player = player;
         this.players = players;
         this.room = room;
         this.musVolume = musVolume;
         this.lastUpdate = 0
         this.hitBounds = false;
+        this.globalSfx = globalSfx
 
         let mapData = maps.find(m => m.id == map)
 
@@ -67,10 +68,6 @@ const textInput = document.querySelector("#textInput")
             
             obj.room.actions.move.send(obj.player.movementComponent.pos)
         }
-        let newMap;
-        if(newMap){
-            obj.loadMap(newMap)
-        }
 
         obj.lastUpdate = timestamp;
 
@@ -85,24 +82,24 @@ const textInput = document.querySelector("#textInput")
         const finalRoomCode = this.room.roomCode + "_"+newMap 
         const roomConfig = this.room.roomConfig
         const roomCode = this.room.roomCode;
-        const newRoom = joinRoom(this.room.roomConfig, finalRoomCode)
-        this.room = new Room(newRoom, roomCode, roomConfig, this.players, this.player, newMap)
-        this.inputListenerComponent.room = this.room;
-        this.chatBoxComponent.room = this.room;
+        
         let mapData = maps.find(m => m.id == newMap)
+        let spawnPos = mapData.spawnPos[this.bg.id];
        
-        this.player.movementComponent.pos = mapData.spawnPos[this.bg.id];
-        this.bg.objects = mapData.objects
+        this.bg = new Background(mapData, this.player.movementComponent);
+
         this.loaders = this.bg.objects.filter((object) => object.type == "levelLoader")
+        this.player.movementComponent.pos = structuredClone(spawnPos)   //COPY THE VALUE NOT THE REFERENCE TO THE VALUE!!
+        
+        this.canvasComponent.bg = this.bg;
         this.canvasComponent.setDrawQueue()
         
-        this.bg.id = mapData.id
+        const newRoom = joinRoom(this.room.roomConfig, finalRoomCode)
+        this.room = new Room(newRoom, roomCode, roomConfig, this.players, this.player, newMap, this.globalSfx)
+        this.inputListenerComponent.room = this.room;
+        this.chatBoxComponent.room = this.room;
 
-        this.room.actions.playerInfo.send(this.player);
-        
-        this.bg.animationComponent.setAvatar(mapData.image)
-        this.bg.animationComponent.frames = mapData.frames
-        
+        updateOnline(this.players)
     }
 }
 

@@ -11,8 +11,6 @@ class Canvas{
         this.bg = bg;
         this.cameraPosition = [0,0]
         this.cameraSize = [320, 240]
-
-        this.setDrawQueue();
     }
 
     setDrawQueue(){
@@ -64,17 +62,8 @@ class Canvas{
     /*Draws frame*/
     draw(timestamp, players){
         //Check if size of draw queue is consistent with number of objects to draw
-        if(this.drawQueue.length > this.bg.objects.length + players.length){
-            this.drawQueue = this.drawQueue.filter(object =>{
-                if (object instanceof Player){
-                    return players.find(player => object.id == player.id)
-                }else{
-                    return true;
-                }
-            })
-        }else if(this.drawQueue.length < this.bg.objects.length + players.length){
-            this.drawQueue.push(...players.filter(player => !this.drawQueue.includes(player)))
-        }
+        this.setDrawQueue()
+        this.drawQueue.push(...players)
 
         this.clearScreen(players[0]);
         

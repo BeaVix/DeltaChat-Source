@@ -64,6 +64,13 @@
                 "size":[79,83],
                 "frames": 0,
                 "scale": 1
+            },
+            {
+                "name": "mapLoader_cafe",
+                "type": "levelLoader",
+                "map":"cafe",
+                "pos": [238,293],
+                "size": [10,5]
             }
         ]
     },
@@ -73,7 +80,7 @@
         "image": "cafe",
         "frames": 1,
         "initialPos":[0,0],
-        "spawnPos":{"castletown": [224,225]},
+        "spawnPos":{"castletown": [460,400]},
         "hitboxes":[
             {
                 "pos":[0,-10],
@@ -117,7 +124,7 @@
                 "frames": 4,
                 "scale": 2
             },
-                        {
+            {
                 "name": "desk",
                 "image":"cafe_desk",
                 "pos":[364,109],
@@ -133,6 +140,13 @@
                 "type": "Jukebox",
                 "frames":1,
                 "scale":1
+            },
+            {
+                "name":"mapLoader_castletown",
+                "type":"levelLoader",
+                "pos":[410,460],
+                "size":[100,10],
+                "map":"castletown"
             }
         ]
     }
