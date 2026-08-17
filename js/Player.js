@@ -67,6 +67,8 @@ class Player{
                 }else{
                     this.sleepBubble.setAvatar("sleep_bubbleK")
                 }
+                let typingBubble = this.data.typingBubble ? this.data.typingBubble : "typing_bubbleK";
+                this.typingBubble.setAvatar(typingBubble);
             }
         }
         return found
