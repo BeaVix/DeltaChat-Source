@@ -2,6 +2,7 @@ const nextSongBtn = document.querySelector("#next-song");
 const previousSongBtn = document.querySelector("#previous-song");
 const nowPlaying = document.querySelector("#now-playing");
 const container = document.querySelector("#music-container");
+const musPlayerButtons = document.querySelector("#musPlayerButtons");
 
 class songPlayer{
 	constructor(soundOff){
@@ -37,7 +38,7 @@ class songPlayer{
 			}else{
 				this.songIndex = 0;
 			}
-			this.changeSong(this.songIndex);
+			this.changeSong();
 		}
 
 		previousSongBtn.onclick = e => {
@@ -46,12 +47,30 @@ class songPlayer{
 			}else{
 				this.songIndex = this.songs.length-1;
 			}
-			this.changeSong(this.songIndex)
+			this.changeSong()
 		}
 	}
-	changeSong(){
+	changeSong(song=null){
+		if(!song){
 			this.musicPlayer.src = this.songs[this.songIndex] + ".ogg";
 			nowPlaying.textContent = "Now playing: "+this.songs[this.songIndex];
+		}else{
+			this.musicPlayer.src = song + ".ogg";
+			nowPlaying.textContent = "Now playing: "+song
+		}
+
+	}
+
+	toggleControls(){
+		if(musPlayerButtons.style.display == "block"){
+			musPlayerButtons.style.display = "none"
+		}else{
+			musPlayerButtons.style.display = "block"
+		}
+	}
+
+	getControlsVisibility(){
+		return musPlayerButtons.style.display
 	}
 }
 

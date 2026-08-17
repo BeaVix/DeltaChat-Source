@@ -38,6 +38,8 @@ const textInput = document.querySelector("#textInput")
             this.canvasComponent.setCanvas()
         })
 
+        this.loadMusicConf(mapData.musicConf)
+
         requestAnimationFrame((timestamp) => this.gameLoop(timestamp, this))
         
     }
@@ -85,6 +87,8 @@ const textInput = document.querySelector("#textInput")
         
         let mapData = maps.find(m => m.id == newMap)
         let spawnPos = mapData.spawnPos[this.bg.id];
+
+        this.loadMusicConf(mapData.musicConf)
        
         this.bg = new Background(mapData, this.player.movementComponent);
 
@@ -100,6 +104,25 @@ const textInput = document.querySelector("#textInput")
         this.chatBoxComponent.room = this.room;
 
         updateOnline(this.players)
+    }
+
+    loadMusicConf(musicConf){
+        if(musicConf){
+            let song = musicConf.song;
+            if(typeof song === "number"){
+                this.musicPlayer.songIndex = song
+                this.musicPlayer.changeSong()
+            }else{
+                this.musicPlayer.changeSong(song)
+            }
+
+            if((this.musicPlayer.getControlsVisibility() == "block" && !musicConf.controls) || (this.musicPlayer.getControlsVisibility() == "none" && musicConf.controls) ){
+                this.musicPlayer.toggleControls()
+            }
+        }else if(this.musicPlayer.getControlsVisibility() == "none"){
+            this.musicPlayer.toggleControls()
+            this.musicPlayer.changeSong();
+        }
     }
 }
 

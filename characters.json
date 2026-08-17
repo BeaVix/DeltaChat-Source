@@ -137,6 +137,25 @@
         ]
     },
     {
+        "id": "kris lw",
+        "name": "Kris lw",
+        "image": "portrait_krislw.png",
+        "by": "Absol",
+        "size": [16,16],
+        "animations":{
+            "idle":{"pos":0, "frames":2},
+            "walk_left":{"pos":2, "frames": 2},
+            "walk_right":{"pos":4, "frames": 2},
+            "walk_up":{"pos":6, "frames": 2},
+            "walk_down":{"pos":0, "frames": 2},
+            "sleep": {"pos":8,"frames": 2 }
+        },
+        "sleepBubble": "sleep_bubbleKL",
+        "sfx":[
+            "snd_pombark"
+        ]
+    },
+    {
         "id": "ralsei hatless",
         "name": "Ralsei Hatless",
         "image": "portrait_ralsei hatless.png",
@@ -155,6 +174,22 @@
             "snd_ralseising1",
             "snd_ralseising2"
         ]
+    },
+    {
+        "id": "starwalker",
+        "name": "Starwalker",
+        "image": "portrait_starwalker.png",
+        "by":"Absol",
+        "size": [16,16],
+        "animations":{
+            "idle":{"pos":0, "frames":8},
+            "walk_left":{"pos":0, "frames":8},
+            "walk_right":{"pos":0, "frames":8},
+            "walk_up":{"pos":0, "frames":8},
+            "walk_down":{"pos":0, "frames":8},
+            "sleep": {"pos":0,"frames":8 }
+        },
+        "sleepBubble": "sleep_bubbleSW"
     },
     {
         "id": "rudinn",
