@@ -86,6 +86,7 @@ class Canvas{
                 this.drawPlayer(object)
                 object.animationComponent.update(timestamp)
                 object.sleepBubble.update(timestamp)
+                object.typingBubble.update(timestamp)
             }else{
                 this.c.scale(object.data.scale,object.data.scale)
                 if(object.data.frames){
@@ -166,6 +167,13 @@ class Canvas{
                 this.c.drawImage(player.sleepBubble.sprite, x, y-16)
             }else{
                 this.c.drawImage(player.sleepBubble.sprite, x, y-17)
+            }
+        }
+        if(player.isTyping){
+            if(!player.typingBubble.currentFrame){
+                this.c.drawImage(player.typingBubble.sprite, x, y-16)
+            }else{
+                this.c.drawImage(player.typingBubble.sprite, x, y-17)
             }
         }
         this.drawText(x+width/2, y+height+8, player.nick,"#000000","#ffff00");     //Draws nickname

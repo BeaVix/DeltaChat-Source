@@ -100,13 +100,23 @@ class InputListenerComponent{
         }
         if(e.key.toLowerCase() == "enter"){
             sendButton.click();
+            this.player.isTyping = false;
         }else if(e.key == "Escape"){
             if(textInput == document.activeElement){
                 textInput.blur();
             }
         }
-
 });
+
+    textInput.addEventListener("input", e => {
+        if(textInput.value != ""){
+            this.player.isTyping = true;
+            this.room.actions.typing.send("");
+        }else{
+            this.player.isTyping = false;
+        }
+    })
+
     window.addEventListener("keyup", e =>{
         if(this.movementComponent.canMove && !this.movementComponent.animationPlaying){
             switch(e.key.toLowerCase()){

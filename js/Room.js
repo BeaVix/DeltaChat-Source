@@ -24,6 +24,7 @@ class Room{
         this.actions.grab = room.makeAction("grab");
         this.actions.release = room.makeAction("release");
         this.actions.playSound = room.makeAction("playSound");
+        this.actions.typing = room.makeAction("typing");
 
 
     //Send player data to new peer
@@ -75,8 +76,14 @@ class Room{
             displayMessage(nick, msg);
             this.globalSFX.playSound("snd_board_text_main_end")
             player.chatComponent.setMessage(msg);
+            player.isTyping = false;
         }
     }
+
+    this.actions.typing.onMessage = ((o,{peerId}) =>{
+        const player = this.getById(peerId)
+        player.isTyping = true;
+    })
 
     //Update animations
     this.actions.animationChanged.onMessage = ((animation, {peerId}) => {

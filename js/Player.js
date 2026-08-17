@@ -22,6 +22,10 @@ class Player{
         this.grabbing;
 
         
+        this.isTyping = false;
+        let typingBubble = this.data.typingBubble ? this.data.typingBubble: "typing_bubbleK";
+        this.typingBubble = new AnimationComponent(2,typingBubble, [16,16])
+
         this.sleep = false;
         let sleepBubble = "sleep_bubbleK"
         if(this.data.sleepBubble){

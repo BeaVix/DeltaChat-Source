@@ -60,6 +60,7 @@
             "sleep": {"pos":8,"frames": 2 }
         },
         "sleepBubble": "sleep_bubbleS",
+        "typingBubble": "typing_bubbleS",
         "sfx":[
             "snd_sussurprise",
             "snd_suslaugh"
@@ -79,6 +80,7 @@
             "sleep": {"pos":8,"frames": 2 }
         },
         "sleepBubble": "sleep_bubbleR",
+        "typingBubble": "typing_bubbleR",
         "sfx":[
             "snd_ralseising1",
             "snd_ralseising2"
@@ -151,6 +153,7 @@
             "sleep": {"pos":8,"frames": 2 }
         },
         "sleepBubble": "sleep_bubbleKL",
+        "typingBubble": "typing_bubbleKL",
         "sfx":[
             "snd_pombark"
         ]
@@ -170,6 +173,7 @@
             "sleep": {"pos":8,"frames": 2 }
         },
         "sleepBubble": "sleep_bubbleRH",
+        "typingBubble": "typing_bubbleRH",
         "sfx":[
             "snd_ralseising1",
             "snd_ralseising2"
@@ -189,7 +193,8 @@
             "walk_down":{"pos":0, "frames":8},
             "sleep": {"pos":0,"frames":8 }
         },
-        "sleepBubble": "sleep_bubbleSW"
+        "sleepBubble": "sleep_bubbleSW",
+        "typingBubble": "typing_bubbleSW"
     },
     {
         "id": "rudinn",
@@ -205,7 +210,8 @@
             "walk_down":{"pos":6, "frames": 2},
             "sleep": {"pos":10,"frames": 2 }
         },
-        "sleepBubble":"sleep_bubbleR"
+        "sleepBubble":"sleep_bubbleR",
+        "typingBubble": "typing_bubbleR"
     },
     {
         "id": "rudinn red",
@@ -221,7 +227,8 @@
             "walk_down":{"pos":6, "frames": 2},
             "sleep": {"pos":10,"frames": 2 }
         },
-        "sleepBubble":"sleep_bubbleS"
+        "sleepBubble":"sleep_bubbleS",
+        "typingBubble": "typing_bubbleS"
     },{
         "id": "rudinn blue",
         "name": "Rudinn Blue",
@@ -250,8 +257,7 @@
             "walk_up":{"pos":8, "frames": 2},
             "walk_down":{"pos":6, "frames": 2},
             "sleep": {"pos":10,"frames": 2 }
-        },
-        "sleepBubble":"sleep_bubbleS"
+        }
     },
        {
         "id": "bludinn",
@@ -266,8 +272,7 @@
             "walk_up":{"pos":8, "frames": 2},
             "walk_down":{"pos":6, "frames": 2},
             "sleep": {"pos":10,"frames": 2 }
-        },
-        "sleepBubble":"sleep_bubbleS"
+        }
     },
     {
         "id": "rabbick",
@@ -320,6 +325,7 @@
             "sleep": {"pos":7,"frames": 1 }
         },
         "sleepBubble": "sleep_bubbleSP",
+        "typingBubble": "typing_bubbleSP",
         "sfx":[
             "spamton_laugh_noise"
         ]
@@ -338,7 +344,7 @@
             "walk_down":{"pos":7, "frames": 2},
             "sleep": {"pos":0,"frames": 1 }
         },
-        "sleepBubble":"sleep_bubbleS"
+        "sleepBubble":"sleep_bubbleRH"
     },
     {
         "id": "knight",
@@ -374,7 +380,8 @@
             "walk_down":{"pos":2, "frames": 2},
             "sleep": {"pos":10,"frames": 2 }
         },
-        "sleepBubble":"sleep_bubbleSM"
+        "sleepBubble":"sleep_bubbleSM",
+        "typingBubble": "typing_bubbleSM"
     },
     {
         "id":"pluey",
@@ -390,7 +397,8 @@
             "walk_down":{"pos":0, "frames": 9},
             "sleep": {"pos":9,"frames": 1}
         },
-        "sleepBubble":"sleep_bubbleSM"
+        "sleepBubble":"sleep_bubbleSM",
+        "typingBubble": "typing_bubbleSM"
     },
     {
         "id":"cowboy hat mike",
@@ -406,7 +414,8 @@
             "walk_down":{"pos":2, "frames": 2},
             "sleep": {"pos":10,"frames": 2 }
         },
-        "sleepBubble":"sleep_bubbleSM"
+        "sleepBubble":"sleep_bubbleSM",
+        "typingBubble": "typing_bubbleSM"
     },
     {
         "id": "bibliox",
@@ -715,6 +724,7 @@
             "sleep": {"pos":10,"frames": 2}
         },
         "sleepBubble": "sleep_bubbleSP",
+        "typingBubble": "typing_bubbleSP",
         "sfx":[
             "spamton_laugh_noise"
         ]
@@ -733,7 +743,8 @@
             "walk_down":{"pos":0, "frames": 2},
             "sleep": {"pos":10,"frames": 2}
         },
-        "sleepBubble":"sleep_bubbleR"
+        "sleepBubble":"sleep_bubbleR",
+        "typingBubble": "typing_bubbleR"
     },
     {
         "id": "noyno",
