@@ -3,6 +3,8 @@ import { AnimationComponent } from "./animationComponent";
 import { Background } from "./bg";
 import { Player } from "./Player";
 
+import emotes from "./../emotes.json";
+
 class Canvas{
     constructor(bg){
         this.canvas = document.querySelector("#canvas");
@@ -102,36 +104,64 @@ class Canvas{
         this.bg.animationComponent.update(timestamp)
     }
 
-    drawText(x, y, str, strokeColor = "#000000", color="#ffffff",size="10px",font="Determination mono") {
+    drawText(x, y, str, strokeColor = "#000000", color="#ffffff", opacity="255",size="10px",font="Determination mono") {
         if(str){
+            this.c.save()
             const maxWidth = 100;    //pixels per lines
             this.c.font = size + " " + font
             this.c.strokeStyle= strokeColor
             this.c.linewidth = 8
+            this.c.globalAlpha = opacity/255
             let words = str.split(" ");
             let lines = [];
-            let currentLine = words[0];
+            let currentLine = "";
+            let txtEmotes = [];
 
             //wrap text
-            for (let i = 1; i < words.length; i++) {
-                let word = words[i];
-                let width = this.c.measureText(currentLine + " " + word).width;
-                if (width < maxWidth) {
-                    currentLine += " " + word;
-                } else {
-                    lines.push(currentLine);
-                    currentLine = word;
+            words.forEach((word, i) => {
+                let emote = emotes.find(e => ":"+e.id+":" == word);
+                if(emote){
+                    let image = new Image();
+                    image.src = emote.src;
+                    let scale = emote.scale;
+                    console.log(scale)
+                    let replacement = " ";
+                        while(this.c.measureText(replacement).width < image.width/scale){
+                            replacement += " ";
+                        }
+                    word = replacement;
+                    let charW = this.c.measureText(" ").width;
+                    let offset = this.c.measureText(currentLine).width - (this.c.measureText(currentLine).actualBoundingBoxLeft)
+                    txtEmotes.push({img: image, offset: offset, scale: scale})
                 }
-            }
-            lines.push(currentLine);
+                let width = i ? this.c.measureText(currentLine + " " + word).width : 0;
+                if (width < maxWidth) {
+                    currentLine += " "+ word;
+                } else {
+                    lines.push({txt: currentLine, emotes: txtEmotes});
+                    currentLine = word;
+                    txtEmotes = [];
+                }
+            })
+            lines.push({txt: currentLine, emotes: txtEmotes});
 
             for (let i = lines.length; i > 0; i--) {
-                const line = lines[i-1];
+                let line = lines[i-1];
                 const height = y + 10*(i-lines.length);
-                this.c.strokeText(line, x, height);
+
+                line.emotes.forEach(emote => {
+                    let image = emote.img;
+                    let offset = x+emote.offset;
+                    let scale = emote.scale
+                    this.c.drawImage(image, offset-image.width/scale, height-image.height/scale, image.width/scale, image.height/scale)
+                });
+                
+
+                this.c.strokeText(line.txt, x, height);
                 this.c.fillStyle = color;
-                this.c.fillText (line, x, height);    
+                this.c.fillText (line.txt, x, height);    
             }
+            this.c.restore();
         }
 
     }
@@ -177,7 +207,8 @@ class Canvas{
             }
         }
         this.drawText(x+width/2, y+height+8, player.nick,"#000000","#ffff00");     //Draws nickname
-        this.drawText(x+8, y-5,chat.message, chat.messageBorder+chat.messageOpacity, chat.messageColor+chat.messageOpacity);    //Draws message
+
+        this.drawText(x+8, y-5,chat.message, chat.messageBorder, chat.messageColor, chat.messageOpacityD);    //Draws message
 
     }
 }

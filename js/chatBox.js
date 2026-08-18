@@ -1,5 +1,6 @@
 import { Command } from "./command";
 import { CommandComponent } from "./commandComponent";
+import emotes from "./../emotes.json";
 
 const chatWindow = document.querySelector("#chatBox")
 const sendButton = document.querySelector("#sendButton")
@@ -69,11 +70,24 @@ class ChatBoxComponent{
 
 function displayMessage(nick, msg){
 	const p = document.createElement("p");
+
 	nick = nick.slice(0,15)
 	if(nick.length > 15){
 		nick += "..." 
 	}
-	p.textContent = nick + ": " + msg;
+	p.textContent = nick + ": ";
+
+	msg = msg.split(" ")
+	msg.forEach((word,i) => {
+		let emote = emotes.find(e => ":"+e.id+":" == word);
+		if(emote){
+			const img =  document.createElement("img");
+			img.src = emote.src
+			p.append(img)
+		}else{
+			p.textContent += word
+		}
+	});
 	chatWindow.append(p)
 	scroll();
 }
