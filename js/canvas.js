@@ -116,10 +116,12 @@ class Canvas{
             let lines = [];
             let currentLine = "";
             let txtEmotes = [];
+            let counter = 0;
 
             //wrap text
             words.forEach((word, i) => {
                 let emote = emotes.find(e => ":"+e.id+":" == word);
+                let pushedEmote;
                 if(emote){
                     let image = new Image();
                     image.src = emote.src;
@@ -131,12 +133,29 @@ class Canvas{
                     word = replacement;
 
                     let measures = this.c.measureText(currentLine); 
-                    let offset = measures.width - measures.actualBoundingBoxLeft
-                    txtEmotes.push({img: image, offset: offset, scale: scale})
+                    let offset = 0
+                    pushedEmote = {id:counter, img: image, offset: offset, scale: scale}
+                    txtEmotes.push(pushedEmote)
+                    counter += 1
                 }
                 let width = i ? this.c.measureText(currentLine + " " + word).width : 0;
                 if (width < maxWidth) {
                     currentLine += " "+ word;
+                    let char = this.c.measureText(" ").width;
+                    txtEmotes.forEach(e => {
+                        let measures;
+                        if(e == pushedEmote){
+                            measures = this.c.measureText(currentLine.trimEnd());
+                            e.offset = measures.actualBoundingBoxRight;
+                            e.offset += char
+                        }else{
+                            measures = this.c.measureText(currentLine.trimStart());
+                            e.offset = -measures.actualBoundingBoxLeft
+                            e.offset += e.img.width/e.scale
+                            e.offset -= char
+                        }
+                    });
+
                 } else {
                     lines.push({txt: currentLine, emotes: txtEmotes});
                     currentLine = word;
