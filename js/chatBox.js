@@ -75,7 +75,7 @@ function displayMessage(nick, msg){
 	if(nick.length > 15){
 		nick += "..." 
 	}
-	p.textContent = nick + ": ";
+	p.textContent = nick + ":";
 
 	msg = msg.split(" ")
 	msg.forEach((word,i) => {
@@ -85,7 +85,7 @@ function displayMessage(nick, msg){
 			img.src = emote.src
 			p.append(img)
 		}else{
-			p.textContent += word
+			p.append(document.createTextNode(" "+word))
 		}
 	});
 	chatWindow.append(p)

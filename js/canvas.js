@@ -124,14 +124,14 @@ class Canvas{
                     let image = new Image();
                     image.src = emote.src;
                     let scale = emote.scale;
-                    console.log(scale)
                     let replacement = " ";
                         while(this.c.measureText(replacement).width < image.width/scale){
                             replacement += " ";
                         }
                     word = replacement;
-                    let charW = this.c.measureText(" ").width;
-                    let offset = this.c.measureText(currentLine).width - (this.c.measureText(currentLine).actualBoundingBoxLeft)
+
+                    let measures = this.c.measureText(currentLine); 
+                    let offset = measures.width - measures.actualBoundingBoxLeft
                     txtEmotes.push({img: image, offset: offset, scale: scale})
                 }
                 let width = i ? this.c.measureText(currentLine + " " + word).width : 0;
@@ -155,7 +155,6 @@ class Canvas{
                     let scale = emote.scale
                     this.c.drawImage(image, offset-image.width/scale, height-image.height/scale, image.width/scale, image.height/scale)
                 });
-                
 
                 this.c.strokeText(line.txt, x, height);
                 this.c.fillStyle = color;
