@@ -201,7 +201,7 @@
         "name": "Rudinn",
         "image": "portrait_rudinn.png",
         "by":"riggedbones",
-        "size": [17,16],
+        "size": [17,17],
         "animations":{
             "idle": {"pos": 0, "frames": 2},
             "walk_left":{"pos":2, "frames": 2},
@@ -218,7 +218,7 @@
         "name": "Rudinn Red",
         "by":"riggedbones",
         "image": "portrait_rudinn red.png",
-        "size": [17,16],
+        "size": [17,17],
         "animations":{
             "idle": {"pos": 0, "frames": 2},
             "walk_left":{"pos":2, "frames": 2},
@@ -234,7 +234,7 @@
         "name": "Rudinn Blue",
         "by":"riggedbones",
         "image": "portrait_rudinn blue.png",
-        "size": [17,16],
+        "size": [17,17],
         "animations":{
             "idle": {"pos": 0, "frames": 2},
             "walk_left":{"pos":2, "frames": 2},
@@ -249,7 +249,7 @@
         "name": "Rudinn Yellow",
         "by":"riggedbones",
         "image": "portrait_rudinn yellow.png",
-        "size": [17,16],
+        "size": [17,17],
         "animations":{
             "idle": {"pos": 0, "frames": 2},
             "walk_left":{"pos":2, "frames": 2},
@@ -264,7 +264,7 @@
         "name": "Bludinn",
         "by":"seavil, riggedbones (base)",
         "image": "portrait_bludinn.png",
-        "size": [17,16],
+        "size": [17,17],
         "animations":{
             "idle": {"pos": 0, "frames": 2},
             "walk_left":{"pos":2, "frames": 2},
@@ -416,6 +416,21 @@
         },
         "sleepBubble":"sleep_bubbleSM",
         "typingBubble": "typing_bubbleSM"
+    },
+        {
+        "id": "wafer",
+        "name": "Wafer",
+        "by":"riggedbones",
+        "image": "portrait_wafer.png",
+        "size":[14,25],
+        "animations":{
+            "idle":{"pos":0, "frames":4},
+            "walk_left":{"pos":4, "frames": 4},
+            "walk_right":{"pos":8, "frames": 4},
+            "walk_up":{"pos":16, "frames": 4},
+            "walk_down":{"pos":12, "frames": 4},
+            "sleep": {"pos":20,"frames": 4 }
+        }
     },
     {
         "id": "bibliox",
@@ -746,6 +761,21 @@
         "sleepBubble":"sleep_bubbleR",
         "typingBubble": "typing_bubbleR"
     },
+        {
+        "id": "jacey rudinn",
+        "name": "Jacey Rudinn",
+        "by":"orangeRabbick",
+        "image": "portrait_jacey rudinn.png",
+        "size": [17,16],
+        "animations":{
+            "idle": {"pos": 0, "frames": 2},
+            "walk_left":{"pos":2, "frames": 2},
+            "walk_right":{"pos":4, "frames": 2},
+            "walk_up":{"pos":8, "frames": 2},
+            "walk_down":{"pos":6, "frames": 2},
+            "sleep": {"pos":10,"frames": 2 }
+        }
+    },
     {
         "id": "noyno",
         "name": "Noyno",
@@ -766,7 +796,7 @@
         "name": "Jackpins",
         "image": "portrait_jackpins.png",
         "by":"greenpippins",
-        "size": [16,16],
+        "size": [16,18],
         "animations":{
             "idle":{"pos": 0, "frames": 1},
             "walk_left":{"pos":0, "frames": 1},
@@ -789,6 +819,7 @@
             "walk_up":{"pos":0, "frames": 1},
             "walk_down":{"pos":0, "frames": 1},
             "sleep": {"pos":0,"frames": 1 }
-        }
+        },
+        "typingBubble": "typing_bubbleO"
     }
 ]

@@ -41,7 +41,7 @@ class CommandComponent{
         obj.room.actions.animationChanged.send("sleep")
     }
     avatar(obj, avatar){
-        avatar = avatar.replace("_", " ")
+        avatar = avatar.replaceAll("_", " ")
         if(obj.player.setAvatar(avatar)){
             obj.player.animationComponent.setAnimation("idle");
             this.sprite = new Image();
@@ -53,7 +53,7 @@ class CommandComponent{
         }
     }
     nick(obj, name){
-        name  = name.replace("_", " ");
+        name  = name.replaceAll("_", " ");
         obj.player.nick = name;
         obj.room.actions.changeNick.send(name)
         updateOnline(obj.players)

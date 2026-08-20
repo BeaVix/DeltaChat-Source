@@ -320,7 +320,7 @@
     },
             {
         "id":"greenpippinsWait",
-        "src": "https://files.jcink.net/uploads2/deltaruneboards/emoticons/greenpippinsWait.png",
+        "src": "https://files.jcink.net/uploads2/deltaruneboards/emoticons/greenpippins_wait.png",
         "scale": 2
     },
             {
@@ -335,12 +335,12 @@
     },
     {
         "id":"oldman",
-        "src": "https://files.jcink.net/uploads2/deltaruneboards/emoticons/oldman.png",
+        "src": "https://files.jcink.net/uploads2/deltaruneboards/emoticons/gerson.png",
         "scale": 2
     },
         {
         "id":"old",
-        "src": "https://files.jcink.net/uploads2/deltaruneboards/emoticons/old.png",
+        "src": "https://files.jcink.net/uploads2/deltaruneboards/emoticons/imold.png",
         "scale": 2
     },
         {
@@ -385,7 +385,7 @@
     },
         {
         "id":"werewerewire",
-        "src": "https://files.jcink.net/uploads2/deltaruneboards/emoticons/werewerewire.png",
+        "src": "https://files.jcink.net/uploads2/deltaruneboards/emoticons/werewerewireMigrane.png",
         "scale": 2
     },
             {
@@ -630,12 +630,12 @@
     },
                                 {
         "id":"loveWins",
-        "src": "https://files.jcink.net/uploads2/deltaruneboards/emoticons/loveWins.png",
+        "src": "https://files.jcink.net/uploads2/deltaruneboards/emoticons/love.png",
         "scale": 2
     },
                                 {
         "id":"hateWins",
-        "src": "https://files.jcink.net/uploads2/deltaruneboards/emoticons/hateWins.png",
+        "src": "https://files.jcink.net/uploads2/deltaruneboards/emoticons/hate.png",
         "scale": 2
     },
                                 {
@@ -645,7 +645,7 @@
     },
                                     {
         "id":"annoyingMaracas",
-        "src": "https://files.jcink.net/uploads2/deltaruneboards/emoticons/annoyingMaracas.png",
+        "src": "https://files.jcink.net/uploads2/deltaruneboards/emoticons/annoyingMaracas.gif",
         "scale": 2
     },
                                     {
