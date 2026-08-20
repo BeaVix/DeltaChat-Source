@@ -80,9 +80,9 @@ class Room{
         }
     }
 
-    this.actions.typing.onMessage = ((o,{peerId}) =>{
+    this.actions.typing.onMessage = ((isTyping,{peerId}) =>{
         const player = this.getById(peerId)
-        player.isTyping = true;
+        player.isTyping = isTyping;
     })
 
     //Update animations

@@ -111,9 +111,10 @@ class InputListenerComponent{
     textInput.addEventListener("input", e => {
         if(textInput.value != "" && textInput.value[0] != "/"){
             this.player.isTyping = true;
-            this.room.actions.typing.send("");
+            this.room.actions.typing.send(true);
         }else{
             this.player.isTyping = false;
+            this.room.actions.typing.send(false);
         }
     })
 
