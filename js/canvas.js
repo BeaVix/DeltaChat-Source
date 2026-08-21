@@ -133,28 +133,22 @@ class Canvas{
                     word = replacement;
 
                     let measures = this.c.measureText(currentLine); 
-                    let offset = 0
+                    let offset = measures.actualBoundingBoxRight;
+                    offset += (image.width/scale)/2
                     pushedEmote = {id:counter, img: image, offset: offset, scale: scale}
                     txtEmotes.push(pushedEmote)
                     counter += 1
                 }
                 let width = i ? this.c.measureText(currentLine + " " + word).width : 0;
                 if (width < maxWidth) {
-                    currentLine += " "+ word;
-                    let char = this.c.measureText(" ").width;
+                    
                     txtEmotes.forEach(e => {
-                        let measures;
-                        if(e == pushedEmote){
-                            measures = this.c.measureText(currentLine.trimEnd());
-                            e.offset = measures.actualBoundingBoxRight;
-                            e.offset += char
-                        }else{
-                            measures = this.c.measureText(currentLine.trimStart());
-                            e.offset = -measures.actualBoundingBoxLeft
-                            e.offset += e.img.width/e.scale
-                            e.offset -= char
-                        }
+                        let measures = this.c.measureText(word);
+                        if(pushedEmote != e){
+                            e.offset -= measures.width/2
+                       }
                     });
+                    currentLine += " " + word
 
                 } else {
                     lines.push({txt: currentLine, emotes: txtEmotes});
