@@ -79,7 +79,7 @@ function displayMessage(nick, msg){
 
 	msg = msg.split(" ")
 	msg.forEach((word,i) => {
-		let emote = emotes.find(e => ":"+e.id+":" == word);
+		let emote = emotes.find(e => ":"+e.id.toLowerCase()+":" == word.toLowerCase());
 		if(emote){
 			const img =  document.createElement("img");
 			img.src = emote.src

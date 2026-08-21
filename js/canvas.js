@@ -120,7 +120,7 @@ class Canvas{
 
             //wrap text
             words.forEach((word, i) => {
-                let emote = emotes.find(e => ":"+e.id+":" == word);
+                let emote = emotes.find(e => ":"+e.id.toLowerCase()+":" == word.toLowerCase());
                 let pushedEmote;
                 if(emote){
                     let image = new Image();
