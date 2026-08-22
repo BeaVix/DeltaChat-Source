@@ -7,7 +7,7 @@ import { SoundComponent } from "./soundComponent";
 
 const playerVolume = document.querySelector("#playerVolume")
 class Player{
-    constructor(id, nick, avatar, frames, initialPos){
+    constructor(id, nick, avatar, canBeGrabbed, canBePushed){
         this.id = id;
         this.nick = nick;
 
@@ -18,8 +18,13 @@ class Player{
         
         this.chatComponent = new ChatComponent();
         this.sound = new SoundComponent(playerVolume);
+
+        this.canBeGrabbed = canBeGrabbed;
+        this.canBePushed = canBePushed;
         this.grabbedBy;
         this.grabbing;
+
+        console.log(canBeGrabbed)
 
         
         this.isTyping = false;

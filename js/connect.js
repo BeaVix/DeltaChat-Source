@@ -9,10 +9,12 @@ import { SoundComponent } from './soundComponent';
 
 const roomId = document.querySelector("#room-id")
 const sfxVolume = document.querySelector("#sfxVolume")
+const grabCheckbox = document.querySelector("#allowGrab");
+const pushCheckbox = document.querySelector("#allowPush");
 
 let players = []
 
-function connectToRoom(roomCode, map, nick, avatar,musVol, volume, playerVol){
+function connectToRoom(roomCode, map, nick, avatar,musVol, volume, playerVol, allowGrab, allowPush){
     const roomConfig = {
         appId: 'com.trystero-demo.lol',
 
@@ -40,8 +42,7 @@ function connectToRoom(roomCode, map, nick, avatar,musVol, volume, playerVol){
     const globalSFX = new SoundComponent(sfxVolume);
     globalSFX.setVolume(volume)
 
-    let frames = 2
-    const player = new Player(selfId, nick, avatar, frames);
+    const player = new Player(selfId, nick, avatar, allowGrab, allowPush);
     const room = new Room(roomI, roomCode,roomConfig,  players, player, map, globalSFX);
     const game= new Game(player, players, room, map, musVol, globalSFX);
     
@@ -50,6 +51,19 @@ function connectToRoom(roomCode, map, nick, avatar,musVol, volume, playerVol){
     players.push(player);
     room.actions.playerInfo.send(player);   //send player data to all peers
     updateOnline(players)
+
+    grabCheckbox.checked = allowGrab;
+    pushCheckbox.checked = allowPush;
+
+    grabCheckbox.addEventListener("change", e => {
+        player.canBeGrabbed = grabCheckbox.checked
+        room.actions.changeGrab.send(grabCheckbox.checked)
+    });
+
+    pushCheckbox.addEventListener("change", e => {
+        player.canBePushed = pushCheckbox.checked
+        room.actions.changePush.send(pushCheckbox.checked)
+    })
 }
 
 export {connectToRoom}

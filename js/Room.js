@@ -25,6 +25,8 @@ class Room{
         this.actions.release = room.makeAction("release");
         this.actions.playSound = room.makeAction("playSound");
         this.actions.typing = room.makeAction("typing");
+        this.actions.changeGrab = room.makeAction("changeGrab");
+        this.actions.changePush = room.makeAction("changePush");
 
 
     //Send player data to new peer
@@ -35,10 +37,12 @@ class Room{
     //receive player data
     this.actions.playerInfo.onMessage = ({info, bg, joined}, {peerId}) => {
         if(!this.getById(peerId)){
-            const newPlayer = new Player(info.id, info.nick, info.animationComponent.avatar, info.animationComponent.frames)
+            const newPlayer = new Player(info.id, info.nick, info.animationComponent.avatar)
             newPlayer.movementComponent.pos = info.movementComponent.pos;
             newPlayer.grabbing = info.grabbing;
             newPlayer.grabbed = info.grabbed;
+            newPlayer.canBeGrabbed = info.canBeGrabbed;
+            newPlayer.canBePushed = info.canBePushed
             newPlayer.sleep = info.sleep;
             newPlayer.animationComponent.setAnimation(info.animationComponent.animation)
             serverMessage(newPlayer.nick+" joined!", "green");
@@ -109,11 +113,19 @@ class Room{
         updateOnline(players)
     })
 
+    this.actions.changeGrab.onMessage = ((value, {peerId}) => {
+        const peer = this.getById(peerId);
+        peer.canBeGrabbed = value;
+    })
+
+        this.actions.changePush.onMessage = ((value, {peerId}) => {
+        const peer = this.getById(peerId);
+        peer.canBePushed = value;
+    })
+
     this.actions.grab.onMessage = ((target, {peerId}) =>{
         const grabber = this.getById(peerId);
         const grabbed = this.getById(target);
-
-        console.log(peerId, target)
 
         grabbed.movementComponent.canMove = false;
         grabbed.movementComponent.lockTyping = true;

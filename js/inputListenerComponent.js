@@ -41,14 +41,15 @@ class InputListenerComponent{
                     break;
                 case "e":
                     const playerTest = this.testHitbox();
-                    if(playerTest){
+                    if(playerTest && playerTest.canBePushed){
                         this.room.actions.hit.send({target: playerTest.id, side: this.player.movementComponent.lastMovement});
                     }
                 break;
                 case "g":
                     if(!this.player.grabbing && !this.player.grabbedBy){
                         const playerTest = this.testHitbox();
-                        if(playerTest){
+                        console.log(playerTest)
+                        if(playerTest && playerTest.canBeGrabbed){
                             this.player.grabbing = playerTest.id;
                             playerTest.grabbedBy = this.player.id;
                             playerTest.animationComponent.rotation = 90;
