@@ -176,7 +176,7 @@
     },
         {
         "id":"queenLMAO",
-        "src": "https://files.jcink.net/uploads2/deltaruneboards/emoticons/queenLMAO.png",
+        "src": "https://files.jcink.net/uploads2/deltaruneboards/emoticons/queenLmao.png",
         "scale": 2
     },    {
         "id":"queenSurprise",
@@ -470,12 +470,12 @@
     },
                         {
         "id":"orangeApprove",
-        "src": "https://files.jcink.net/uploads2/deltaruneboards/emoticons/orangeApprove.png",
+        "src": "https://files.jcink.net/uploads2/deltaruneboards/emoticons/orangeThumbsUp.png",
         "scale": 2
     },
     {
         "id":"orangeDisapprove",
-        "src": "https://files.jcink.net/uploads2/deltaruneboards/emoticons/orangeDisapprove.png",
+        "src": "https://files.jcink.net/uploads2/deltaruneboards/emoticons/orangeThumbsDown.png",
         "scale": 2
     },
         {
