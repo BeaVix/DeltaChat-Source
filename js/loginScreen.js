@@ -14,8 +14,8 @@ const map = document.querySelector("#map");
 const avatarSlct = document.querySelector("#characterName")
 const volumeSlider = document.querySelector("#sfxVolume-preGame")
 const playerVolSlider = document.querySelector("#playerVolume-preGame") 
-const allowGrab = document.querySelector("#allowGrab-preGame").checked
-const allowPush = document.querySelector("#allowPush-preGame").checked
+const allowGrab = document.querySelector("#allowGrab-preGame")
+const allowPush = document.querySelector("#allowPush-preGame")
 
 const musicAudio = new Audio("snd_ralseising1.wav")
 const sfxAudio = new Audio("snd_splat.wav")
@@ -80,9 +80,8 @@ confirmBtn.addEventListener("click", e => {
     const volume = volumeSlider.value
     const musicVol = musicVolSlider.value
     const playerVol = playerVolSlider.value
-    console.log(allowGrab)
 
     if(roomCode != ""){
-        connectToRoom(roomCode, mapValue, nick, avatar, musicVol, volume, playerVol, allowGrab, allowPush)
+        connectToRoom(roomCode, mapValue, nick, avatar, musicVol, volume, playerVol, allowGrab.checked, allowPush.checked)
     }
 });
