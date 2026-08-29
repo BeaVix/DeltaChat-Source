@@ -347,6 +347,46 @@
         "sleepBubble":"sleep_bubbleRH"
     },
     {
+        "id":"shadow guy",
+        "name":"Shadow Guy",
+        "image": "portrait_shadow guy.png",
+        "size":[16,16],
+        "animations":{
+            "idle":{"pos":6, "frames":2},
+            "walk_left":{"pos":6, "frames": 2},
+            "walk_right":{"pos":8, "frames": 2},
+            "walk_up":{"pos":4, "frames": 2},
+            "walk_down":{"pos":10, "frames": 2},
+            "sleep": {"pos":7,"frames": 1 }
+        },
+        "sfx":[
+            "snd_shadowman_sax_1",
+            "snd_shadowman_sax_2",
+            "snd_shadowman_sax_3"
+        ],
+        "specialSfx":"snd_shadowman_sax_long"
+    },
+    {
+        "id":"shadow guy bunny",
+        "name":"Shadow Guy Bunny",
+        "image": "portrait_shadow guy.png",
+        "size":[17,25],
+        "animations":{
+            "idle":{"pos":2, "frames":2},
+            "walk_left":{"pos":2, "frames": 2},
+            "walk_right":{"pos":4, "frames": 2},
+            "walk_up":{"pos":0, "frames": 2},
+            "walk_down":{"pos":6, "frames": 2},
+            "sleep": {"pos":3,"frames": 1 }
+        },
+        "sfx":[
+            "snd_shadowman_sax_1",
+            "snd_shadowman_sax_2",
+            "snd_shadowman_sax_3"
+        ],
+        "specialSfx":"snd_shadowman_sax_long"
+    },
+    {
         "id": "knight",
         "name": "Knight",
         "image": "portrait_knight.png",
@@ -398,7 +438,13 @@
             "sleep": {"pos":9,"frames": 1}
         },
         "sleepBubble":"sleep_bubbleSM",
-        "typingBubble": "typing_bubbleSM"
+        "typingBubble": "typing_bubbleSM",
+        "sfx":[
+            "snd_shadowman_sax_1",
+            "snd_shadowman_sax_2",
+            "snd_shadowman_sax_3"
+        ],
+        "specialSfx": "snd_shadowman_sax_long"
     },
     {
         "id":"cowboy hat mike",
