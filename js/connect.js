@@ -29,9 +29,8 @@ function connectToRoom(roomCode, map, nick, avatar,musVol, volume, playerVol, al
 			"turn:turn.cloudflare.com:80?transport=tcp",
 			"turns:turn.cloudflare.com:443?transport=tcp"
 			],
-            "username":"g01d252e7097d37ae8c44c2d00e912157a8a6cd264468ae3fbd5ffb25e275f08",
-            "credential":"05f7a49981548d428cb94249ee4ec6172d2f0c768532c44cd61e8a57a3a6890c"
-        }
+"username":"g0634e01308a0f9e27ad253e29661a8560856de1d14d6fa4406ec20f618dec1c",
+"credential":"2b71a867c6a47ed63ddcc33e1af0cea04e5bde7a3340943331f2e6855c9cfbb9"}
         ]
 }
     const finalRoomCode = roomCode + "_"+map;
