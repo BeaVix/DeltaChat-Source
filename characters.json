@@ -774,7 +774,8 @@
             "walk_up":{"pos":8, "frames": 2},
             "walk_down":{"pos":6, "frames": 2},
             "sleep": {"pos":10,"frames": 2 }
-        }
+        },
+        "sfx":["0de"]
     },
     {
         "id": "noyno",
