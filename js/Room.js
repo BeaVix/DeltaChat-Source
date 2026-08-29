@@ -3,18 +3,20 @@ import { Player } from "./Player";
 import { displayMessage, serverMessage } from "./chatBox";
 import { updateOnline } from "./onlineSidebar";
 class Room{
-    constructor(room, roomCode, roomConfig, players, player, bg){
+    constructor(room, roomCode, roomConfig, players, player, bg, globalSFX){
         this.room = room;
         this.roomConfig = roomConfig
         this.roomCode = roomCode
         this.player = player;
         this.players = players
         this.bg = bg
+        this.globalSFX = globalSFX
 
         this.actions = {}
         this.actions.chat = room.makeAction("chat");
         this.actions.move = room.makeAction("move");
         this.actions.changeAvatar = room.makeAction("changeAvatar");
+        this.actions.changeNick = room.makeAction("changeNick");
         this.actions.playerInfo = room.makeAction("playerInfo");
         this.actions.hit = room.makeAction("hit");
         this.actions.mute = room.makeAction("mute");
@@ -22,6 +24,9 @@ class Room{
         this.actions.grab = room.makeAction("grab");
         this.actions.release = room.makeAction("release");
         this.actions.playSound = room.makeAction("playSound");
+        this.actions.typing = room.makeAction("typing");
+        this.actions.changeGrab = room.makeAction("changeGrab");
+        this.actions.changePush = room.makeAction("changePush");
 
 
     //Send player data to new peer
@@ -32,17 +37,16 @@ class Room{
     //receive player data
     this.actions.playerInfo.onMessage = ({info, bg, joined}, {peerId}) => {
         if(!this.getById(peerId)){
-            const newPlayer = new Player(info.id, info.nick, info.animationComponent.avatar, info.animationComponent.frames)
+            const newPlayer = new Player(info.id, info.nick, info.animationComponent.avatar)
             newPlayer.movementComponent.pos = info.movementComponent.pos;
             newPlayer.grabbing = info.grabbing;
             newPlayer.grabbed = info.grabbed;
+            newPlayer.canBeGrabbed = info.canBeGrabbed;
+            newPlayer.canBePushed = info.canBePushed
             newPlayer.sleep = info.sleep;
-            newPlayer.animationComponent.offset = info.animationComponent.offset;
-            if(player.id != joined && joined == peerId){
-                game.canvasComponent.bg.setBg(bg);
-            }
+            newPlayer.animationComponent.setAnimation(info.animationComponent.animation)
             serverMessage(newPlayer.nick+" joined!", "green");
-            newPlayer.playSound("snd_power");
+            this.globalSFX.playSound("snd_power");
             players.push(newPlayer);
             updateOnline(players);
         }
@@ -74,10 +78,16 @@ class Room{
         const player = this.getById(peerId);
         if(!player.muted){
             displayMessage(nick, msg);
-            player.playSound("snd_board_text_main_end")
+            this.globalSFX.playSound("snd_board_text_main_end")
             player.chatComponent.setMessage(msg);
+            player.isTyping = false;
         }
     }
+
+    this.actions.typing.onMessage = ((isTyping,{peerId}) =>{
+        const player = this.getById(peerId)
+        player.isTyping = isTyping;
+    })
 
     //Update animations
     this.actions.animationChanged.onMessage = ((animation, {peerId}) => {
@@ -97,11 +107,25 @@ class Room{
         updateOnline(players)
     })
 
+    this.actions.changeNick.onMessage = ((nick, {peerId}) =>{
+        const player = this.getById(peerId);
+        player.nick = nick;
+        updateOnline(players)
+    })
+
+    this.actions.changeGrab.onMessage = ((value, {peerId}) => {
+        const peer = this.getById(peerId);
+        peer.canBeGrabbed = value;
+    })
+
+        this.actions.changePush.onMessage = ((value, {peerId}) => {
+        const peer = this.getById(peerId);
+        peer.canBePushed = value;
+    })
+
     this.actions.grab.onMessage = ((target, {peerId}) =>{
         const grabber = this.getById(peerId);
         const grabbed = this.getById(target);
-
-        console.log(peerId, target)
 
         grabbed.movementComponent.canMove = false;
         grabbed.movementComponent.lockTyping = true;
@@ -109,7 +133,7 @@ class Room{
         grabbed.grabbedBy = peerId;
         
         grabber.grabbing = target;
-        grabber.playSound("snd_board_lift")
+        grabber.sound.playSound("snd_board_lift")
     })
 
     this.actions.release.onMessage = ({ side, target}, {peerId}) =>{
@@ -132,7 +156,7 @@ class Room{
 			break;
 		}
         released.movementComponent.movement[1] = -1
-        released.playSound("snd_board_throw");
+        released.sound.playSound("snd_board_throw");
         setTimeout(()=>{
             released.movementComponent.movement[1] = 1
             const interval = setInterval(()=>{
@@ -173,7 +197,7 @@ class Room{
 
     this.actions.playSound.onMessage = (sound, {peerId}) => {
         const playing = this.getById(peerId);
-        playing.playSound(sound);
+        playing.sound.playSound(sound);
     }
     }
     getById(id){

@@ -4,55 +4,65 @@ import { updateOnline } from './onlineSidebar';
 import { Player } from './Player';
 import { Game } from './game';
 import { displayMessage, serverMessage } from './chatBox';
+import maps from "./../maps.json"
+import { SoundComponent } from './soundComponent';
 
 const roomId = document.querySelector("#room-id")
+const sfxVolume = document.querySelector("#sfxVolume")
+const grabCheckbox = document.querySelector("#allowGrab");
+const pushCheckbox = document.querySelector("#allowPush");
 
 let players = []
 
-function connectToRoom(roomCode, map, nick, avatar,soundOff){
+function connectToRoom(roomCode, map, nick, avatar,musVol, volume, playerVol, allowGrab, allowPush){
     const roomConfig = {
         appId: 'com.trystero-demo.lol',
 
         turnConfig:[
             {
-                urls:["turn:turn.cloudflare.com:3478?transport=udp",
+			"urls":
+			[
+			"turn:turn.cloudflare.com:3478?transport=udp",
 			"turn:turn.cloudflare.com:3478?transport=tcp",
-			"turns:turn.cloudflare.com:5349?transport=tcp",	
+			"turns:turn.cloudflare.com:5349?transport=tcp",
 			"turn:turn.cloudflare.com:53?transport=udp",
 			"turn:turn.cloudflare.com:80?transport=tcp",
-			"turns:turn.cloudflare.com:443?transport=tcp"],
-			username:"g0875ddc3b910f13ddb0ab82a9523f816a1f70cd8f8f381ec520da55f8041bbd",
-			credential:"ec9cdaf98463e6761cf49526b77dd4d16a36960fb42a22c2946734a8cbe19921"
-            }
+			"turns:turn.cloudflare.com:443?transport=tcp"
+			],
+"username":"g0634e01308a0f9e27ad253e29661a8560856de1d14d6fa4406ec20f618dec1c",
+"credential":"2b71a867c6a47ed63ddcc33e1af0cea04e5bde7a3340943331f2e6855c9cfbb9"}
         ]
-	}
+}
     const finalRoomCode = roomCode + "_"+map;
     const roomI = joinRoom(roomConfig, finalRoomCode);
 
     roomId.textContent ="ROOM: "+ roomCode;
 
-    let frames = 2
+    const globalSFX = new SoundComponent(sfxVolume);
+    globalSFX.setVolume(volume)
 
-    switch(avatar){
-        case "pippins":
-        case "green pippins":    
-        case "ruddin":
-        case "pink (ghost)":
-        case "pink":
-        case "jackpins":
-            frames = 0;
-            break;
-        default:
-            break;
-    }
-
-    const player = new Player(selfId, nick, avatar, frames);
-    const room = new Room(roomI, roomCode,roomConfig,  players, player, map);
-    const game= new Game(player, players, room, map, soundOff.checked);
+    const player = new Player(selfId, nick, avatar, allowGrab, allowPush);
+    const room = new Room(roomI, roomCode,roomConfig,  players, player, map, globalSFX);
+    const game= new Game(player, players, room, map, musVol, globalSFX);
     
+    player.sound.setVolume(playerVol);
+
     players.push(player);
     room.actions.playerInfo.send(player);   //send player data to all peers
-    updateOnline(players) 
+    updateOnline(players)
+
+    grabCheckbox.checked = allowGrab;
+    pushCheckbox.checked = allowPush;
+
+    grabCheckbox.addEventListener("change", e => {
+        player.canBeGrabbed = grabCheckbox.checked
+        room.actions.changeGrab.send(grabCheckbox.checked)
+    });
+
+    pushCheckbox.addEventListener("change", e => {
+        player.canBePushed = pushCheckbox.checked
+        room.actions.changePush.send(pushCheckbox.checked)
+    })
 }
 
 export {connectToRoom}

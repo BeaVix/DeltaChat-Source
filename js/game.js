@@ -7,30 +7,38 @@ import { joinRoom } from "trystero";
 import { updateOnline } from "./onlineSidebar";
 import { Room } from "./Room";
 import maps from "./../maps.json";
+import { SoundComponent } from "./soundComponent";
+
 
 const sendButton = document.querySelector("#sendButton")
 const textInput = document.querySelector("#textInput")
 
  class Game{
-    constructor(player, players, room, map, soundOff){
+    constructor(player, players, room, map, musVolume, globalSfx){
         this.player = player;
         this.players = players;
         this.room = room;
-        this.soundOff = soundOff;
+        this.musVolume = musVolume;
         this.lastUpdate = 0
         this.hitBounds = false;
+        this.globalSfx = globalSfx
 
         let mapData = maps.find(m => m.id == map)
 
-        this.musicPlayer = new songPlayer(soundOff);
+        this.musicPlayer = new songPlayer();
+        this.musicPlayer.musicPlayer.volume = musVolume/100
         this.inputListenerComponent = new InputListenerComponent(player, players, room, this.musicPlayer.musicPlayer);
         this.bg = new Background(mapData, player.movementComponent);
         this.canvasComponent = new Canvas(this.bg);
         this.chatBoxComponent = new ChatBoxComponent(player, players, room, serverMessage, this.canvasComponent);
 
+        this.loaders = this.bg.objects.filter((object) => object.type == "levelLoader")
+
         this.bg.animationComponent.sprite.onload = (e => {
             this.canvasComponent.setCanvas()
         })
+
+        this.loadMusicConf(mapData.musicConf)
 
         requestAnimationFrame((timestamp) => this.gameLoop(timestamp, this))
         
@@ -38,6 +46,14 @@ const textInput = document.querySelector("#textInput")
 
     gameLoop(timestamp, obj){
         obj.canvasComponent.draw(timestamp, obj.players);
+
+        obj.loaders.forEach(loader => {
+            if(obj.player.movementComponent.testHitbox(loader.pos, loader.size)){
+                this.loadMap(loader.map)
+            }
+        })
+
+        // Process map hitboxes
         obj.bg.hitboxes.forEach(hitbox => {
                 while(obj.player.movementComponent.testHitbox(hitbox.pos, hitbox.size)){
                     if (obj.player.movementComponent.lastMovement[0]) {
@@ -54,10 +70,6 @@ const textInput = document.querySelector("#textInput")
             
             obj.room.actions.move.send(obj.player.movementComponent.pos)
         }
-        let newMap;
-        if(newMap){
-            obj.loadMap(newMap)
-        }
 
         obj.lastUpdate = timestamp;
 
@@ -72,13 +84,45 @@ const textInput = document.querySelector("#textInput")
         const finalRoomCode = this.room.roomCode + "_"+newMap 
         const roomConfig = this.room.roomConfig
         const roomCode = this.room.roomCode;
+        
+        let mapData = maps.find(m => m.id == newMap)
+        let spawnPos = mapData.spawnPos[this.bg.id];
+
+        this.loadMusicConf(mapData.musicConf)
+       
+        this.bg = new Background(mapData, this.player.movementComponent);
+
+        this.loaders = this.bg.objects.filter((object) => object.type == "levelLoader")
+        this.player.movementComponent.pos = structuredClone(spawnPos)   //COPY THE VALUE NOT THE REFERENCE TO THE VALUE!!
+        
+        this.canvasComponent.bg = this.bg;
+        this.canvasComponent.setDrawQueue()
+        
         const newRoom = joinRoom(this.room.roomConfig, finalRoomCode)
-        this.room = new Room(newRoom, roomCode, roomConfig, this.players, this.player, newMap)
+        this.room = new Room(newRoom, roomCode, roomConfig, this.players, this.player, newMap, this.globalSfx)
         this.inputListenerComponent.room = this.room;
         this.chatBoxComponent.room = this.room;
-       
-        this.room.actions.playerInfo.send(this.player);
-        this.bg.setBg(newMap)
+
+        updateOnline(this.players)
+    }
+
+    loadMusicConf(musicConf){
+        if(musicConf){
+            let song = musicConf.song;
+            if(typeof song === "number"){
+                this.musicPlayer.songIndex = song
+                this.musicPlayer.changeSong()
+            }else{
+                this.musicPlayer.changeSong(song)
+            }
+
+            if((this.musicPlayer.getControlsVisibility() == "block" && !musicConf.controls) || (this.musicPlayer.getControlsVisibility() == "none" && musicConf.controls) ){
+                this.musicPlayer.toggleControls()
+            }
+        }else if(this.musicPlayer.getControlsVisibility() == "none"){
+            this.musicPlayer.toggleControls()
+            this.musicPlayer.changeSong();
+        }
     }
 }
 

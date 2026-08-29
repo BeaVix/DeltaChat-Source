@@ -41,20 +41,21 @@ class InputListenerComponent{
                     break;
                 case "e":
                     const playerTest = this.testHitbox();
-                    if(playerTest){
+                    if(playerTest && playerTest.canBePushed){
                         this.room.actions.hit.send({target: playerTest.id, side: this.player.movementComponent.lastMovement});
                     }
                 break;
                 case "g":
                     if(!this.player.grabbing && !this.player.grabbedBy){
                         const playerTest = this.testHitbox();
-                        if(playerTest){
+                        console.log(playerTest)
+                        if(playerTest && playerTest.canBeGrabbed){
                             this.player.grabbing = playerTest.id;
                             playerTest.grabbedBy = this.player.id;
                             playerTest.animationComponent.rotation = 90;
                             playerTest.movementComponent.pos = this.player.movementComponent.pos
                             this.room.actions.grab.send(playerTest.id)
-                            this.player.playSound("snd_board_lift")
+                            this.player.sound.playSound("snd_board_lift")
                         }
                     }else{
                         this.room.actions.release.send({side: this.player.movementComponent.lastMovement, target: this.player.grabbing})
@@ -67,9 +68,13 @@ class InputListenerComponent{
                     break;
                 case "q":
                     if(this.player.data.sfx){
+                        const specialSfxChance = Math.floor(Math.random() * 100)
                         const index = Math.floor(Math.random()*this.player.data.sfx.length)
-                        const sound = this.player.data.sfx[index]
-                        this.player.playSound(sound)
+                        let sound = this.player.data.sfx[index]
+                        if(specialSfxChance == 1 && this.player.data.specialSfx){
+                           sound = this.player.data.specialSfx
+                        }
+                        this.player.sound.playSound(sound)
                         this.room.actions.playSound.send(sound);
                     }
                 default:
@@ -96,13 +101,24 @@ class InputListenerComponent{
         }
         if(e.key.toLowerCase() == "enter"){
             sendButton.click();
+            this.player.isTyping = false;
         }else if(e.key == "Escape"){
             if(textInput == document.activeElement){
                 textInput.blur();
             }
         }
-
 });
+
+    textInput.addEventListener("input", e => {
+        if(textInput.value != "" && textInput.value[0] != "/"){
+            this.player.isTyping = true;
+            this.room.actions.typing.send(true);
+        }else{
+            this.player.isTyping = false;
+            this.room.actions.typing.send(false);
+        }
+    })
+
     window.addEventListener("keyup", e =>{
         if(this.movementComponent.canMove && !this.movementComponent.animationPlaying){
             switch(e.key.toLowerCase()){

@@ -3,6 +3,8 @@ import { AnimationComponent } from "./animationComponent";
 import { Background } from "./bg";
 import { Player } from "./Player";
 
+import emotes from "./../emotes.json";
+
 class Canvas{
     constructor(bg){
         this.canvas = document.querySelector("#canvas");
@@ -12,14 +14,23 @@ class Canvas{
         this.cameraPosition = [0,0]
         this.cameraSize = [320, 240]
     }
+
+    setDrawQueue(){
+        this.drawQueue = []
+        this.bg.objects.forEach(object => {
+            if(object.image){
+                this.drawQueue.push({data: object, animationComponent: new AnimationComponent(object.frames, object.image, object.size)})
+            }
+        });
+    }
     
 
     clearScreen(player){
         if(!this.bg.animationComponent.sprite.complete){
             this.c.fillStyle = '#aaaaaqa';
         }else{
-            const startingPositionX = this.cameraSize[0]/2 - player.animationComponent.size[0]/2
-            const startingPositionY = this.cameraSize[1]/2 - player.animationComponent.size[1]/2
+            const startingPositionX = (this.cameraSize[0]/2 - player.animationComponent.size[0]/2)
+            const startingPositionY = (this.cameraSize[1]/2 - player.animationComponent.size[1]/2)
             if(player.movementComponent.pos[0] != startingPositionX){
                 this.cameraPosition[0] = player.movementComponent.pos[0] - startingPositionX
             }
@@ -33,10 +44,12 @@ class Canvas{
             this.c.fillStyle = '#000000';
             this.c.fillRect(this.bg.size[0]-this.cameraPosition[0], 0-this.cameraPosition[1], 200, 580)
             this.c.fillRect(-this.bg.size[0]-this.cameraPosition[0], 0-this.cameraPosition[1], this.bg.size[0], 580)
+
+            /*
             this.c.fillStyle = '#ff0000';
             this.bg.hitboxes.forEach(hitbox => {
                 this.c.fillRect(hitbox.pos[0]-this.cameraPosition[0], hitbox.pos[1]-this.cameraPosition[1], hitbox.size[0], hitbox.size[1])
-            });
+            });*/
         }   
     }
 
@@ -48,71 +61,119 @@ class Canvas{
         this.c.textAlign = "center";
     }
 
-    //Draws frame
+    /*Draws frame*/
     draw(timestamp, players){
+        //Check if size of draw queue is consistent with number of objects to draw
+        this.setDrawQueue()
+        this.drawQueue.push(...players)
+
         this.clearScreen(players[0]);
-        let drawQueue = []
-        this.bg.objects.forEach(object => {
-            drawQueue.push(object)
-        })
-        players.forEach(player => {
-            if(!player.muted){
-                drawQueue.push(player)
-            }
-        });
-        drawQueue.sort((a,b) => {
+        
+        //y-sort sprites
+            this.drawQueue.sort((a,b) => {
             if(a instanceof Player && !(b instanceof Player)){
-                return (b.pos[1] + b.size[1] - a.animationComponent.size[1]*2) - a.movementComponent.pos[1]
+                return (a.movementComponent.pos[1] + a.animationComponent.size[1]*2) - (b.data.pos[1]+ b.data.size[1] )*b.data.scale 
             }else if( b instanceof Player && !(a instanceof Player)){
-                return (a.pos[1] + a.size[1] - b.animationComponent.size[1]*2) - b.movementComponent.pos[1]
+                return ( a.data.pos[1] + a.data.size[1])*a.data.scale - (b.movementComponent.pos[1] + b.animationComponent.size[1]*2)
+            }else if (a instanceof Player && b instanceof Player){
+                return a.movementComponent.pos[1] - b.movementComponent.pos[1]
             }else{
-                return 0
+                return  a.data.pos[1]*a.data.scale - b.data.pos[1]*b.data.scale
             }
         })
-        drawQueue.forEach(object => {
+
+        //Draw objects in the queue
+        this.drawQueue.forEach(object => {
             if(object instanceof Player){
                 this.drawPlayer(object)
                 object.animationComponent.update(timestamp)
                 object.sleepBubble.update(timestamp)
+                object.typingBubble.update(timestamp)
             }else{
-                let img = new Image;
-                img.src = object.image
-                this.c.drawImage(img, object.pos[0] - this.cameraPosition[0], object.pos[1] - this.cameraPosition[1])
+                this.c.scale(object.data.scale,object.data.scale)
+                if(object.data.frames){
+                    this.c.drawImage(object.animationComponent.sprite, object.animationComponent.frame[0], object.animationComponent.frame[1], object.data.size[0],object.data.size[1], object.data.pos[0] - this.cameraPosition[0]/object.data.scale, object.data.pos[1]- this.cameraPosition[1]/object.data.scale, object.data.size[0],object.data.size[1])
+                    object.animationComponent.update(timestamp)
+                }else{
+                    this.c.drawImage(object.animationComponent.sprite, object.data.pos[0] - this.cameraPosition[0]/object.data.scale, object.data.pos[1] - this.cameraPosition[1]/object.data.scale)
+                }
+                this.c.scale(1/object.data.scale,1/object.data.scale)
             }
         })
+
         this.bg.animationComponent.update(timestamp)
     }
 
-    drawText(x, y, str, strokeColor = "#000000", color="#ffffff",size="10px",font="Determination mono") {
+    drawText(x, y, str, strokeColor = "#000000", color="#ffffff", opacity="255",size="10px",font="Determination mono") {
         if(str){
+            this.c.save()
             const maxWidth = 100;    //pixels per lines
             this.c.font = size + " " + font
             this.c.strokeStyle= strokeColor
             this.c.linewidth = 8
+            this.c.globalAlpha = opacity/255
             let words = str.split(" ");
             let lines = [];
-            let currentLine = words[0];
+            let currentLine = "";
+            let txtEmotes = [];
+            let counter = 0;
 
             //wrap text
-            for (let i = 1; i < words.length; i++) {
-                let word = words[i];
-                let width = this.c.measureText(currentLine + " " + word).width;
-                if (width < maxWidth) {
-                    currentLine += " " + word;
-                } else {
-                    lines.push(currentLine);
-                    currentLine = word;
+            words.forEach((word, i) => {
+                let emote = emotes.find(e => ":"+e.id.toLowerCase()+":" == word.toLowerCase());
+                let pushedEmote;
+                if(emote){
+                    let image = new Image();
+                    image.src = emote.src;
+                    let scale = emote.scale;
+                    let replacement = " ";
+                        while(this.c.measureText(replacement).width < image.width/scale){
+                            replacement += " ";
+                        }
+                    word = replacement;
+
+                    let measures = this.c.measureText(currentLine); 
+                    let offset = measures.actualBoundingBoxRight;
+                    offset += (image.width/scale)/2
+                    pushedEmote = {id:counter, img: image, offset: offset, scale: scale}
+                    txtEmotes.push(pushedEmote)
+                    counter += 1
                 }
-            }
-            lines.push(currentLine);
+                let width = i ? this.c.measureText(currentLine + " " + word).width : 0;
+                if (width < maxWidth) {
+                    
+                    txtEmotes.forEach(e => {
+                        let measures = this.c.measureText(word);
+                        if(pushedEmote != e){
+                            e.offset -= measures.width/2
+                       }
+                    });
+                    currentLine += " " + word
+
+                } else {
+                    lines.push({txt: currentLine, emotes: txtEmotes});
+                    currentLine = word;
+                    txtEmotes = [];
+                }
+            })
+            lines.push({txt: currentLine, emotes: txtEmotes});
 
             for (let i = lines.length; i > 0; i--) {
-                const line = lines[i-1];
+                let line = lines[i-1];
                 const height = y + 10*(i-lines.length);
-                this.c.strokeText(line, x, height);
+
+                line.emotes.forEach(emote => {
+                    let image = emote.img;
+                    let offset = x+emote.offset;
+                    let scale = emote.scale
+                    this.c.drawImage(image, offset-image.width/scale, height-image.height/scale, image.width/scale, image.height/scale)
+                });
+
+                this.c.strokeText(line.txt, x, height);
                 this.c.fillStyle = color;
-                this.c.fillText (line, x, height);    
+                this.c.fillText (line.txt, x, height);    
             }
+            this.c.restore();
         }
 
     }
@@ -150,8 +211,16 @@ class Canvas{
                 this.c.drawImage(player.sleepBubble.sprite, x, y-17)
             }
         }
+        if(player.isTyping){
+            if(!player.typingBubble.currentFrame){
+                this.c.drawImage(player.typingBubble.sprite, x, y-16)
+            }else{
+                this.c.drawImage(player.typingBubble.sprite, x, y-17)
+            }
+        }
         this.drawText(x+width/2, y+height+8, player.nick,"#000000","#ffff00");     //Draws nickname
-        this.drawText(x+8, y-5,chat.message, chat.messageBorder+chat.messageOpacity, chat.messageColor+chat.messageOpacity);    //Draws message
+
+        this.drawText(x+8, y-5,chat.message, chat.messageBorder, chat.messageColor, chat.messageOpacityD);    //Draws message
 
     }
 }

@@ -11,7 +11,8 @@
             "walk_down":{"pos":0, "frames": 1},
             "sleep": {"pos":0,"frames": 1 }
             
-        }
+        },
+         "sfx":["snd_pinball"]
     },
     {
         "id": "green pippins",
@@ -25,7 +26,8 @@
             "walk_up":{"pos":0, "frames": 1},
             "walk_down":{"pos":0, "frames": 1},
             "sleep": {"pos":0,"frames": 1 }
-        }
+        },
+         "sfx":["snd_pinball"]
     },
     {
         "id": "kris",
@@ -39,7 +41,10 @@
             "walk_up":{"pos":6, "frames": 2},
             "walk_down":{"pos":0, "frames": 2},
             "sleep": {"pos":8,"frames": 2 }
-        }
+        },
+        "sfx":[
+            "snd_pombark"
+        ]
     },
     {
         "id": "susie",
@@ -54,7 +59,12 @@
             "walk_down":{"pos":0, "frames": 2},
             "sleep": {"pos":8,"frames": 2 }
         },
-        "sleepBubble": "sleep_bubbleS"
+        "sleepBubble": "sleep_bubbleS",
+        "typingBubble": "typing_bubbleS",
+        "sfx":[
+            "snd_sussurprise",
+            "snd_suslaugh"
+        ]
     },
     {
         "id": "ralsei",
@@ -69,12 +79,18 @@
             "walk_down":{"pos":0, "frames": 2},
             "sleep": {"pos":8,"frames": 2 }
         },
-        "sleepBubble": "sleep_bubbleR"
+        "sleepBubble": "sleep_bubbleR",
+        "typingBubble": "typing_bubbleR",
+        "sfx":[
+            "snd_ralseising1",
+            "snd_ralseising2"
+        ]
     },
      {
         "id": "noelle",
         "name": "Noelle",
         "image": "portrait_noelle.png",
+        "by":"pianpian, loveletterworm (base)",
         "size": [16,16],
         "animations":{
             "idle":{"pos":0, "frames":2},
@@ -83,12 +99,17 @@
             "walk_up":{"pos":6, "frames": 2},
             "walk_down":{"pos":0, "frames": 2},
             "sleep": {"pos":8,"frames": 2 }
-        }
+        },
+        "sfx":[
+            "snd_noelle_scared"
+        ],
+        "specialSfx": "snd_ominous"
     },
      {
         "id": "berdly",
         "name": "Berdly",
         "image": "portrait_berdly.png",
+        "by":"pianpian, loveletterworm (base)",
         "size": [16,16],
         "animations":{
             "idle":{"pos":0, "frames":2},
@@ -103,6 +124,7 @@
         "id": "lancer",
         "name": "Lancer",
         "image": "portrait_lancer.png",
+        "by":"pianpian",
         "size": [16,16],
         "animations":{
             "idle":{"pos":0, "frames":2},
@@ -117,25 +139,69 @@
         ]
     },
     {
-        "id": "ruddin",
-        "name": "Ruddin",
-        "image": "portrait_ruddin.png",
-        "size": [17,16],
+        "id": "kris lw",
+        "name": "Kris lw",
+        "image": "portrait_krislw.png",
+        "by": "Absol",
+        "size": [16,16],
         "animations":{
-            "idle": {"pos": 0, "frames": 2},
+            "idle":{"pos":0, "frames":2},
             "walk_left":{"pos":2, "frames": 2},
             "walk_right":{"pos":4, "frames": 2},
-            "walk_up":{"pos":8, "frames": 2},
-            "walk_down":{"pos":6, "frames": 2},
-            "sleep": {"pos":10,"frames": 2 }
+            "walk_up":{"pos":6, "frames": 2},
+            "walk_down":{"pos":0, "frames": 2},
+            "sleep": {"pos":8,"frames": 2 }
         },
-        "sleepBubble":"sleep_bubbleR"
+        "sleepBubble": "sleep_bubbleKL",
+        "typingBubble": "typing_bubbleKL",
+        "sfx":[
+            "snd_pombark"
+        ]
     },
     {
-        "id": "ruddin red",
-        "name": "Ruddin Red",
-        "image": "portrait_ruddin red.png",
-        "size": [17,16],
+        "id": "ralsei hatless",
+        "name": "Ralsei Hatless",
+        "image": "portrait_ralsei hatless.png",
+        "by": "Absol",
+        "size": [16,16],
+        "animations":{
+            "idle":{"pos":0, "frames":2},
+            "walk_left":{"pos":2, "frames": 2},
+            "walk_right":{"pos":4, "frames": 2},
+            "walk_up":{"pos":6, "frames": 2},
+            "walk_down":{"pos":0, "frames": 2},
+            "sleep": {"pos":8,"frames": 2 }
+        },
+        "sleepBubble": "sleep_bubbleRH",
+        "typingBubble": "typing_bubbleRH",
+        "sfx":[
+            "snd_ralseising1",
+            "snd_ralseising2"
+        ]
+    },
+    {
+        "id": "starwalker",
+        "name": "Starwalker",
+        "image": "portrait_starwalker.png",
+        "by":"Absol",
+        "size": [16,16],
+        "animations":{
+            "idle":{"pos":0, "frames":8},
+            "walk_left":{"pos":0, "frames":8},
+            "walk_right":{"pos":0, "frames":8},
+            "walk_up":{"pos":0, "frames":8},
+            "walk_down":{"pos":0, "frames":8},
+            "sleep": {"pos":0,"frames":8 }
+        },
+        "sleepBubble": "sleep_bubbleSW",
+        "typingBubble": "typing_bubbleSW"
+    },
+    {
+        "id": "rudinn",
+        "name": "Rudinn",
+        "image": "portrait_rudinn.png",
+        "by":"riggedbones",
+        "size": [17,17],
         "animations":{
             "idle": {"pos": 0, "frames": 2},
             "walk_left":{"pos":2, "frames": 2},
@@ -144,12 +210,31 @@
             "walk_down":{"pos":6, "frames": 2},
             "sleep": {"pos":10,"frames": 2 }
         },
-        "sleepBubble":"sleep_bubbleS"
+        "sleepBubble":"sleep_bubbleR",
+        "typingBubble": "typing_bubbleR"
+    },
+    {
+        "id": "rudinn red",
+        "name": "Rudinn Red",
+        "by":"riggedbones",
+        "image": "portrait_rudinn red.png",
+        "size": [17,17],
+        "animations":{
+            "idle": {"pos": 0, "frames": 2},
+            "walk_left":{"pos":2, "frames": 2},
+            "walk_right":{"pos":4, "frames": 2},
+            "walk_up":{"pos":8, "frames": 2},
+            "walk_down":{"pos":6, "frames": 2},
+            "sleep": {"pos":10,"frames": 2 }
+        },
+        "sleepBubble":"sleep_bubbleS",
+        "typingBubble": "typing_bubbleS"
     },{
-        "id": "ruddin blue",
-        "name": "Ruddin Blue",
-        "image": "portrait_ruddin blue.png",
-        "size": [17,16],
+        "id": "rudinn blue",
+        "name": "Rudinn Blue",
+        "by":"riggedbones",
+        "image": "portrait_rudinn blue.png",
+        "size": [17,17],
         "animations":{
             "idle": {"pos": 0, "frames": 2},
             "walk_left":{"pos":2, "frames": 2},
@@ -160,10 +245,11 @@
         }
     },
     {
-        "id": "ruddin yellow",
-        "name": "Ruddin Yellow",
-        "image": "portrait_ruddin yellow.png",
-        "size": [17,16],
+        "id": "rudinn yellow",
+        "name": "Rudinn Yellow",
+        "by":"riggedbones",
+        "image": "portrait_rudinn yellow.png",
+        "size": [17,17],
         "animations":{
             "idle": {"pos": 0, "frames": 2},
             "walk_left":{"pos":2, "frames": 2},
@@ -171,14 +257,14 @@
             "walk_up":{"pos":8, "frames": 2},
             "walk_down":{"pos":6, "frames": 2},
             "sleep": {"pos":10,"frames": 2 }
-        },
-        "sleepBubble":"sleep_bubbleS"
+        }
     },
        {
         "id": "bludinn",
         "name": "Bludinn",
+        "by":"seavil, riggedbones (base)",
         "image": "portrait_bludinn.png",
-        "size": [17,16],
+        "size": [17,17],
         "animations":{
             "idle": {"pos": 0, "frames": 2},
             "walk_left":{"pos":2, "frames": 2},
@@ -186,8 +272,7 @@
             "walk_up":{"pos":8, "frames": 2},
             "walk_down":{"pos":6, "frames": 2},
             "sleep": {"pos":10,"frames": 2 }
-        },
-        "sleepBubble":"sleep_bubbleS"
+        }
     },
     {
         "id": "rabbick",
@@ -203,9 +288,32 @@
             "sleep": {"pos":0,"frames": 2 }
         }
     },
+         {
+        "id": "queen",
+        "name": "queen",
+        "image": "portrait_queen.png",
+        "by":"computerbug",
+        "size": [16,31],
+        "animations":{
+            "idle":{"pos":0, "frames":2},
+            "walk_left":{"pos":14, "frames": 4},
+            "walk_right":{"pos":10, "frames": 4},
+            "walk_up":{"pos":6, "frames": 4},
+            "walk_down":{"pos":2, "frames": 4},
+            "sleep": {"pos":16,"frames": 2}
+        },
+        "sfx":[
+            "snd_queen_laugh_0",
+            "snd_queen_hoot_0",
+            "snd_queen_hoot_1",
+            "snd_queen_hoot_2"
+        ],
+        "specialSfx":"snd_queen_bandicoot"
+    },
     {
         "id": "spamton",
         "name": "Spamton",
+        "by":"spamton g. spamton",
         "image": "portrait_spamton.png",
         "size": [24,25],
         "animations":{
@@ -217,6 +325,7 @@
             "sleep": {"pos":7,"frames": 1 }
         },
         "sleepBubble": "sleep_bubbleSP",
+        "typingBubble": "typing_bubbleSP",
         "sfx":[
             "spamton_laugh_noise"
         ]
@@ -225,6 +334,7 @@
         "id": "tenna",
         "name": "Tenna",
         "image": "portrait_tenna.png",
+        "by":"spamton g. spamton",
         "size": [16,32],
         "animations":{
             "idle":{"pos":3, "frames":2},
@@ -234,7 +344,93 @@
             "walk_down":{"pos":7, "frames": 2},
             "sleep": {"pos":0,"frames": 1 }
         },
-        "sleepBubble":"sleep_bubbleS"
+        "sleepBubble":"sleep_bubbleRH"
+    },
+    {
+        "id": "knight",
+        "name": "Knight",
+        "image": "portrait_knight.png",
+        "by":"Absol",
+        "size": [17,24],
+        "animations":{
+            "idle":{"pos":0, "frames":2},
+            "walk_left":{"pos":4, "frames": 2},
+            "walk_right":{"pos":2, "frames": 2},
+            "walk_up":{"pos":6, "frames": 2},
+            "walk_down":{"pos":0, "frames": 2},
+            "sleep": {"pos":0,"frames": 2 }
+        },
+        "sfx":[
+            "snd_knight_hurt",
+            "snd_knight_hurtb"
+        ],
+        "specialSfx":"snd_knightroar"
+    },
+    {
+        "id":"small mike",
+        "name":"Small Mike",
+        "image": "portrait_small mike.png",
+        "by": "greenpippins",
+        "size": [16,16],
+        "animations":{
+            "idle":{"pos":0, "frames":2},
+            "walk_left":{"pos":4, "frames": 2},
+            "walk_right":{"pos":6, "frames": 2},
+            "walk_up":{"pos":8, "frames": 2},
+            "walk_down":{"pos":2, "frames": 2},
+            "sleep": {"pos":10,"frames": 2 }
+        },
+        "sleepBubble":"sleep_bubbleSM",
+        "typingBubble": "typing_bubbleSM"
+    },
+    {
+        "id":"pluey",
+        "name":"Pluey",
+        "image": "portrait_pluey.png",
+        "by": "spamton g. spamton",
+        "size": [30,24],
+        "animations":{
+            "idle":{"pos":0, "frames":9},
+            "walk_left":{"pos":0, "frames": 9},
+            "walk_right":{"pos":0, "frames": 9},
+            "walk_up":{"pos":0, "frames": 9},
+            "walk_down":{"pos":0, "frames": 9},
+            "sleep": {"pos":9,"frames": 1}
+        },
+        "sleepBubble":"sleep_bubbleSM",
+        "typingBubble": "typing_bubbleSM"
+    },
+    {
+        "id":"cowboy hat mike",
+        "name":"Cowboy Hat Mike",
+        "image": "portrait_cowboy hat mike.png",
+        "by": "greenpippins",
+        "size": [16,33],
+        "animations":{
+            "idle":{"pos":0, "frames":2},
+            "walk_left":{"pos":4, "frames": 2},
+            "walk_right":{"pos":6, "frames": 2},
+            "walk_up":{"pos":8, "frames": 2},
+            "walk_down":{"pos":2, "frames": 2},
+            "sleep": {"pos":10,"frames": 2 }
+        },
+        "sleepBubble":"sleep_bubbleSM",
+        "typingBubble": "typing_bubbleSM"
+    },
+        {
+        "id": "wafer",
+        "name": "Wafer",
+        "by":"riggedbones",
+        "image": "portrait_wafer.png",
+        "size":[14,25],
+        "animations":{
+            "idle":{"pos":0, "frames":4},
+            "walk_left":{"pos":4, "frames": 4},
+            "walk_right":{"pos":8, "frames": 4},
+            "walk_up":{"pos":16, "frames": 4},
+            "walk_down":{"pos":12, "frames": 4},
+            "sleep": {"pos":20,"frames": 4 }
+        }
     },
     {
         "id": "bibliox",
@@ -253,6 +449,7 @@
     {
         "id": "wicabel",
         "name": "Wicabel",
+        "by":"seavil",
         "image": "portrait_wicabel.png",
         "size":[21,31],
         "animations":{
@@ -267,6 +464,7 @@
     {
         "id": "flowery",
         "name": "Flowery",
+        "by":"Absol",
         "image": "portrait_flowery.png",
         "size": [16,16],
         "animations":{
@@ -302,12 +500,15 @@
                 "./flowery/snd_flowery_voiceclip_nonono",
                 "./flowery/snd_flowery_voiceclip_sanfran",
                 "./flowery/snd_flowery_voiceclip_itsmeflowery",
-                "./flowery/snd_flowery_voiceclip_im_falling"
+                "./flowery/snd_flowery_voiceclip_im_falling",
+                "./flowery/snd_flowery_voiceclip_say_that_again",
+                "./flowery/snd_flowery_voiceclip_suckle_it_up"
             ]
     },
     {
         "id": "aqua",
         "name": "Aqua",
+        "by":"Sharkartist",
         "image": "portrait_aqua.png",
         "size": [16,16],
         "animations":{
@@ -323,6 +524,7 @@
         "id": "pink",
         "name": "Pink",
         "image": "portrait_pink.png",
+        "by":"Number-1-pink-fan",
         "size":[24, 26],
         "animations":{
             "idle":{"pos":0, "frames":1},
@@ -345,6 +547,7 @@
     {
         "id": "pink (ghost)",
         "name": "Pink (Ghost)",
+        "by":"Number-1-pink-fan",
         "image": "portrait_pink (ghost).png",
         "size":[24, 26],
         "animations":{
@@ -366,9 +569,25 @@
         ]
     },
     {
+        "id": "shi",
+        "name": "Shi",
+        "image": "portrait_shi.png",
+        "by":"Drangev",
+        "size": [16,16],
+        "animations":{
+            "idle":{"pos":0, "frames":2},
+            "walk_left":{"pos":4, "frames": 2},
+            "walk_right":{"pos":6, "frames": 2},
+            "walk_up":{"pos":2, "frames": 2},
+            "walk_down":{"pos":6, "frames": 2},
+            "sleep": {"pos":0,"frames": 2 }
+        }
+    },
+    {
         "id": "kawkaw",
         "name": "KawKaw",
         "image": "portrait_kawkaw.png",
+        "by":"Drangev",
         "size": [16,16],
         "animations":{
             "idle":{"pos":0, "frames":2},
@@ -426,6 +645,7 @@
         "id": "frisk",
         "name": "Frisk",
         "image": "portrait_frisk.png",
+        "by":"Absol",
         "size": [16,16],
         "animations":{
             "idle":{"pos":0, "frames":2},
@@ -440,6 +660,7 @@
         "id": "flowey",
         "name": "Flowey",
         "image": "portrait_flowey.png",
+        "by":"Absol",
         "size": [16,16],
         "animations":{
             "idle":{"pos":0, "frames":1},
@@ -448,12 +669,18 @@
             "walk_up":{"pos":1, "frames": 4},
             "walk_down":{"pos":1, "frames": 4},
             "sleep": {"pos":5,"frames": 1 }
-        }
+        },
+        "sfx":[
+            "snd_floweylaugh",
+            "snd_wonderfulidea",
+            "snd_ehurt1"
+        ]
     },
     {
         "id": "sans",
         "name":"sans",
         "image": "portrait_sans.png",
+        "by":"Absol",
         "size":[16,16],
         "animations":{
             "idle":{"pos":0, "frames":2},
@@ -462,12 +689,16 @@
             "walk_up":{"pos":6, "frames": 2},
             "walk_down":{"pos":0, "frames": 2},
             "sleep": {"pos":8,"frames": 2}
-        }
+        },
+        "sfx":[
+            "mus_rimshot"
+        ]
     },
     {
         "id":"papyrus",
         "name":"Papyrus",
         "image": "portrait_papyrus.png",
+        "by":"Absol",
         "size":[16,21],
         "animations":{
             "idle":{"pos":0, "frames":2},
@@ -482,6 +713,7 @@
         "id": "chara",
         "name": "Chara",
         "image": "portrait_chara.png",
+        "by":"Absol",
         "size": [16,16],
         "animations":{
             "idle":{"pos":0, "frames":2},
@@ -493,9 +725,30 @@
         }
     },
     {
+        "id": "big shot",
+        "name": "Big Shot",
+        "by":"WWABroadcast",
+        "image": "portrait_big shot.png",
+        "size": [20,25],
+        "animations":{
+            "idle":{"pos":0, "frames":2},
+            "walk_left":{"pos":6, "frames": 2},
+            "walk_right":{"pos":8, "frames": 2},
+            "walk_up":{"pos":4, "frames": 2},
+            "walk_down":{"pos":2, "frames": 2},
+            "sleep": {"pos":10,"frames": 2}
+        },
+        "sleepBubble": "sleep_bubbleSP",
+        "typingBubble": "typing_bubbleSP",
+        "sfx":[
+            "spamton_laugh_noise"
+        ]
+    },
+    {
         "id":"green pluey",
         "name": "Green Pluey",
         "image": "portrait_green pluey.png",
+        "by":"Gionori",
         "size": [16,16],
         "animations":{
             "idle":{"pos":8, "frames":2},
@@ -505,12 +758,30 @@
             "walk_down":{"pos":0, "frames": 2},
             "sleep": {"pos":10,"frames": 2}
         },
-        "sleepBubble":"sleep_bubbleR"
+        "sleepBubble":"sleep_bubbleR",
+        "typingBubble": "typing_bubbleR"
+    },
+        {
+        "id": "jacey rudinn",
+        "name": "Jacey Rudinn",
+        "by":"orangeRabbick",
+        "image": "portrait_jacey rudinn.png",
+        "size": [17,16],
+        "animations":{
+            "idle": {"pos": 0, "frames": 2},
+            "walk_left":{"pos":2, "frames": 2},
+            "walk_right":{"pos":4, "frames": 2},
+            "walk_up":{"pos":8, "frames": 2},
+            "walk_down":{"pos":6, "frames": 2},
+            "sleep": {"pos":10,"frames": 2 }
+        },
+        "sfx":["0de"]
     },
     {
         "id": "noyno",
         "name": "Noyno",
         "image": "portrait_noyno.png",
+        "by":"Absol",
         "size": [16,16],
         "animations":{
             "idle":{"pos":0, "frames":2},
@@ -525,7 +796,8 @@
         "id": "jackpins",
         "name": "Jackpins",
         "image": "portrait_jackpins.png",
-        "size": [16,16],
+        "by":"greenpippins",
+        "size": [16,18],
         "animations":{
             "idle":{"pos": 0, "frames": 1},
             "walk_left":{"pos":0, "frames": 1},
@@ -533,7 +805,8 @@
             "walk_up":{"pos":0, "frames": 1},
             "walk_down":{"pos":0, "frames": 1},
             "sleep": {"pos":0,"frames": 1 }
-        }
+        },
+        "sfx":["snd_pinball"]
     },
     {
         "id":"orange rabbick",
@@ -547,20 +820,7 @@
             "walk_up":{"pos":0, "frames": 1},
             "walk_down":{"pos":0, "frames": 1},
             "sleep": {"pos":0,"frames": 1 }
-        }
-    },
-    {
-        "id": "lamen",
-        "name": "Lamen",
-        "image": "portrait_lamen.png",
-        "size": [23,41],
-        "animations":{
-            "idle":{"pos": 0, "frames":4},
-            "walk_left":{"pos": 4, "frames": 4},
-            "walk_right":{"pos":8, "frames":4},
-            "walk_down":{"pos":0, "frames":4},
-            "walk_up":{"pos":12, "frames":4},
-            "sleep":{"pos":0, "frames":1}
-        }
+        },
+        "typingBubble": "typing_bubbleO"
     }
 ]

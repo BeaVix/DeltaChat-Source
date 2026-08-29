@@ -4,13 +4,91 @@
         "size": [320,580],
         "image": "castletown",
         "frames": 3,
-        "hitboxes":[],
+        "initialPos":[90,120],
+        "spawnPos":{"cafe":[244,320], "room":[140,140]},
+        "musicConf":{
+            "controls":true,
+            "song":1
+        },
+        "hitboxes":[
+            {
+                "pos":[224,528],
+                "size":[97,53]
+            },
+            {
+                "pos": [0, 528],
+                "size":[97,53]
+            },
+            {
+                "pos": [0, 0],
+                "size":[1,578]
+            },
+            {
+                "pos":[0,0],
+                "size":[320,1]
+            },
+            {
+                "pos": [320, 0],
+                "size":[1,578]
+            },
+            {
+                "pos": [0, 578],
+                "size":[320,1]
+            }
+        ],
         "objects":[
             {
                 "name": "cafeshop 1",
-                "image":"cafeShop_1.png",
+                "image":"cafeShop_1",
                 "pos":[185,230],
-                "size":[79,83]
+                "size":[79,83],
+                "frames": 0,
+                "scale": 1
+            },
+            {
+                "name": "bakeryshop 1",
+                "image":"bakeryShop_1",
+                "pos":[183,306],
+                "size":[79,83],
+                "frames": 0,
+                "scale": 1
+            },
+            {
+                "name": "weaponshop 1",
+                "image":"weaponShop_1",
+                "pos":[64,230],
+                "size":[79,83],
+                "frames": 0,
+                "scale": 1
+            },
+            {
+                "name": "itemshop 1",
+                "image":"itemsShop",
+                "pos":[60,306],
+                "size":[79,83],
+                "frames": 0,
+                "scale": 1
+            },
+            {
+                "name": "mapLoader_cafe",
+                "type": "levelLoader",
+                "map":"cafe",
+                "pos": [238,293],
+                "size": [10,5]
+            },
+            {
+                "name":"mapLoader_",
+                "type":"levelLoader",
+                "pos":[666,0],
+                "size":[100,600],
+                "map":"room"
+            },
+            {
+                "name":"mapLoader_",
+                "type":"levelLoader",
+                "pos":[0,666],
+                "size":[600,100],
+                "map":"room"
             }
         ]
     },
@@ -18,25 +96,138 @@
         "id": "cafe",
         "size": [640,480],
         "image": "cafe",
-        "frames": 0,
+        "frames": 1,
+        "initialPos":[0,0],
+        "spawnPos":{"castletown": [460,400]},
+        "musicConf":{
+            "controls":true,
+            "song":4
+        },
         "hitboxes":[
             {
-                "size":[400,78],
-                "pos":[0,402]
+                "pos":[0,-10],
+                "size":[640,10]
             },
             {
-                "size":[240,40],
-                "pos":[400,440]
+                "pos":[-10,0],
+                "size":[10,480]
             },
             {
-                "size":[120,38],
-                "pos":[520,402]
+                "pos":[640,0],
+                "size":[10,480]
             },
             {
-                "size":[20,402],
-                "pos":[620, 0]
+                "pos":[0,480],
+                "size":[640,10]
+            }
+        ]
+        ,"objects":[
+            {
+                "name": "table",
+                "image":"cafe_table",
+                "pos":[26,99],
+                "size":[47,35],
+                "frames": 4,
+                "scale": 2
+            },
+            {
+                "name": "table",
+                "image":"cafe_table",
+                "pos":[126,99],
+                "size":[47,35],
+                "frames": 4,
+                "scale": 2
+            },
+            {
+                "name": "table",
+                "image":"cafe_table",
+                "pos":[66,139],
+                "size":[47,35],
+                "frames": 4,
+                "scale": 2
+            },
+            {
+                "name": "desk",
+                "image":"cafe_desk",
+                "pos":[364,109],
+                "size":[260,90],
+                "frames": 0,
+                "scale": 1
+            },
+            {
+                "name": "jukebox",
+                "image":"jukebox",
+                "pos":[124, 100],
+                "size":[68,87],
+                "type": "Jukebox",
+                "frames":1,
+                "scale":1
+            },
+            {
+                "name":"mapLoader_castletown",
+                "type":"levelLoader",
+                "pos":[410,460],
+                "size":[100,10],
+                "map":"castletown"
+            },
+            {
+                "name":"mapLoader_",
+                "type":"levelLoader",
+                "pos":[666,0],
+                "size":[100,600],
+                "map":"room"
+            }
+        ]
+    },
+    {
+        "id": "room",
+        "size": [640,480],
+        "image": "forest",
+        "frames": 1,
+        "initialPos":[0,0],
+        "hitboxes":[
+            {
+                "pos":[320,259],
+                "size":[10,5]
             }
         ],
-        "objects":[]
+        "spawnPos":{"cafe":[0,0], "castletown":[0,0]},
+        "musicConf":{
+            "controls":false,
+            "song":"man"
+        },
+        "objects":[
+            {
+                "name": "treeTrunk",
+                "image":"treetrunk",
+                "pos":[150, 70],
+                "size":[105,91],
+                "frames":1,
+                "scale":1.7
+            },
+            {
+                "name": "treeLeaves1",
+                "image":"treeLeaves1",
+                "pos":[150, 70],
+                "size":[105,91],
+                "frames":1,
+                "scale":1.7
+            },
+            {
+                "name": "treeLeaves2",
+                "image":"treeLeaves2",
+                "pos":[150, 70],
+                "size":[105,91],
+                "frames":1,
+                "scale":1.7
+            },
+            {
+                "name":"mapLoader_castletown",
+                "type":"levelLoader",
+                "pos":[290,480],
+                "size":[100,10],
+                "map":"castletown"
+            }
+        ]
     }
 ]

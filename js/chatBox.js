@@ -1,15 +1,19 @@
 import { Command } from "./command";
 import { CommandComponent } from "./commandComponent";
+import emotes from "./../emotes.json";
 
 const chatWindow = document.querySelector("#chatBox")
 const sendButton = document.querySelector("#sendButton")
 const textInput = document.querySelector("#textInput")
+let isScrolling = false
+let autoScroll = false
+let scrollEndTimer;
 
 class ChatBoxComponent{
 	constructor(player, players, room, msg, canvas,updateLastMapChange){
 		this.player = player
 		this.room = room
-		this.commandComponent = new CommandComponent(this.player, players, this.room, msg, canvas,updateLastMapChange);
+		this.commandComponent = new CommandComponent(this.player, players, this.room, msg, canvas);
 
 		//Set chat button listener
     	sendButton.addEventListener("click", e => {
@@ -36,6 +40,14 @@ class ChatBoxComponent{
 				this.player.movementComponent.canMove = true
 			}
 		}
+
+		chatWindow.onscroll = e =>{
+			if(!autoScroll && Math.abs(chatWindow.scrollHeight - chatWindow.clientHeight - chatWindow.scrollTop)>1){
+				isScrolling = true;
+			}else if(Math.abs(chatWindow.scrollHeight - chatWindow.clientHeight - chatWindow.scrollTop)<=1){
+				isScrolling = false
+			}
+		}
 	}
 	evaluateCommand(msg){
 		let args = msg.slice(1).split(" ");
@@ -58,13 +70,26 @@ class ChatBoxComponent{
 
 function displayMessage(nick, msg){
 	const p = document.createElement("p");
+
 	nick = nick.slice(0,15)
 	if(nick.length > 15){
 		nick += "..." 
 	}
-	p.textContent = nick + ": " + msg;
+	p.textContent = nick + ":";
+
+	msg = msg.split(" ")
+	msg.forEach((word,i) => {
+		let emote = emotes.find(e => ":"+e.id.toLowerCase()+":" == word.toLowerCase());
+		if(emote){
+			const img =  document.createElement("img");
+			img.src = emote.src
+			p.append(img)
+		}else{
+			p.append(document.createTextNode(" "+word))
+		}
+	});
 	chatWindow.append(p)
-	chatWindow.scroll(0, chatWindow.scrollHeight)
+	scroll();
 }
 
 function serverMessage(msg, color){
@@ -72,7 +97,15 @@ function serverMessage(msg, color){
 	p.style.color = color;
 	p.textContent = "[CLIENT]: " + msg;
 	chatWindow.append(p)
-	chatWindow.scroll(0, chatWindow.scrollHeight)
+	scroll();
+}
+
+function scroll(){
+	if(!isScrolling){
+		autoScroll = true
+		chatWindow.scroll(0, chatWindow.scrollHeight)
+		autoScroll = false
+	}
 }
 
 export {displayMessage, serverMessage, ChatBoxComponent}

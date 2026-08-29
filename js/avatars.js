@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const grid = document.getElementById("characterGrid");
     const portrait = document.getElementById("portrait");
     const characterName = document.getElementById("characterName");
+    const characterCredit = document.getElementById("characterCredit");
     const savedAvatar = localStorage.getItem("selectedAvatar");
 
     if (!grid || !portrait || !characterName) return;
@@ -49,6 +50,14 @@ document.addEventListener("DOMContentLoaded", () => {
             //show selected image with corresponding name
             portrait.src = character.image;
             characterName.textContent = character.name;
+
+            if(character.by){
+                characterCredit.parentNode.style.display = "block"
+                characterCredit.textContent = character.by
+            }else{
+                characterCredit.parentNode.style.display = "none"
+            }
+            
 
             localStorage.setItem("selectedAvatar", character.id);
 
