@@ -808,10 +808,10 @@
         "typingBubble": "typing_bubbleR"
     },
         {
-        "id": "jacey rudinn",
-        "name": "Jacey Rudinn",
+        "id": "lament rudinn",
+        "name": "Lament Rudinn",
         "by":"orangeRabbick",
-        "image": "portrait_jacey rudinn.png",
+        "image": "portrait_lament rudinn.png",
         "size": [17,16],
         "animations":{
             "idle": {"pos": 0, "frames": 2},

@@ -14,7 +14,7 @@ function updateOnline(players){
         img.style.imageRendering = "crisp-edges";
         img.style.marginLeft = "5px"
         img.style.width = "15px"
-        img.src ="portrait_" + player.animationComponent.avatar + ".png"
+        img.src = player.data.image
 
         span.textContent = "ID: "+player.id
         span.style.marginLeft = "1rem"
