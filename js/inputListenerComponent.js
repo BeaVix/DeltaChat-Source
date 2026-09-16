@@ -48,7 +48,6 @@ class InputListenerComponent{
                 case "g":
                     if(!this.player.grabbing && !this.player.grabbedBy){
                         const playerTest = this.testHitbox();
-                        console.log(playerTest)
                         if(playerTest && playerTest.canBeGrabbed){
                             this.player.grabbing = playerTest.id;
                             playerTest.grabbedBy = this.player.id;
@@ -139,7 +138,6 @@ class InputListenerComponent{
                     textInput.focus();
                     this.movementComponent.movement[0] = 0
                     this.movementComponent.movement[1] = 0
-                break;
                 break;
             }
             if(!this.movementComponent.movement[0] && !this.movementComponent.movement[1]){

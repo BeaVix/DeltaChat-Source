@@ -31,11 +31,11 @@ class Room{
 
     //Send player data to new peer
         this.room.onPeerJoin = (peerId) => {
-        this.actions.playerInfo.send({info: player, bg: this.bg, joined:0}, {target: peerId})
+        this.actions.playerInfo.send({info: player}, {target: peerId})
     }
 
     //receive player data
-    this.actions.playerInfo.onMessage = ({info, bg, joined}, {peerId}) => {
+    this.actions.playerInfo.onMessage = ({info}, {peerId}) => {
         if(!this.getById(peerId)){
             const newPlayer = new Player(info.id, info.nick, info.animationComponent.avatar)
             newPlayer.movementComponent.pos = info.movementComponent.pos;
@@ -54,11 +54,13 @@ class Room{
 
     //Remove player
     this.room.onPeerLeave = (peerId) =>{
-        const peer = this.getById(peerId);
-        serverMessage(peer.nick +" left!", "red");
-        const index = players.indexOf(peer);
-        players.splice(index,1);
-        updateOnline(players)
+        if(this.getById(peerId)){
+            const peer = this.getById(peerId);
+            serverMessage(peer.nick +" left!", "red");
+            const index = players.indexOf(peer);
+            players.splice(index,1);
+            updateOnline(players)
+        }
     }
 
     //Receive player movement

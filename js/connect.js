@@ -3,8 +3,6 @@ import { Room } from './Room';
 import { updateOnline } from './onlineSidebar';
 import { Player } from './Player';
 import { Game } from './game';
-import { displayMessage, serverMessage } from './chatBox';
-import maps from "./../maps.json"
 import { SoundComponent } from './soundComponent';
 
 const roomId = document.querySelector("#room-id")
@@ -14,8 +12,7 @@ const pushCheckbox = document.querySelector("#allowPush");
 
 let players = []
 
-function connectToRoom(roomCode, map, nick, avatar,musVol, volume, playerVol, allowGrab, allowPush){
-    const roomConfig = {
+const roomConfig = {
         appId: 'com.trystero-demo.lol',
 
         turnConfig:[
@@ -29,30 +26,33 @@ function connectToRoom(roomCode, map, nick, avatar,musVol, volume, playerVol, al
 			"turn:turn.cloudflare.com:80?transport=tcp",
 			"turns:turn.cloudflare.com:443?transport=tcp"
 			],
-"username":"g0634e01308a0f9e27ad253e29661a8560856de1d14d6fa4406ec20f618dec1c",
-"credential":"2b71a867c6a47ed63ddcc33e1af0cea04e5bde7a3340943331f2e6855c9cfbb9"}
+"username":"g0efdbae8a1c122fcb3dd10c44b78c7afa29a78059633f8d2fe0779487f778fa",
+"credential":"d9384177cc5f4891b0334c43a0be82955f9905560ec71eb01baf271ba01ae690"}
         ]
 }
+
+function connectToRoom(roomCode, map, config){
+
     const finalRoomCode = roomCode + "_"+map;
     const roomI = joinRoom(roomConfig, finalRoomCode);
 
     roomId.textContent ="ROOM: "+ roomCode;
 
     const globalSFX = new SoundComponent(sfxVolume);
-    globalSFX.setVolume(volume)
+    globalSFX.setVolume(config.volume)
 
-    const player = new Player(selfId, nick, avatar, allowGrab, allowPush);
+    const player = new Player(selfId, config.nick, config.avatar, config.allowGrab, config.allowPush);
     const room = new Room(roomI, roomCode,roomConfig,  players, player, map, globalSFX);
-    const game= new Game(player, players, room, map, musVol, globalSFX);
+    const game= new Game(player, players, room, map, config.musVol, globalSFX);
     
-    player.sound.setVolume(playerVol);
+    player.sound.setVolume(config.playerVol);
 
     players.push(player);
     room.actions.playerInfo.send(player);   //send player data to all peers
     updateOnline(players)
 
-    grabCheckbox.checked = allowGrab;
-    pushCheckbox.checked = allowPush;
+    grabCheckbox.checked = config.allowGrab;
+    pushCheckbox.checked = config.allowPush;
 
     grabCheckbox.addEventListener("change", e => {
         player.canBeGrabbed = grabCheckbox.checked
@@ -65,4 +65,4 @@ function connectToRoom(roomCode, map, nick, avatar,musVol, volume, playerVol, al
     })
 }
 
-export {connectToRoom}
+export {connectToRoom }

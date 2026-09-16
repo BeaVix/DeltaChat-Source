@@ -9,7 +9,6 @@ const gameScreen = document.querySelector("#gameWindow");
 const chatBox = document.querySelector("#chat-container");
 const sideBar = document.querySelector("#side-bar");
 const musicVolSlider = document.querySelector("#musicVolume-preGame");
-const portrait = document.querySelector("#portrait");
 const map = document.querySelector("#map");
 const avatarSlct = document.querySelector("#characterName")
 const volumeSlider = document.querySelector("#sfxVolume-preGame")
@@ -82,6 +81,14 @@ confirmBtn.addEventListener("click", e => {
     const playerVol = playerVolSlider.value
 
     if(roomCode != ""){
-        connectToRoom(roomCode, mapValue, nick, avatar, musicVol, volume, playerVol, allowGrab.checked, allowPush.checked)
+        connectToRoom(roomCode, mapValue, {
+            nick: nick,
+            avatar: avatar,
+            volume: volume,
+            musVol: musicVol,
+            playerVol: playerVol,
+            allowGrab: allowGrab.checked,
+            allowPush: allowPush.checked
+        })
     }
 });
