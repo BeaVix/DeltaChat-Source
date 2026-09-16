@@ -2,6 +2,7 @@
         "id": "pippins",
         "name": "Pippins",
         "image": "portrait_pippins.png",
+        "by": "Cozmo",
         "size": [13,20],
         "animations":{
             "idle": {"pos": 0, "frames": 2},
@@ -18,6 +19,7 @@
         "id": "green pippins",
         "name": "Green Pippins",
         "image": "portrait_green pippins.png",
+        "by": "Cozmo",
         "size": [13,20],
         "animations":{
             "idle": {"pos": 0, "frames": 2},
