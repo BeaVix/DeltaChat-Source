@@ -2,14 +2,14 @@
         "id": "pippins",
         "name": "Pippins",
         "image": "portrait_pippins.png",
-        "size": [16,16],
+        "size": [13,20],
         "animations":{
-            "idle": {"pos": 0, "frames": 1},
-            "walk_left":{"pos":0, "frames": 1},
-            "walk_right":{"pos":0, "frames": 1},
-            "walk_up":{"pos":0, "frames": 1},
-            "walk_down":{"pos":0, "frames": 1},
-            "sleep": {"pos":0,"frames": 1 }
+            "idle": {"pos": 0, "frames": 2},
+            "walk_left":{"pos":2, "frames": 2},
+            "walk_right":{"pos":0, "frames": 2},
+            "walk_up":{"pos":4, "frames": 2},
+            "walk_down":{"pos":0, "frames": 2},
+            "sleep": {"pos":6,"frames": 2 }
             
         },
          "sfx":["snd_pinball"]
@@ -18,14 +18,14 @@
         "id": "green pippins",
         "name": "Green Pippins",
         "image": "portrait_green pippins.png",
-        "size": [16,16],
+        "size": [13,20],
         "animations":{
-            "idle": {"pos": 0, "frames": 1},
-            "walk_left":{"pos":0, "frames": 1},
-            "walk_right":{"pos":0, "frames": 1},
-            "walk_up":{"pos":0, "frames": 1},
-            "walk_down":{"pos":0, "frames": 1},
-            "sleep": {"pos":0,"frames": 1 }
+            "idle": {"pos": 0, "frames": 2},
+            "walk_left":{"pos":2, "frames": 2},
+            "walk_right":{"pos":0, "frames": 2},
+            "walk_up":{"pos":4, "frames": 2},
+            "walk_down":{"pos":0, "frames": 2},
+            "sleep": {"pos":6,"frames": 2 }
         },
          "sfx":["snd_pinball"]
     },
@@ -85,6 +85,25 @@
             "snd_ralseising1",
             "snd_ralseising2"
         ]
+    },
+    {
+        "id": "white cloak",
+        "name": "White Cloak",
+        "image": "portrait_white cloak.png",
+        "size": [14,16],
+        "animations":{
+            "idle":{"pos":0, "frames":2},
+            "walk_left":{"pos":6, "frames": 2},
+            "walk_right":{"pos":2, "frames": 2},
+            "walk_up":{"pos":4, "frames": 2},
+            "walk_down":{"pos":0, "frames": 2},
+            "sleep": {"pos":0,"frames": 2 }
+        },
+        "sfx":[
+            "snd_board_mantle_unknown_a",
+            "snd_board_mantle_unknown_b"
+        ],
+        "specialSfx": "snd_board_ominous"
     },
      {
         "id": "noelle",
@@ -344,6 +363,19 @@
             "walk_down":{"pos":7, "frames": 2},
             "sleep": {"pos":0,"frames": 1 }
         },
+        "sfx":[
+            "snd_tv_voice_short",
+            "snd_tv_voice_short_2",
+            "snd_tv_voice_short_3",
+            "snd_tv_voice_short_4",
+            "snd_tv_voice_short_5",
+            "snd_tv_voice_short_6",
+            "snd_tv_voice_short_7",
+            "snd_tv_voice_short_8",
+            "snd_tv_voice_short_9",
+            "snd_tv_voice_short_10"
+        ],
+        "specialSfx": "snd_its_tv_time",
         "sleepBubble":"sleep_bubbleRH"
     },
     {
